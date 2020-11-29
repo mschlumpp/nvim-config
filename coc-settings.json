@@ -1,0 +1,21 @@
+{
+    "coc.preferences.rootPatterns": [
+        ".vim",
+        ".git",
+        ".hg",
+        ".projections.json",
+        "Cargo.toml"
+    ],
+    "codeLens.enable": true,
+    "rust-analyzer.inlayHints.chainingHints": true,
+    "coc.preferences.bracketEnterImprove": true,
+    "coc.preferences.colorSupport": true,
+    "git.addGBlameToBufferVar": true,
+    "clangd.arguments": [
+        "--background-index",
+        "--clang-tidy"
+    ],
+    "clangd.semanticHighlighting": true,
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "rust-analyzer.inlayHints.refreshOnInsertMode": true
+}
