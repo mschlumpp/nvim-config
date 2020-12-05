@@ -7,11 +7,14 @@ endif
 call plug#begin()
 Plug 'nanotech/jellybeans.vim'
 Plug '/usr/share/vim/vimfiles/'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'vn-ki/coc-clap'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
@@ -29,6 +32,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'wellle/context.vim'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'chrisbra/SudoEdit.vim'
+Plug 'ray-x/paleaurora'
 call plug#end()
 
 " Some basic options
@@ -94,61 +98,34 @@ noremap <silent><leader>a :Clap grep2<cr>
 
 nnoremap <silent><nowait> <leader>l :<C-u>Clap providers<cr>
 
-" coc
-inoremap <silent><expr> <c-space> coc#refresh()
+" completion-nvim
+let g:completion_enable_snippet = 'vim-vsnip'
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" vsnip
+imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" nvim-lsp
+lua require('lspinit')
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+autocmd Filetype cpp,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+hi LspReferenceText guibg='#2F4738'
+hi LspReferenceRead guibg='#107F38'
+hi LspReferenceWrite guibg='#5D3D46' cterm=underline gui=underline
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
   endif
+
+  return ''
 endfunction
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-nmap <leader>rn <Plug>(coc-rename)
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  autocmd FileType typescript,json,rust setl formatexpr=CocAction('formatSelected')
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-xmap <leader>m  <Plug>(coc-codeaction-selected)
-nmap <leader>m  <Plug>(coc-codeaction-selected)
-nmap <leader>mc  v<Plug>(coc-codeaction-selected)
-
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-nnoremap <silent><nowait> <leader>c :<C-u>Clap coc_commands<cr>
-nnoremap <silent><nowait> <leader>d :<C-u>Clap coc_diagnostics<cr>
-
-command! -nargs=0 Format :call CocAction('format')
 
 " vimtex
 let g:tex_flavor = "latex"
@@ -157,13 +134,13 @@ let g:tex_flavor = "latex"
 let g:lightline = {
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ], 
-            \             [ 'readonly', 'filename', 'method', 'modified', 'gitg', 'cocstatus' ] ],
+            \             [ 'readonly', 'filename', 'method', 'modified', 'gitg', 'lspstatus' ] ],
             \   'right': [ [ 'lineinfo' ],
             \              [ 'percent' ],
             \              [ 'gitblame', 'gitb', 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'component_function': {
-            \   'cocstatus': 'coc#status',
+            \   'lspstatus': 'LspStatus',
             \   'gitg': 'LightlineGitBranch',
             \   'gitb': 'LightlineGitBuffer',
             \   'gitblame': 'LightlineGitBlame',
@@ -186,3 +163,4 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " git-gutter
 let g:gitgutter_map_keys = 0
+
