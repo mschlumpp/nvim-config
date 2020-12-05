@@ -16,6 +16,7 @@
         "--clang-tidy"
     ],
     "clangd.semanticHighlighting": true,
+    "rust-analyzer.serverPath": "rust-analyzer",
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.inlayHints.refreshOnInsertMode": true,
     "rust-analyzer.diagnostics.enableExperimental": true,
