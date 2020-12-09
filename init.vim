@@ -29,8 +29,9 @@ Plug 'ziglang/zig.vim'
 Plug 'jceb/vim-orgmode'
 Plug 'bakpakin/fennel.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'wellle/context.vim'
+"Plug 'wellle/context.vim'
 Plug 'gosukiwi/vim-atom-dark'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'ray-x/paleaurora'
 call plug#end()
@@ -40,7 +41,7 @@ set incsearch
 set autoread
 set laststatus=2
 set ruler
-set relativenumber
+set number
 set hidden
 set updatetime=300
 set cmdheight=2
@@ -65,7 +66,7 @@ set shiftwidth=4
 
 colorscheme jellybeans
 
-set guifont=Iosevka:h11.8
+set guifont=Iosevka:h14
 
 " Some keybindings from emacs config
 noremap <leader>wk <c-w>k
@@ -84,6 +85,10 @@ noremap <leader>wv <c-w>v
 noremap <leader>ws <c-w>s
 
 noremap <silent><leader>bk :bd<cr>
+
+" quick fix
+nnoremap <silent>]q :cn<cr>
+nnoremap <silent>[q :cp<cr>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -115,9 +120,13 @@ lua require('lspinit')
 
 autocmd Filetype cpp,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-hi LspReferenceText guibg='#2F4738'
-hi LspReferenceRead guibg='#107F38'
-hi LspReferenceWrite guibg='#5D3D46' cterm=underline gui=underline
+function! SetLspColors()
+    hi LspReferenceText cterm=bold,undercurl ctermbg=239 gui=bold,undercurl guibg=#4f4764 guisp=#FD9720
+    hi LspReferenceRead cterm=bold,undercurl ctermbg=34 gui=bold,undercurl guibg=#1aad16 guisp=#FD9720
+    hi LspReferenceWrite cterm=bold,underline ctermbg=34 gui=bold,underline guibg=#1aad16 guisp=#FD9720
+endfunction
+command! SetLspColors call SetLspColors()
+SetLspColors
 
 function! LspStatus() abort
   if luaeval('#vim.lsp.buf_get_clients() > 0')
@@ -158,8 +167,6 @@ endfunction
 function! LightlineGitBlame()
     return get(b:, 'coc_git_blame', '')
 endfunction
-
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " git-gutter
 let g:gitgutter_map_keys = 0

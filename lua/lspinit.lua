@@ -35,10 +35,11 @@ local servers = {
                     command = "clippy",
                 },
                 inlayHints = {
-                    refreshOnInsertMode = true,
+                    --refreshOnInsertMode = true,
                 },
                 diagnostics = {
                     enableExperimental = true,
+                    disabled = { "macro-error" }
                 },
                 completion = {
                     enableExperimental = true,
@@ -101,38 +102,9 @@ local snippet_capabilities = {
   textDocument = {completion = {completionItem = {snippetSupport = true}}}
 }
 
-local function deep_extend(policy, ...)
-  local result = {}
-  local function helper(policy, k, v1, v2)
-    if type(v1) ~= 'table' or type(v2) ~= 'table' then
-      if policy == 'error' then
-        error('Key ' .. vim.inspect(k) .. ' is already present with value ' .. vim.inspect(v1))
-      elseif policy == 'force' then
-        return v2
-      else
-        return v1
-      end
-    else
-      return deep_extend(policy, v1, v2)
-    end
-  end
-
-  for _, t in ipairs({...}) do
-    for k, v in pairs(t) do
-      if result[k] ~= nil then
-        result[k] = helper(policy, k, result[k], v)
-      else
-        result[k] = v
-      end
-    end
-  end
-
-  return result
-end
-
 for server, config in pairs(servers) do
     config.on_attach = make_on_attach(config)
-    config.capabilities = deep_extend('keep', config.capabilities or {}, lsp_status.capabilities, snippet_capabilities)
+    config.capabilities = vim.tbl_deep_extend('force', config.capabilities or {}, lsp_status.capabilities, snippet_capabilities)
 
     lspconfig[server].setup(config)
 end
