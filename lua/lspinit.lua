@@ -1,5 +1,5 @@
 local lsp_status = require 'lsp-status'
-lsp_status.register_progress()
+--lsp_status.register_progress()
 
 local completion = require 'completion'
 local lspconfig = require 'lspconfig'
@@ -104,7 +104,7 @@ local snippet_capabilities = {
 
 for server, config in pairs(servers) do
     config.on_attach = make_on_attach(config)
-    config.capabilities = vim.tbl_deep_extend('force', config.capabilities or {}, lsp_status.capabilities, snippet_capabilities)
+    config.capabilities = vim.tbl_deep_extend('force', config.capabilities or {}, --[[lsp_status.capabilities,]] snippet_capabilities)
 
     lspconfig[server].setup(config)
 end
