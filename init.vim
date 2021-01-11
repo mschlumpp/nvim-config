@@ -9,6 +9,7 @@ Plug '/usr/share/vim/vimfiles/'
 
 " Appearance
 Plug 'itchyny/lightline.vim'
+Plug 'dstein64/nvim-scrollview'
 
 Plug 'nanotech/jellybeans.vim'
 Plug 'tomasiser/vim-code-dark'
@@ -112,7 +113,9 @@ nnoremap <silent>[q :cp<cr>
 let g:deoplete#enable_at_startup = 1
 
 " telescope
-lua require('telescope').load_extension('fzy_native')
+lua <<EOF
+require('telescope').load_extension('fzy_native')
+EOF
 nnoremap <silent><leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <silent><leader>h  <cmd>Telescope find_files<cr>
 nnoremap <silent><leader>bb <cmd>Telescope buffers<cr>
