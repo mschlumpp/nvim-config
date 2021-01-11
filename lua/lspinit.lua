@@ -23,6 +23,7 @@ local servers = {
             completeUnimported = true,
             semanticHighlighting = true
         },
+        cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" }
     },
     rust_analyzer = {
         settings = {
