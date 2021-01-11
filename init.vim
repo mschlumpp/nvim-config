@@ -21,6 +21,7 @@ Plug 'ray-x/paleaurora'
 " Utilities
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
@@ -111,10 +112,14 @@ nnoremap <silent>[q :cp<cr>
 let g:deoplete#enable_at_startup = 1
 
 " telescope
+lua require('telescope').load_extension('fzy_native')
 nnoremap <silent><leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <silent><leader>h  <cmd>Telescope find_files<cr>
 nnoremap <silent><leader>bb <cmd>Telescope buffers<cr>
-nnoremap <silent><leader>s <cmd>Telescope current_buffer_fuzzy_find<cr>
+
+nnoremap <silent><leader>sl <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <silent><leader>sp <cmd>Telescope live_grep<cr>
+
 nnoremap <silent><leader>ps <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent><leader>q <cmd>Telescope quickfix<cr>
 
