@@ -25,6 +25,9 @@ local servers = {
         },
         cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" }
     },
+    gopls = { },
+    jsonls = { },
+    tsserver = {  },
     rust_analyzer = {
         settings = {
             ["rust-analyzer"] = {
