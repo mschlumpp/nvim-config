@@ -19,7 +19,9 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'ray-x/paleaurora'
 
 " Utilities
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -108,15 +110,15 @@ nnoremap <silent>[q :cp<cr>
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-" clap
-noremap <silent><leader>ff :Clap filer<cr>
-noremap <silent><leader>fr :Clap history<cr>
-noremap <silent><leader>h :Clap files<cr>
-noremap <silent><leader>bb :Clap buffers<cr>
-noremap <silent><leader>s :Clap lines<cr>
-noremap <silent><leader>a :Clap grep2<cr>
+" telescope
+nnoremap <silent><leader>fr <cmd>Telescope oldfiles<cr>
+nnoremap <silent><leader>h  <cmd>Telescope find_files<cr>
+nnoremap <silent><leader>bb <cmd>Telescope buffers<cr>
+nnoremap <silent><leader>s <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <silent><leader>ps <cmd>Telescope lsp_workspace_symbols<cr>
+nnoremap <silent><leader>q <cmd>Telescope quickfix<cr>
 
-nnoremap <silent><nowait> <leader>l :<C-u>Clap providers<cr>
+nnoremap <silent><nowait> <leader>l <cmd>Telescope builtin<cr>
 
 " completion-nvim
 let g:completion_enable_snippet = 'vim-vsnip'
