@@ -5,35 +5,46 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'nanotech/jellybeans.vim'
 Plug '/usr/share/vim/vimfiles/'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
+
+" Appearance
+Plug 'itchyny/lightline.vim'
+
+Plug 'nanotech/jellybeans.vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'ray-x/paleaurora'
+
+" Utilities
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/lsp-status.nvim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'chrisbra/SudoEdit.vim'
+
+" LSP and related packages
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'neovim/nvim-lspconfig'
+
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
+
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'jiangmiao/auto-pairs'
-Plug 'itchyny/lightline.vim'
+
+" Language supportk
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'LnL7/vim-nix'
 Plug 'bazelbuild/vim-ft-bzl'
 Plug 'lervag/vimtex'
-Plug 'tomasiser/vim-code-dark'
-Plug 'chriskempson/base16-vim'
 Plug 'ziglang/zig.vim'
 Plug 'jceb/vim-orgmode'
 Plug 'bakpakin/fennel.vim'
-Plug 'arcticicestudio/nord-vim'
-"Plug 'wellle/context.vim'
-Plug 'gosukiwi/vim-atom-dark'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'chrisbra/SudoEdit.vim'
-Plug 'ray-x/paleaurora'
+
 call plug#end()
 
 " Some basic options
