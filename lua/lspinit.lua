@@ -111,7 +111,11 @@ local snippet_capabilities = {
 
 for server, config in pairs(servers) do
     config.on_attach = make_on_attach(config)
-    config.capabilities = vim.tbl_deep_extend('force', config.capabilities or {}, --[[lsp_status.capabilities,]] snippet_capabilities)
+    config.capabilities = vim.tbl_deep_extend('force', 
+        vim.lsp.protocol.make_client_capabilities(), 
+        lsp_status.capabilities, 
+        snippet_capabilities
+    )
 
     lspconfig[server].setup(config)
 end
