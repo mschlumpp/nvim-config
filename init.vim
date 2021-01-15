@@ -116,6 +116,10 @@ let g:deoplete#enable_at_startup = 1
 lua <<EOF
 require('telescope').load_extension('fzy_native')
 EOF
+" These are here because they belong under the 'f'ile hierarchy
+nnoremap <silent><leader>fs <cmd>w<cr>
+nnoremap <silent><leader>fS <cmd>wall<cr>
+
 nnoremap <silent><leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <silent><leader>h  <cmd>Telescope find_files<cr>
 nnoremap <silent><leader>bb <cmd>Telescope buffers<cr>
