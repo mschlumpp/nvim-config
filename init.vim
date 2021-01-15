@@ -61,6 +61,8 @@ call plug#end()
 
 " Some basic options
 set incsearch
+set ignorecase
+set smartcase
 set autoread
 set laststatus=2
 set ruler
