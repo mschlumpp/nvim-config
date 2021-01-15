@@ -29,9 +29,9 @@ local servers = {
     jsonls = { },
     tsserver = {  },
     rust_analyzer = {
+        cmd = {"rust-analyzer"},
         settings = {
             ["rust-analyzer"] = {
-                serverPath = "rust-analyzer",
                 assist = {
                     importMergeBehaviour = "last",
                 },
