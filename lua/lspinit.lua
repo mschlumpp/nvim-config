@@ -43,7 +43,6 @@ local servers = {
                 },
                 diagnostics = {
                     enableExperimental = true,
-                    disabled = { "macro-error" }
                 },
                 completion = {
                     enableExperimental = true,
