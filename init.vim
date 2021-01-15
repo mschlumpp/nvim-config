@@ -202,29 +202,15 @@ let g:tex_flavor = "latex"
 let g:lightline = {
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ], 
-            \             [ 'readonly', 'filename', 'method', 'modified', 'gitg' ] ],
+            \             [ 'gitg', 'readonly', 'filename', 'method', 'modified' ] ],
             \   'right': [ [ 'lineinfo' ],
             \              [ 'percent' ],
             \              [ 'gitblame', 'gitb', 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'component_function': {
-            \   'gitg': 'LightlineGitBranch',
-            \   'gitb': 'LightlineGitBuffer',
-            \   'gitblame': 'LightlineGitBlame',
+            \   'gitg': 'FugitiveHead',
             \ }
             \ }
-
-function! LightlineGitBranch()
-    return get(g:, 'coc_git_status', '')
-endfunction
-
-function! LightlineGitBuffer()
-    return get(b:, 'coc_git_status', '')
-endfunction
-
-function! LightlineGitBlame()
-    return get(b:, 'coc_git_blame', '')
-endfunction
 
 " git-gutter
 let g:gitgutter_map_keys = 0
