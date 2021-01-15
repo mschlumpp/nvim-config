@@ -141,7 +141,7 @@ nnoremap <silent><leader>sp <cmd>Telescope live_grep<cr>
 nnoremap <silent><leader>ps <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent><leader>q <cmd>Telescope quickfix<cr>
 
-nnoremap <silent><nowait> <leader>l <cmd>Telescope builtin<cr>
+noremap <silent><nowait> <leader>l <cmd>Telescope builtin<cr>
 
 " completion-nvim
 let g:completion_enable_snippet = 'vim-vsnip'
@@ -207,10 +207,10 @@ let g:tex_flavor = "latex"
 let g:lightline = {
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ], 
-            \             [ 'readonly', 'filename', 'method', 'modified', 'gitg', 'lspstatus' ] ],
+            \             [ 'readonly', 'filename', 'method', 'modified', 'gitg' ] ],
             \   'right': [ [ 'lineinfo' ],
             \              [ 'percent' ],
-            \              [ 'gitblame', 'gitb', 'fileformat', 'fileencoding', 'filetype' ] ]
+            \              [ 'lspstatus', 'gitblame', 'gitb', 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'component_function': {
             \   'lspstatus': 'LspStatus',
