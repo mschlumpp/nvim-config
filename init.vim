@@ -47,7 +47,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-telescope/telescope-dap.nvim'
 
-" Language supportk
+" Language support
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 Plug 'LnL7/vim-nix'
