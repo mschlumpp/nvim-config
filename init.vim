@@ -43,6 +43,10 @@ Plug 'nvim-lua/lsp-status.nvim'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
+" DAP
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-telescope/telescope-dap.nvim'
+
 " Language supportk
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
@@ -114,7 +118,14 @@ let g:deoplete#enable_at_startup = 1
 
 " telescope
 lua <<EOF
-require('telescope').load_extension('fzy_native')
+local telescope = require('telescope')
+telescope.load_extension('fzy_native')
+telescope.load_extension('dap')
+telescope.setup {
+    defaults = {
+        winblend = 5
+    }
+}
 EOF
 " These are here because they belong under the 'f'ile hierarchy
 nnoremap <silent><leader>fs <cmd>w<cr>
@@ -146,6 +157,27 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 
 " Tree Sitter
 lua require('treesitter')
+
+" dap
+lua require('dapinit')
+
+command! -complete=file -nargs=* DebugC lua require'dapinit'.start_c_debugger({<f-args>})
+
+nnoremap <silent> <F9> <cmd>lua require 'dap'.continue()<cr>
+nnoremap <silent> <F8> <cmd>lua require 'dap'.step_over()<cr>
+nnoremap <silent> <F20> <cmd>lua require 'dap'.step_out()<cr>
+nnoremap <silent> <F7> <cmd>lua require 'dap'.step_into()<cr>
+
+nnoremap <silent> <leader>db <cmd>lua require 'dap'.toggle_breakpoint()<cr>
+nnoremap <silent> <leader>dB <cmd>lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
+nnoremap <silent> <leader>dp <cmd>lua require 'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>
+nnoremap <silent> <leader>do <cmd>lua require 'dap'.repl.toggle()<cr>
+
+nnoremap <silent> <leader>dd <cmd>lua require 'telescope'.extensions.dap.commands()<cr>
+nnoremap <silent> <leader>dl <cmd>lua require 'telescope'.extensions.dap.list_breakpoints()<cr>
+nnoremap <silent> <leader>dv <cmd>lua require 'telescope'.extensions.dap.variables()<cr>
+
+nnoremap <silent> <leader>dr <cmd>lua require 'dap'.run_last()<cr>
 
 " nvim-lsp
 lua require('lspinit')
