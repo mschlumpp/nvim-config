@@ -110,6 +110,8 @@ noremap <leader>ws <c-w>s
 
 noremap <silent><leader>bk :bd<cr>
 
+nnoremap <silent><leader>gg <cmd>Gstatus<cr>
+
 " quick fix
 nnoremap <silent>]q :cn<cr>
 nnoremap <silent>[q :cp<cr>
