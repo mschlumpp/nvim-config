@@ -39,7 +39,6 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/lsp-status.nvim'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
@@ -194,14 +193,6 @@ endfunction
 command! SetLspColors call SetLspColors()
 SetLspColors
 
-function! LspStatus() abort
-  if luaeval('#vim.lsp.buf_get_clients() > 0')
-    return luaeval("require('lsp-status').status()")
-  endif
-
-  return ''
-endfunction
-
 " vimtex
 let g:tex_flavor = "latex"
 
@@ -212,10 +203,9 @@ let g:lightline = {
             \             [ 'readonly', 'filename', 'method', 'modified', 'gitg' ] ],
             \   'right': [ [ 'lineinfo' ],
             \              [ 'percent' ],
-            \              [ 'lspstatus', 'gitblame', 'gitb', 'fileformat', 'fileencoding', 'filetype' ] ]
+            \              [ 'gitblame', 'gitb', 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'component_function': {
-            \   'lspstatus': 'LspStatus',
             \   'gitg': 'LightlineGitBranch',
             \   'gitb': 'LightlineGitBuffer',
             \   'gitblame': 'LightlineGitBlame',

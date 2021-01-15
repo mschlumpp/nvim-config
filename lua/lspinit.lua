@@ -1,6 +1,3 @@
-local lsp_status = require 'lsp-status'
-lsp_status.register_progress()
-
 local completion = require 'completion'
 local lspconfig = require 'lspconfig'
 
@@ -16,9 +13,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 local servers = {
     jsonls = { },
     clangd = {
-        handlers = lsp_status.extensions.clangd.setup(),
         init_options = {
-            clangdFileStatus = true,
             usePlaceholders = true,
             completeUnimported = true,
             semanticHighlighting = true
@@ -69,7 +64,6 @@ local function make_on_attach(config)
         if config.before then config.before(client) end
 
         completion.on_attach()
-        lsp_status.on_attach(client)
         local opts = {noremap = true, silent = true}
         buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
         buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -113,7 +107,6 @@ for server, config in pairs(servers) do
     config.on_attach = make_on_attach(config)
     config.capabilities = vim.tbl_deep_extend('force', 
         vim.lsp.protocol.make_client_capabilities(), 
-        lsp_status.capabilities, 
         snippet_capabilities
     )
 
