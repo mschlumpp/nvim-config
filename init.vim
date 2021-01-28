@@ -39,7 +39,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 
-Plug 'nvim-lua/completion-nvim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'deoplete-plugins/deoplete-lsp'
 
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
@@ -119,6 +120,7 @@ nnoremap <silent>[q :cp<cr>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#lsp#handler_enabled = 0
 
 " telescope
 lua <<EOF
@@ -147,8 +149,8 @@ nnoremap <silent><leader>q <cmd>Telescope quickfix<cr>
 
 noremap <silent><nowait> <leader>l <cmd>Telescope builtin<cr>
 
-" completion-nvim
-let g:completion_enable_snippet = 'vim-vsnip'
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " vsnip
 imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'

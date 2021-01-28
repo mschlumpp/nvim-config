@@ -1,4 +1,3 @@
-local completion = require 'completion'
 local lspconfig = require 'lspconfig'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
@@ -64,7 +63,6 @@ local function make_on_attach(config)
 
         if config.before then config.before(client) end
 
-        completion.on_attach()
         local opts = {noremap = true, silent = true}
         buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
         buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
