@@ -29,6 +29,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'lewis6991/gitsigns.nvim'
 
 " Tree Sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -165,6 +166,7 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 " lua plugins
 lua require('plugins.treesitter')
 lua require('plugins.dap')
+lua require('plugins.gitsigns')
 lua require('plugins.lsp')
 
 " lsp
