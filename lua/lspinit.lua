@@ -87,13 +87,13 @@ local function make_on_attach(config)
         end
 
         if client.resolved_capabilities.document_highlight then
-            lspconfig.util.nvim_multiline_command [[
+            vim.api.nvim_exec([[
                 augroup lsp_aucmds
                 au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 au CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
                 au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
                 augroup END
-            ]]
+            ]], false)
         end
 
         if config.after then config.after(client) end
