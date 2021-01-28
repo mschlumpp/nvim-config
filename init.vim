@@ -8,7 +8,7 @@ call plug#begin()
 Plug '/usr/share/vim/vimfiles/'
 
 " Appearance
-Plug 'itchyny/lightline.vim'
+Plug 'glepnir/galaxyline.nvim'
 Plug 'dstein64/nvim-scrollview'
 
 Plug 'nanotech/jellybeans.vim'
@@ -202,20 +202,6 @@ nnoremap <silent> <leader>dr <cmd>lua require 'dap'.run_last()<cr>
 
 " vimtex
 let g:tex_flavor = "latex"
-
-" lightline
-let g:lightline = {
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], 
-            \             [ 'gitg', 'readonly', 'filename', 'method', 'modified' ] ],
-            \   'right': [ [ 'lineinfo' ],
-            \              [ 'percent' ],
-            \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-            \ },
-            \ 'component_function': {
-            \   'gitg': 'FugitiveHead',
-            \ }
-            \ }
 
 " git-gutter
 let g:gitgutter_map_keys = 0
