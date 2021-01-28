@@ -1,7 +1,7 @@
 local treesitter_config = require "nvim-treesitter.configs";
 
 treesitter_config.setup {
-    ensure_installed = { "lua", "cpp", "c", "rust", "nix", "toml", "go", "bash", "json" },
+    ensure_installed = "maintained",
     highlight = {
         enable = true,
         -- when nvim lsp/clangd highlighting works 
