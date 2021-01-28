@@ -11,7 +11,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 local servers = {
-    jsonls = { },
     clangd = {
         init_options = {
             usePlaceholders = true,
@@ -21,7 +20,9 @@ local servers = {
         cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" }
     },
     gopls = { },
-    jsonls = { },
+    jsonls = {
+        cmd = {"json-languageserver"}
+    },
     tsserver = {  },
     rust_analyzer = {
         cmd = {"rust-analyzer"},
