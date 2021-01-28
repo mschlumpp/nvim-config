@@ -161,11 +161,21 @@ smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
-" Tree Sitter
-lua require('treesitter')
+" lua plugins
+lua require('plugins.treesitter')
+lua require('plugins.dap')
+lua require('plugins.lsp')
 
-" dap
-lua require('dapinit')
+" lsp
+autocmd Filetype cpp,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+function! SetLspColors()
+    hi LspReferenceText cterm=bold,undercurl ctermbg=239 gui=bold,undercurl guibg=#4f4764 guisp=#FD9720
+    hi LspReferenceRead cterm=bold,undercurl ctermbg=34 gui=bold,undercurl guibg=#1aad16 guisp=#FD9720
+    hi LspReferenceWrite cterm=bold,underline ctermbg=34 gui=bold,underline guibg=#1aad16 guisp=#FD9720
+endfunction
+command! SetLspColors call SetLspColors()
+SetLspColors
 
 command! -complete=file -nargs=* DebugC lua require'dapinit'.start_c_debugger({<f-args>})
 
@@ -186,18 +196,6 @@ nnoremap <silent> <leader>dv <cmd>lua require 'telescope'.extensions.dap.variabl
 
 nnoremap <silent> <leader>dr <cmd>lua require 'dap'.run_last()<cr>
 
-" nvim-lsp
-lua require('lspinit')
-
-autocmd Filetype cpp,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
-function! SetLspColors()
-    hi LspReferenceText cterm=bold,undercurl ctermbg=239 gui=bold,undercurl guibg=#4f4764 guisp=#FD9720
-    hi LspReferenceRead cterm=bold,undercurl ctermbg=34 gui=bold,undercurl guibg=#1aad16 guisp=#FD9720
-    hi LspReferenceWrite cterm=bold,underline ctermbg=34 gui=bold,underline guibg=#1aad16 guisp=#FD9720
-endfunction
-command! SetLspColors call SetLspColors()
-SetLspColors
 
 " vimtex
 let g:tex_flavor = "latex"
