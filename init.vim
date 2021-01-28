@@ -210,7 +210,7 @@ let g:lightline = {
             \             [ 'gitg', 'readonly', 'filename', 'method', 'modified' ] ],
             \   'right': [ [ 'lineinfo' ],
             \              [ 'percent' ],
-            \              [ 'gitblame', 'gitb', 'fileformat', 'fileencoding', 'filetype' ] ]
+            \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'component_function': {
             \   'gitg': 'FugitiveHead',
