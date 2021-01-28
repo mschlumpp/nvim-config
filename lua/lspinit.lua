@@ -23,6 +23,7 @@ local servers = {
         cmd = {"json-languageserver"}
     },
     tsserver = {  },
+    zls = { },
     rust_analyzer = {
         cmd = {"rust-analyzer"},
         settings = {
