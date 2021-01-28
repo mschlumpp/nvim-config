@@ -168,6 +168,7 @@ lua require('plugins.treesitter')
 lua require('plugins.dap')
 lua require('plugins.gitsigns')
 lua require('plugins.lsp')
+lua require('plugins.galaxyline')
 
 " lsp
 autocmd Filetype cpp,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
