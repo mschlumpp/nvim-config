@@ -173,6 +173,7 @@ nnoremap <silent> <F20> <cmd>lua require 'dap'.step_out()<cr>
 nnoremap <silent> <F7> <cmd>lua require 'dap'.step_into()<cr>
 
 nnoremap <silent> <leader>db <cmd>lua require 'dap'.toggle_breakpoint()<cr>
+nnoremap <silent> <leader>dK <cmd>lua require 'dap.ui.variables'.hover()<cr>
 nnoremap <silent> <leader>dB <cmd>lua require 'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
 nnoremap <silent> <leader>dp <cmd>lua require 'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>
 nnoremap <silent> <leader>do <cmd>lua require 'dap'.repl.toggle()<cr>
