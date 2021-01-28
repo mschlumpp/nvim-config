@@ -28,6 +28,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'chrisbra/SudoEdit.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Tree Sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
