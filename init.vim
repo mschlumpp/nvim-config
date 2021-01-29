@@ -27,6 +27,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'lewis6991/gitsigns.nvim'
@@ -170,6 +171,7 @@ lua require('plugins.dap')
 lua require('plugins.gitsigns')
 lua require('plugins.lsp')
 lua require('plugins.galaxyline')
+lua require('plugins.toggleterm')
 
 " lsp
 autocmd Filetype cpp,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
