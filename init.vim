@@ -30,6 +30,7 @@ Plug 'tpope/vim-commentary'
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'mhinz/vim-sayonara'
 
 " Tree Sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -111,7 +112,7 @@ noremap <leader>wc <c-w>c
 noremap <leader>wv <c-w>v
 noremap <leader>ws <c-w>s
 
-noremap <silent><leader>bk :bd<cr>
+noremap <silent><leader>bk <cmd>Sayonara!<cr>
 
 nnoremap <silent><leader>gg <cmd>Gstatus<cr>
 
