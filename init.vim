@@ -228,6 +228,3 @@ nnoremap <silent> <leader>dr <cmd>lua require 'dap'.run_last()<cr>
 " vimtex
 let g:tex_flavor = "latex"
 
-" git-gutter
-let g:gitgutter_map_keys = 0
-
