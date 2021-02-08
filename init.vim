@@ -80,7 +80,7 @@ set number
 set hidden
 set updatetime=300
 set cmdheight=2
-set signcolumn=number
+set signcolumn=yes
 set termguicolors
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
