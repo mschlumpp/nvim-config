@@ -3,7 +3,9 @@ local saga = require 'lspsaga'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
+    virtual_text = {
+      spacing = 4,
+    },
     signs = true,
     update_in_insert = true,
     underline = true
