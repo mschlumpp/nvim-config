@@ -79,6 +79,7 @@ table.insert(gls.left, {
         condition = require('galaxyline.provider_vcs').check_git_workspace,
         highlight = { colors.fg, colors.section_bg },
 
+        icon = ' ',
         separator = ' ',
         separator_highlight = { colors.section_bg, colors.bg },
     }

@@ -12,21 +12,26 @@ Plug 'glepnir/galaxyline.nvim'
 Plug 'dstein64/nvim-scrollview'
 
 Plug 'nanotech/jellybeans.vim'
-Plug 'tomasiser/vim-code-dark'
 Plug 'chriskempson/base16-vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'gosukiwi/vim-atom-dark'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'ray-x/paleaurora'
 
 " Utilities
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
+Plug 'terryma/vim-expand-region'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
 Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -41,6 +46,7 @@ Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-lsp'
@@ -137,16 +143,27 @@ telescope.setup {
     }
 }
 EOF
+
+" fzf
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
 " These are here because they belong under the 'f'ile hierarchy
 nnoremap <silent><leader>fs <cmd>w<cr>
 nnoremap <silent><leader>fS <cmd>wall<cr>
 
-nnoremap <silent><leader>fr <cmd>Telescope oldfiles<cr>
-nnoremap <silent><leader>h  <cmd>Telescope find_files<cr>
-nnoremap <silent><leader>bb <cmd>Telescope buffers<cr>
+nnoremap <silent><leader>fr <cmd>History<cr>
+nnoremap <silent><leader>h  <cmd>Files<cr>
+nnoremap <silent><leader>bb <cmd>Buffers<cr>
 
-nnoremap <silent><leader>sl <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <silent><leader>sp <cmd>Telescope live_grep<cr>
+nnoremap <silent><leader>sl <cmd>BLines<cr>
+nnoremap <silent><leader>sp <cmd>RG<cr>
 
 nnoremap <silent><leader>ps <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent><leader>q <cmd>Telescope quickfix<cr>
@@ -164,6 +181,10 @@ imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab
 smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " lua plugins
 lua require('plugins.treesitter')

@@ -1,4 +1,5 @@
 local lspconfig = require 'lspconfig'
+local saga = require 'lspsaga'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -70,15 +71,16 @@ local function make_on_attach(config)
         buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
         buf_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
         buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-        buf_set_keymap('', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        buf_set_keymap('n', '<M-CR>', '<cmd>lua require"telescope.builtin".lsp_code_actions(require("telescope.themes").get_dropdown({ winblend = 5 }))<CR>', opts)
+        buf_set_keymap('n', 'gh', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>', opts)
+        buf_set_keymap('n', 'K', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
+        buf_set_keymap('i', '<c-k>', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>', opts)
+        buf_set_keymap('n', '<leader>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
+        buf_set_keymap('n', '<M-CR>', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
         buf_set_keymap('v', '<leader>m', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-        buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
-        buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
+        buf_set_keymap('n', ']g', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>', opts)
+        buf_set_keymap('n', '[g', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>', opts)
 
-        buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+        buf_set_keymap('n', '<leader>e', '<cmd>lua require("lspsaga.diagnostic").show_line_diagnostics()<CR>', opts)
         buf_set_keymap('n', '<leader>E', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
 
         if client.resolved_capabilities.document_formatting then
@@ -112,4 +114,6 @@ for server, config in pairs(servers) do
 
     lspconfig[server].setup(config)
 end
+
+saga.init_lsp_saga { }
 
