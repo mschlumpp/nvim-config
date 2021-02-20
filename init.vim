@@ -43,14 +43,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " LSP and related packages
+Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
-
-Plug 'Shougo/deoplete.nvim'
-Plug 'deoplete-plugins/deoplete-lsp'
-
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " DAP
@@ -127,10 +124,15 @@ nnoremap <silent><leader>gg <cmd>Gstatus<cr>
 nnoremap <silent>]q :cn<cr>
 nnoremap <silent>[q :cp<cr>
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#lsp#handler_enabled = 0
-autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
+" completion-nvim
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:completion_confirm_key = ""
+imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
+            \ "\<Plug>(completion_confirm_completion)"  :
+            \ "\<c-e>\<CR>" : "\<CR>"
+
+let g:completion_matching_smart_case = 1
 
 " telescope
 lua <<EOF

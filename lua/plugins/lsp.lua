@@ -1,5 +1,6 @@
 local lspconfig = require 'lspconfig'
 local saga = require 'lspsaga'
+local completion = require 'completion'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -98,6 +99,8 @@ local function make_on_attach(config)
                 augroup END
             ]], false)
         end
+
+        completion.on_attach(client, bufnr)
 
         if config.after then config.after(client) end
     end
