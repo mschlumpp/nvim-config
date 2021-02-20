@@ -18,7 +18,6 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Utilities
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'junegunn/fzf'
@@ -137,7 +136,6 @@ let g:completion_matching_smart_case = 1
 " telescope
 lua <<EOF
 local telescope = require('telescope')
-telescope.load_extension('fzy_native')
 telescope.load_extension('dap')
 telescope.setup {
     defaults = {
