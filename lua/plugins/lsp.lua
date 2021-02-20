@@ -79,7 +79,7 @@ local function make_on_attach(config)
         buf_set_keymap('i', '<c-k>', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>', opts)
         buf_set_keymap('n', '<leader>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
         buf_set_keymap('n', '<M-CR>', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
-        buf_set_keymap('v', '<leader>m', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+        buf_set_keymap('v', '<M-CR>', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
         buf_set_keymap('n', ']g', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>', opts)
         buf_set_keymap('n', '[g', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>', opts)
 
