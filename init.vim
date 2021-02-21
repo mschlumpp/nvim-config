@@ -23,6 +23,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+Plug 'sjbach/lusty'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -155,6 +157,7 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " These are here because they belong under the 'f'ile hierarchy
+nnoremap <silent><leader>ff <cmd>LustyFilesystemExplorerFromHere<cr>
 nnoremap <silent><leader>fs <cmd>w<cr>
 nnoremap <silent><leader>fS <cmd>wall<cr>
 
@@ -169,6 +172,10 @@ nnoremap <silent><leader>ps <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent><leader>q <cmd>Telescope quickfix<cr>
 
 noremap <silent><nowait> <leader>l <cmd>Telescope builtin<cr>
+
+" LustyExplorer
+let g:LustyExplorerSuppressRubyWarning = 1
+let g:LustyExplorerDefaultMappings = 0
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
