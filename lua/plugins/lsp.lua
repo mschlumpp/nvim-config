@@ -35,6 +35,9 @@ local servers = {
                 assist = {
                     importMergeBehaviour = "last",
                 },
+                files = {
+                    watcher = "server",
+                },
                 checkOnSave = {
                     command = "clippy",
                 },
