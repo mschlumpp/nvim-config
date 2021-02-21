@@ -34,6 +34,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'akinsho/nvim-toggleterm.lua'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'lewis6991/gitsigns.nvim'
@@ -231,6 +233,8 @@ nnoremap <silent> <leader>dv <cmd>lua require 'telescope'.extensions.dap.variabl
 
 nnoremap <silent> <leader>dr <cmd>lua require 'dap'.run_last()<cr>
 
+" asyncrun/asynctask
+let g:asyncrun_open = 8
 
 " vimtex
 let g:tex_flavor = "latex"
