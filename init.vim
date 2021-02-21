@@ -137,7 +137,7 @@ imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
 
 let g:completion_matching_smart_case = 1
 let g:completion_enable_snippet = "vim-vsnip"
-let g:completion_expand_characters = [' ', '\t', ')', '>', ',', ';']
+let g:completion_expand_characters = [' ', '\t', ')', ']', '>', ',', ';']
 
 " telescope
 lua <<EOF
