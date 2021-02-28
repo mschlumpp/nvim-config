@@ -3,6 +3,7 @@ local gls = gl.section
 
 local colors = {
     bg = '#202328',
+    section_bg = '#414752',
     fg = '#bbc2cf',
     yellow = '#fabd2f',
     cyan = '#008080',
