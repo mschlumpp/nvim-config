@@ -9,7 +9,10 @@ Plug '/usr/share/vim/vimfiles/'
 
 " Appearance
 Plug 'glepnir/galaxyline.nvim'
-Plug 'dstein64/nvim-scrollview'
+
+" Breaks compe becaues it uses cursor movements to determine scrollbar
+" position
+" Plug 'dstein64/nvim-scrollview'
 
 Plug 'nanotech/jellybeans.vim'
 Plug 'chriskempson/base16-vim'
@@ -25,7 +28,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'sjbach/lusty'
 
-Plug 'jiangmiao/auto-pairs'
+Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -46,7 +49,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " LSP and related packages
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'neovim/nvim-lspconfig'
@@ -82,7 +85,7 @@ set updatetime=300
 set cmdheight=2
 set signcolumn=yes
 set termguicolors
-set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noselect
 set shortmess+=c
 set mouse=a
 set undofile
@@ -127,17 +130,9 @@ nnoremap <silent><leader>gg <cmd>Gstatus<cr>
 nnoremap <silent>]q :cn<cr>
 nnoremap <silent>[q :cp<cr>
 
-" completion-nvim
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:completion_confirm_key = ""
-imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
-            \ "\<Plug>(completion_confirm_completion)"  :
-            \ "\<c-e>\<CR>" : "\<CR>"
-
-let g:completion_matching_smart_case = 1
-let g:completion_enable_snippet = "vim-vsnip"
-let g:completion_expand_characters = [' ', '\t', ')', ']', '>', '.', ',', ';']
+" lexima
+let g:lexima_no_default_rules = v:true
+call lexima#set_default_rules()
 
 " telescope
 lua <<EOF
@@ -184,20 +179,12 @@ let g:LustyExplorerDefaultMappings = 0
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-" vsnip
-imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-
-" Jump forward or backward
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-
 " vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " lua plugins
+lua require('plugins.completion')
 lua require('plugins.treesitter')
 lua require('plugins.dap')
 lua require('plugins.gitsigns')
