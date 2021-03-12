@@ -87,6 +87,7 @@ set shortmess+=c
 set mouse=a
 set undofile
 set cursorline
+set autochdir
 
 set wildmode=longest,list,full
 set wildmenu
