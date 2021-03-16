@@ -12,4 +12,10 @@ require 'gitsigns'.setup {
         ['n <leader>ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
         ['n <leader>ghb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
     },
+    signs = {
+        add = {hl = 'GitGutterAdd'},
+        change = {hl = 'GitGutterChange'},
+        delete = {hl = 'GitGutterDelete'},
+        changedelete = {hl = 'GitGutterChangeDelete'},
+    }
 }

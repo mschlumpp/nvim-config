@@ -102,6 +102,13 @@ set smarttab
 set expandtab
 set shiftwidth=4
 
+let g:jellybeans_overrides = {
+            \   'GitGutterAdd': {'guifg': '5af78e', 'guibg': '333333'},
+            \   'GitGutterModify': {'guifg': '57c7ff', 'guibg': '333333'},
+            \   'GitGutterDelete': {'guifg': 'ff5c57', 'guibg': '333333'},
+            \   'GitGutterChangeDelete': {'guifg': 'ff6ac1', 'guibg': '333333'}
+            \ }
+
 colorscheme jellybeans
 
 set guifont=Iosevka:h14
