@@ -14,7 +14,7 @@ require 'gitsigns'.setup {
     },
     signs = {
         add = {hl = 'GitGutterAdd'},
-        change = {hl = 'GitGutterChange'},
+        change = {hl = 'GitGutterModify'},
         delete = {hl = 'GitGutterDelete'},
         changedelete = {hl = 'GitGutterChangeDelete'},
     }
