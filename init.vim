@@ -200,8 +200,6 @@ lua require('plugins.galaxyline')
 lua require('plugins.toggleterm')
 
 " lsp
-autocmd Filetype cpp,rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
 function! SetLspColors()
     hi LspReferenceText cterm=bold,undercurl ctermbg=239 gui=bold,undercurl guibg=#4f4764 guisp=#FD9720
     hi LspReferenceRead cterm=bold,undercurl ctermbg=34 gui=bold,undercurl guibg=#1aad16 guisp=#FD9720
