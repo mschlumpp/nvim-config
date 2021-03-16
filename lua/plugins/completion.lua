@@ -50,6 +50,6 @@ vim.api.nvim_set_keymap('s', '<Tab>', "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap('i', '<S-Tab>', "v:lua.tab_complete_rev()", { expr = true })
 vim.api.nvim_set_keymap('s', '<S-Tab>', "v:lua.tab_complete_rev()", { expr = true })
 
-vim.api.nvim_set_keymap('i', "<CR>", "compe#confirm(lexima#expand('<LT>CR>', 'i'))", { expr = true })
+vim.api.nvim_set_keymap('i', "<CR>", "compe#confirm(lexima#expand('<LT>CR>', 'i'))", { silent = true, expr = true })
 vim.api.nvim_set_keymap('i', "<C-e>", "compe#close('<C-e>')", { expr = true })
 vim.api.nvim_set_keymap('i', "<C-Space>", "compe#complete()", { expr = true })
