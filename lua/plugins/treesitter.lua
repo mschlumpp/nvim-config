@@ -13,4 +13,12 @@ treesitter_config.setup {
             disable = { "cpp", "rust" }, -- provided by lsp
         },
     },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "+",
+            node_incremental = "+",
+            node_decremental = "_",
+        }
+    }
 }
