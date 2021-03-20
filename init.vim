@@ -86,6 +86,7 @@ set completeopt=menuone,noselect
 set shortmess+=c
 set mouse=a
 set undofile
+set cursorline
 
 set wildmode=longest,list,full
 set wildmenu
