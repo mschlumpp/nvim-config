@@ -109,7 +109,7 @@ let g:jellybeans_overrides = {
 
 colorscheme jellybeans
 
-set guifont=Iosevka:h14
+set guifont=Iosevka\ Term:h14
 
 " Some keybindings from emacs config
 noremap <leader>wk <c-w>k
