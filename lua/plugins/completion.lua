@@ -7,6 +7,7 @@ require('compe').setup {
         calc = true,
         vsnip = true,
         nvim_lsp = true,
+        emoji = true,
         treesitter = {
             ignored_filetypes = {'rust', 'cpp'},
         },
