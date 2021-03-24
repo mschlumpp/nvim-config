@@ -22,6 +22,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'liuchengxu/vim-which-key'
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -79,6 +80,7 @@ set ruler
 set number
 set hidden
 set updatetime=300
+set timeoutlen=500
 set cmdheight=2
 set signcolumn=yes
 set termguicolors
@@ -113,24 +115,10 @@ colorscheme jellybeans
 set guifont=Iosevka\ Term:h14
 
 " Some keybindings from emacs config
-noremap <leader>wk <c-w>k
-noremap <leader>wj <c-w>j
-noremap <leader>wh <c-w>h
-noremap <leader>wl <c-w>l
-
 noremap <c-s-up> <c-w>k
 noremap <c-s-down> <c-w>j
 noremap <c-s-left> <c-w>h
 noremap <c-s-right> <c-w>l
-
-noremap <leader>wm <c-w>o
-noremap <leader>wc <c-w>c
-noremap <leader>wv <c-w>v
-noremap <leader>ws <c-w>s
-
-noremap <silent><leader>bk <cmd>Sayonara!<cr>
-
-nnoremap <silent><leader>gg <cmd>Gstatus<cr>
 
 " quick fix
 nnoremap <silent>]q :cn<cr>
@@ -162,17 +150,6 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " These are here because they belong under the 'f'ile hierarchy
-nnoremap <silent><leader>ff <cmd>LustyFilesystemExplorerFromHere<cr>
-nnoremap <silent><leader>fs <cmd>w<cr>
-nnoremap <silent><leader>fS <cmd>wall<cr>
-
-nnoremap <silent><leader>fr <cmd>History<cr>
-nnoremap <silent><leader>h  <cmd>Files<cr>
-nnoremap <silent><leader>bb <cmd>Buffers<cr>
-
-nnoremap <silent><leader>sl <cmd>BLines<cr>
-nnoremap <silent><leader>sp <cmd>RG<cr>
-
 nnoremap <silent><leader>ps <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent><leader>q <cmd>Telescope quickfix<cr>
 
@@ -190,6 +167,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " lua plugins
+lua require('plugins.which_key')
 lua require('plugins.completion')
 lua require('plugins.treesitter')
 lua require('plugins.dap')
