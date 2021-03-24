@@ -120,5 +120,9 @@ for server, config in pairs(servers) do
     lspconfig[server].setup(config)
 end
 
-saga.init_lsp_saga { }
+saga.init_lsp_saga {
+    code_action_prompt = {
+        sign = false,
+    }
+}
 
