@@ -1,32 +1,48 @@
-vim.o.shm = vim.o.shm .. 'I'
-vim.o.incsearch = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.autoread = true
-vim.o.laststatus = 2
-vim.o.ruler = true
-vim.o.number = true
-vim.o.hidden = true
-vim.o.updatetime = 300
-vim.o.timeoutlen = 500
-vim.o.cmdheight = 2
-vim.o.signcolumn = 'yes'
-vim.o.termguicolors = true
-vim.o.completeopt = 'menuone,noselect'
-vim.o.shortmess = vim.o.shortmess .. 'c'
-vim.o.mouse = 'a'
-vim.o.undofile = true
-vim.o.cursorline = true
+local function option(name, value, targets)
+    local t = targets
+    local v = value
+    if targets == nil then
+        t = {vim.o}
+    end
+    if value == nil then
+        v = true
+    end
+    for i, target in ipairs(t) do
+         target[name] = v
+    end
+end
 
-vim.o.wildmode = 'longest,list,full'
-vim.o.wildmenu = true
+local buffer = {vim.o, vim.bo}
+local window = {vim.o, vim.wo}
+option('shm', vim.o.shm .. 'I')
+option('incsearch')
+option('ignorecase')
+option('smartcase')
+option('autoread')
+option('laststatus', 2)
+option('ruler')
+option('number', true, window)
+option('hidden')
+option('updatetime', 300)
+option('timeoutlen', 500)
+option('cmdheight', 2)
+option('signcolumn', 'yes', window)
+option('termguicolors')
+option('completeopt', 'menuone,noselect')
+option('shortmess', vim.o.shortmess .. 'c')
+option('mouse', 'a')
+option('undofile', true, buffer)
+option('cursorline', true, window)
+
+option('wildmode', 'longest,list,full')
+option('wildmenu')
 
 vim.g.mapleader = ' '
 
 -- tab settings
-vim.o.smarttab = true
-vim.o.expandtab = true
-vim.o.shiftwidth = 4
+option('smarttab')
+option('expandtab', true, buffer)
+option('shiftwidth', 4, buffer)
 
 -- plugins
 vim.cmd([[command! PackerInstall lua require('plugins').install()]])
@@ -36,7 +52,7 @@ vim.cmd([[command! PackerClean lua require('plugins').clean()]])
 vim.cmd([[command! PackerCompile lua require('plugins').compile()]])
 
 -- GUI
-vim.o.guifont = 'Iosevka Term:h14'
+option('guifont', 'Iosevka Term:h14')
 
 -- Ensure buffers automatic buffer reloading
 vim.api.nvim_exec([[
