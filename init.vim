@@ -167,14 +167,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " lua plugins
-lua require('plugins.which_key')
-lua require('plugins.completion')
-lua require('plugins.treesitter')
-lua require('plugins.dap')
-lua require('plugins.gitsigns')
-lua require('plugins.lsp')
-lua require('plugins.galaxyline')
-lua require('plugins.toggleterm')
+lua require('plugins')
 
 " lsp
 function! SetLspColors()

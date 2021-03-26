@@ -1,0 +1,8 @@
+require('plugins.which_key')
+require('plugins.completion')
+require('plugins.treesitter')
+require('plugins.dap')
+require('plugins.gitsigns')
+require('plugins.lsp')
+require('plugins.galaxyline')
+require('plugins.toggleterm')
