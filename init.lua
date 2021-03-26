@@ -1,3 +1,4 @@
+vim.o.shm = vim.o.shm .. 'I'
 vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
