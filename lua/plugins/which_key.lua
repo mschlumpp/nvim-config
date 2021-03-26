@@ -17,21 +17,28 @@ local which_key_map = {
         c = { '<c-w>c', 'close' },
         v = { '<c-w>v', 'split-vertical' },
         s = { '<c-w>s', 'split-horizontal' },
+        ['='] = { '<c-w>=', 'balance-windows' },
     },
     b = {
         name = "+buffers",
-        b = { 'Sayonara!', 'kill-buffer' },
-        k = { 'Buffers', 'switch-buffer' },
+        k = { ':Sayonara!', 'kill-buffer' },
+        b = { 'Buffers', 'switch-buffer' },
     },
     g = {
         name = "+git",
-        g = { 'Gstatus', 'git-status' },
+        g = { 'Git', 'git-status' },
     },
     s = {
         name = "+search",
         p = { 'RG', 'ripgrep' },
-        l = { 'BLines', 'ripgrep' },
+        b = { 'BLines', 'ripgrep' },
+        s = { 'Telescope lsp_workspace_symbols', 'lsp-workspace-symbols' },
     },
+    l = { ':Telescope builtin', 'telescope' },
+    -- q = { 
+    --     name = "+quit",
+    --     q = { 'qall', 'quit' },
+    -- },
     [vim.api.nvim_replace_termcodes('<space>', true, true, true)] = { 'Files', 'find-file' },
 }
 
