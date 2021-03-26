@@ -38,10 +38,7 @@ vim.cmd([[command! PackerCompile lua require('plugins').compile()]])
 -- GUI
 vim.o.guifont = 'Iosevka Term:h14'
 
-if vim.g.colors_name == nil then
-    vim.cmd('colorscheme base16-github')
-end
-
+-- Ensure buffers automatic buffer reloading
 vim.api.nvim_exec([[
     augroup focus_checktime
         au!

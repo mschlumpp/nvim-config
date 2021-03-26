@@ -29,6 +29,7 @@ return require('packer').startup(function ()
               GitGutterDelete = {guifg = 'ff5c57', guibg = '333333'},
               GitGutterChangeDelete = {guifg = 'ff6ac1', guibg = '333333'},
             }
+            vim.cmd('colorscheme jellybeans')
         end
     }
     -- Breaks compe becaues it uses cursor movements to determine scrollbar position
