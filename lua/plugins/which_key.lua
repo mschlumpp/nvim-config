@@ -40,6 +40,7 @@ local which_key_map = {
     --     q = { 'qall', 'quit' },
     -- },
     [vim.api.nvim_replace_termcodes('<space>', true, true, true)] = { 'Files', 'find-file' },
+    ['.'] = 'quick-switch',
 }
 
 vim.api.nvim_set_var('which_key_map', which_key_map)
