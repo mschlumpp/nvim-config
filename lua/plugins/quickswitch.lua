@@ -85,8 +85,6 @@ local function buffer_switch(initial, wrap)
     vim.api.nvim_command('redraw | echo ""')
 end
 
-vim.api.nvim_set_keymap('n', '<leader>.', [[<cmd>lua require'plugins.quickswitch'.start_switch()<cr>]], { noremap = true, silent = true })
-
 return {
     start_switch = function() 
         buffer_switch(true, false)

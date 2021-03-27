@@ -43,6 +43,8 @@ local which_key_map = {
     ['.'] = 'quick-switch',
 }
 
+vim.api.nvim_set_keymap('n', '<leader>.', [[<cmd>lua require'plugins.quickswitch'.start_switch()<cr>]], { noremap = true, silent = true })
+
 vim.api.nvim_set_var('which_key_map', which_key_map)
 vim.fn['which_key#register']('<Space>', "g:which_key_map")
 
