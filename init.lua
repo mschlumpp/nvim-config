@@ -33,7 +33,6 @@ option('shortmess', vim.o.shortmess .. 'c')
 option('mouse', 'a')
 option('undofile', true, buffer)
 option('cursorline', true, window)
-
 option('wildmode', 'longest,list,full')
 option('wildmenu')
 
