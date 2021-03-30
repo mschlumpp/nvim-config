@@ -54,11 +54,11 @@ vim.cmd([[command! PackerCompile lua require('plugins').compile()]])
 -- GUI
 option('guifont', 'Iosevka Term:h14')
 
--- Ensure buffers automatic buffer reloading
+-- Ensure buffers automatic buffer reloading. Uses silent to prevent error messages for command line window/search history.
 vim.api.nvim_exec([[
     augroup focus_checktime
         au!
-        au FocusGained,BufEnter * :checktime
+        au FocusGained,BufEnter * :silent! checktime
     augroup END
 ]], false)
 
