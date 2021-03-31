@@ -49,6 +49,7 @@ vim.cmd([[command! PackerUpdate lua require('plugins').update()]])
 vim.cmd([[command! PackerSync lua require('plugins').sync()]])
 vim.cmd([[command! PackerClean lua require('plugins').clean()]])
 vim.cmd([[command! PackerCompile lua require('plugins').compile()]])
+vim.cmd([[command! PackerStatus lua require('plugins').status()]])
 
 -- GUI
 option('guifont', 'Iosevka Term:h14')
