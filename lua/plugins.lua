@@ -164,7 +164,9 @@ return require('packer').startup(function ()
     }
     use {
         'skywind3000/asyncrun.vim',
-        requires = {'skywind3000/asynctasks.vim'},
+        requires = {
+            { 'skywind3000/asynctasks.vim', opt = true }
+        },
         cmd = {'AsyncRun'},
         config = [[vim.g.asyncrun_open = 8]],
     }
