@@ -42,6 +42,9 @@ return require('packer').startup(function ()
     --     'dstein64/nvim-scrollview'
     -- }
     use {
+        'kevinhwang91/nvim-bqf'
+    }
+    use {
         'lewis6991/gitsigns.nvim',
         config = [[require('plugins.gitsigns')]],
     }
