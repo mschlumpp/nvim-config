@@ -3,7 +3,9 @@ require('compe').setup {
     autocomplete = true,
     source = {
         path = true,
-        buffer = true,
+        buffer = {
+            ignored_filetypes = {'rust', 'cpp'},
+        },
         calc = true,
         vsnip = true,
         nvim_lsp = true,
