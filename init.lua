@@ -62,6 +62,14 @@ vim.api.nvim_exec([[
     augroup END
 ]], false)
 
+-- Use spellchecking in text buffers
+vim.api.nvim_exec([[
+    augroup text_spellcheck
+        au!
+        au FileType markdown setlocal spell
+    augroup END
+]], false)
+
 -- some additional keybinds
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cn<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '[q', '<cmd>cp<cr>', { silent = true, noremap = true })
