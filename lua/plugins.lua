@@ -21,6 +21,11 @@ return require('packer').startup(function ()
         rtp = 'vim',
     }
     use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
+        cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
+    }
+    use {
         'nanotech/jellybeans.vim',
         config = function() 
             vim.g.jellybeans_overrides = {
