@@ -1,5 +1,6 @@
 local lspconfig = require 'lspconfig'
 local saga = require 'lspsaga'
+local lspkind = require 'lspkind'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -125,4 +126,6 @@ saga.init_lsp_saga {
         sign = false,
     }
 }
+
+lspkind.init({})
 
