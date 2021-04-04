@@ -37,10 +37,9 @@ return require('packer').startup(function ()
             vim.cmd('colorscheme jellybeans')
         end
     }
-    -- Breaks compe becaues it uses cursor movements to determine scrollbar position
-    -- use {
-    --     'dstein64/nvim-scrollview'
-    -- }
+    use {
+        'dstein64/nvim-scrollview'
+    }
     use {
         'kevinhwang91/nvim-bqf'
     }
