@@ -1,6 +1,8 @@
 local gl = require 'galaxyline'
 local gls = gl.section
 
+gl.short_line_list = {'packer','NvimTree'}
+
 local colors = {
     bg = '#202328',
     section_bg = '#414752',
