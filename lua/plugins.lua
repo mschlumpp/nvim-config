@@ -38,6 +38,7 @@ return require('packer').startup(function ()
         end
     }
     use 'dstein64/nvim-scrollview'
+    use 'tpope/vim-sleuth'
     use 'kevinhwang91/nvim-bqf'
     use {
         'lewis6991/gitsigns.nvim',
