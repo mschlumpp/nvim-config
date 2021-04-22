@@ -203,9 +203,10 @@ return require('packer').startup(function ()
     use {
         'ferrine/md-img-paste.vim',
         ft = 'markdown',
-        config = function()
+        setup = function()
             vim.g['mdip_imgdir'] = 'media'
-            vim.g['mdip_imgdir_intext'] = 'media'
+        end,
+        config = function()
             vim.api.nvim_exec([[
                 autocmd FileType markdown nmap <buffer><silent> <leader>mp <cmd>call mdip#MarkdownClipboardImage()<cr>
             ]], false)
