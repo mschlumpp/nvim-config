@@ -37,7 +37,7 @@ return require('packer').startup(function ()
             vim.cmd('colorscheme jellybeans')
         end
     }
-    use 'dstein64/nvim-scrollview'
+    -- use 'dstein64/nvim-scrollview'
     use 'tpope/vim-sleuth'
     use 'kevinhwang91/nvim-bqf'
     use {
