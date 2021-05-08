@@ -81,6 +81,12 @@ vim.api.nvim_set_keymap('', '<c-s-right>', '<c-w>l', { silent = true, noremap = 
 
 vim.api.nvim_set_keymap('t', '<esc>', '(&filetype == "fzf" ? "<esc>" : "<c-\\><c-n>")', { noremap = true, expr = true })
 
+-- git in nvim terminal
+vim.api.nvim_exec([[
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+  autocmd FileType gitcommit,gitrebase set bufhidden=delete
+]], false)
+
 -- LSP colorscheme hack
 vim.api.nvim_exec([[
     function! SetLspColors()
