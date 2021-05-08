@@ -79,6 +79,8 @@ vim.api.nvim_set_keymap('', '<c-s-down>', '<c-w>j', { silent = true, noremap = t
 vim.api.nvim_set_keymap('', '<c-s-left>', '<c-w>h', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<c-s-right>', '<c-w>l', { silent = true, noremap = true })
 
+vim.api.nvim_set_keymap('t', '<esc>', '(&filetype == "fzf" ? "<esc>" : "<c-\\><c-n>")', { noremap = true, expr = true })
+
 -- LSP colorscheme hack
 vim.api.nvim_exec([[
     function! SetLspColors()
