@@ -61,7 +61,6 @@ return require('packer').startup(function ()
         'hrsh7th/nvim-compe',
         config = [[require('plugins.completion')]],
         requires = {'hrsh7th/vim-vsnip', 'hrsh7th/vim-vsnip-integ'},
-        config = [[require('plugins.completion')]],
     }
     use {
         'neovim/nvim-lspconfig',
