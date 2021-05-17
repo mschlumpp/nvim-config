@@ -77,9 +77,13 @@ table.insert(gls.left, {
 
 table.insert(gls.left, {
     GitBranch = {
-        provider = 'GitBranch',
-
-        condition = require('galaxyline.provider_vcs').check_git_workspace,
+        provider = function ()
+            return vim.b.gitsigns_status_dict.head
+        end,
+        condition = function() 
+            local gsd = vim.b.gitsigns_status_dict
+            return gsd and gsd.head and #gsd.head > 0
+        end,
         highlight = { colors.fg, colors.section_bg },
 
         icon = ' ',
