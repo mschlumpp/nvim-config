@@ -51,6 +51,17 @@ return require('packer').startup(function ()
         'lewis6991/gitsigns.nvim',
         config = [[require('plugins.gitsigns')]],
     }
+    use {
+        'https://github.com/lukas-reineke/indent-blankline.nvim.git',
+        branch = 'lua',
+        config = function () 
+            vim.g.indent_blankline_char = '│'
+            vim.g.indent_blankline_use_treesitter = true
+            vim.g.indent_blankline_show_first_indent_level = false
+            vim.g.indent_blankline_buftype_exclude = {'terminal'}
+            vim.g.indent_blankline_filetype_exclude = {'help'}
+        end
+    }
     use { 
         'akinsho/nvim-toggleterm.lua',
         keys = {[[<c-\>]]},
