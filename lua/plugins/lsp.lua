@@ -3,14 +3,14 @@ local saga = require 'lspsaga'
 local lspkind = require 'lspkind'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      spacing = 4,
-    },
-    signs = true,
-    update_in_insert = true,
-    underline = true
-  }
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = {
+            spacing = 4,
+        },
+        signs = true,
+        update_in_insert = true,
+        underline = true
+    }
 )
 
 local servers = {
@@ -108,7 +108,7 @@ local function make_on_attach(config)
 end
 
 local snippet_capabilities = {
-  textDocument = {completion = {completionItem = {snippetSupport = true}}}
+    textDocument = {completion = {completionItem = {snippetSupport = true}}}
 }
 
 for server, config in pairs(servers) do
