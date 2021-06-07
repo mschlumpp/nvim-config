@@ -132,6 +132,17 @@ table.insert(gls.left, {
 })
 
 gls.right = {}
+
+table.insert(gls.right, {
+    LspStatus = {
+        provider = function()
+            local status, occur = require'lsp-status'.status_progress():gsub("%%%%", "%%")
+            return status
+        end,
+        highlight = { colors.fg, colors.bg },
+    },
+})
+
 table.insert(gls.right, {
     DiagnosticError = {
         provider = 'DiagnosticError',

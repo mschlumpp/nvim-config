@@ -1,6 +1,7 @@
 local lspconfig = require 'lspconfig'
 local saga = require 'lspsaga'
 local lspkind = require 'lspkind'
+local lsp_status = require 'lsp-status'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -20,6 +21,7 @@ local servers = {
             completeUnimported = true,
             semanticHighlighting = true
         },
+        handlers = lsp_status.extensions.clangd.setup(),
         cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" }
     },
     gopls = { },
@@ -103,6 +105,8 @@ local function make_on_attach(config)
             ]], false)
         end
 
+        lsp_status.on_attach(client)
+
         if config.after then config.after(client) end
     end
 end
@@ -115,7 +119,8 @@ for server, config in pairs(servers) do
     config.on_attach = make_on_attach(config)
     config.capabilities = vim.tbl_deep_extend('force', 
         vim.lsp.protocol.make_client_capabilities(), 
-        snippet_capabilities
+        snippet_capabilities,
+        lsp_status.capabilities
     )
 
     lspconfig[server].setup(config)
@@ -129,3 +134,4 @@ saga.init_lsp_saga {
 
 lspkind.init({})
 
+lsp_status.register_progress()
