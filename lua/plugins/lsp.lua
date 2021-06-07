@@ -116,7 +116,20 @@ local function make_on_attach(config)
 end
 
 local snippet_capabilities = {
-    textDocument = {completion = {completionItem = {snippetSupport = true}}}
+    textDocument = {
+        completion = {
+            completionItem = {
+                snippetSupport = true,
+                resolveSupport = {
+                    properties = {
+                        'documentation',
+                        'detail',
+                        'additionalTextEdits',
+                    }
+                }
+            }
+        }
+    }
 }
 
 for server, config in pairs(servers) do
