@@ -32,6 +32,10 @@ local servers = {
     zls = { },
     rust_analyzer = {
         cmd = {"rust-analyzer"},
+        flags = {
+            allow_incremental_sync = true,
+            debounce_text_changes = 100,
+        },
         settings = {
             ["rust-analyzer"] = {
                 assist = {
