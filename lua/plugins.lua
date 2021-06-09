@@ -192,8 +192,8 @@ return require('packer').startup(function ()
         config = [[vim.g.asyncrun_open = 8]],
     }
     use {
-        'chrisbra/SudoEdit.vim',
-        cmd = {'SudoRead', 'SudoWrite'},
+        'lambdalisue/suda.vim',
+        cmd = {'SudaRead', 'SudaWrite'},
     }
     use {
         'editorconfig/editorconfig-vim'
