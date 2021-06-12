@@ -14,7 +14,7 @@ end
 
 local buffer = {vim.o, vim.bo}
 local window = {vim.o, vim.wo}
-option('shm', vim.o.shm .. 'I')
+option('shortmess', vim.o.shm .. 'I')
 option('incsearch')
 option('ignorecase')
 option('smartcase')
