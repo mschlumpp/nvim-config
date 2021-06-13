@@ -25,6 +25,7 @@ local servers = {
         cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" }
     },
     gopls = { },
+    pyright = { },
     jsonls = {
         cmd = {"json-languageserver"}
     },
