@@ -137,8 +137,8 @@ for server, config in pairs(servers) do
     config.on_attach = make_on_attach(config)
     config.capabilities = vim.tbl_deep_extend('force', 
         vim.lsp.protocol.make_client_capabilities(), 
-        snippet_capabilities,
-        lsp_status.capabilities
+        lsp_status.capabilities, -- As of 2021-06-15 this includes make_client_capabilities() but IHMO it should not
+        snippet_capabilities
     )
 
     lspconfig[server].setup(config)
