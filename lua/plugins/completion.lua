@@ -1,3 +1,5 @@
+local npairs = require 'nvim-autopairs'
+
 require('compe').setup {
     enabled = true,
     autocomplete = true,
@@ -48,11 +50,21 @@ function _G.tab_complete_rev()
     return intern_rep("<S-Tab>")
 end
 
+function _G.cr_binding()
+    if vim.fn.pumvisible() == 0 then
+        return npairs.autopairs_cr()
+    end
+    if vim.fn.complete_info()['selected'] == -1 then
+        return npairs.esc('<cr>')
+    end
+    return vim.fn['compe#confirm'](npairs.esc('<cr>'))
+end
+
 vim.api.nvim_set_keymap('i', '<Tab>', "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap('s', '<Tab>', "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap('i', '<S-Tab>', "v:lua.tab_complete_rev()", { expr = true })
 vim.api.nvim_set_keymap('s', '<S-Tab>', "v:lua.tab_complete_rev()", { expr = true })
 
-vim.api.nvim_set_keymap('i', "<CR>", "compe#confirm(lexima#expand('<LT>CR>', 'i'))", { silent = true, expr = true })
+vim.api.nvim_set_keymap('i', "<CR>", "v:lua.cr_binding()", { silent = true, expr = true, noremap = true })
 vim.api.nvim_set_keymap('i', "<C-e>", "compe#close('<C-e>')", { expr = true })
 vim.api.nvim_set_keymap('i', "<C-Space>", "compe#complete()", { expr = true })

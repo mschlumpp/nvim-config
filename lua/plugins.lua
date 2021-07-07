@@ -170,10 +170,11 @@ return require('packer').startup(function ()
         ]],
     }
     use {
-        'cohama/lexima.vim',
+        'windwp/nvim-autopairs',
         config = [[
-            vim.g.lexima_no_default_rules = true
-            vim.fn['lexima#set_default_rules']()
+            require('nvim-autopairs').setup({
+                fast_wrap = {},
+            })
         ]]
     }
     use {
