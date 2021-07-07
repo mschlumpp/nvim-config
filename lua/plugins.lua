@@ -139,6 +139,27 @@ return require('packer').startup(function ()
     }
     use {
         'tpope/vim-surround',
+        setup = [[
+            vim.g.surround_no_mappings = true
+        ]],
+        config = [[
+            vim.api.nvim_set_keymap('n', 'dm',  '<Plug>Dsurround', {})
+            vim.api.nvim_set_keymap('n', 'cm',  '<Plug>Csurround', {})
+            vim.api.nvim_set_keymap('n', 'cM',  '<Plug>CSurround', {})
+            vim.api.nvim_set_keymap('n', 'ym',  '<Plug>Ysurround', {})
+            vim.api.nvim_set_keymap('n', 'yM',  '<Plug>YSurround', {})
+            vim.api.nvim_set_keymap('n', 'ymm', '<Plug>Yssurround', {})
+            vim.api.nvim_set_keymap('n', 'yMm', '<Plug>YSsurround', {})
+            vim.api.nvim_set_keymap('n', 'yMM', '<Plug>YSsurround', {})
+            vim.api.nvim_set_keymap('x', 'M',   '<Plug>VSurround', {})
+            vim.api.nvim_set_keymap('x', 'gM',  '<Plug>VgSurround', {})
+        ]],
+    }
+    use {
+        'ggandor/lightspeed.nvim',
+        config = [[
+          require'lightspeed'.setup {}
+        ]],
     }
     use {
         'junegunn/vim-easy-align',
