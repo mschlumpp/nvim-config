@@ -33,7 +33,7 @@ local function pretty_print_state(state)
     for i, v in ipairs(state.buffers) do
         local hl = nil
         if i == state.idx then
-            hl = 'MoreMsg'
+            hl = 'TermCursor'
         end
         table.insert(line, {vim.fn.fnamemodify(v.name, ':~:.'), hl})
         table.insert(line, {" "})
