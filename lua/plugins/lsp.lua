@@ -84,6 +84,8 @@ local function make_on_attach(config)
         buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
         buf_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
         buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+        buf_set_keymap('n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>', opts)
+        buf_set_keymap('n', '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<CR>', opts)
         buf_set_keymap('n', 'gh', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>', opts)
         buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
         buf_set_keymap('i', '<c-q>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -98,6 +100,7 @@ local function make_on_attach(config)
 
         if client.resolved_capabilities.document_formatting then
             buf_set_keymap('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
+            buf_set_keymap('v', '<leader>=', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', opts)
         end
 
         if client.resolved_capabilities.document_highlight then
