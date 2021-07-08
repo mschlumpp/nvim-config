@@ -40,10 +40,14 @@ local which_key_map = {
     ['`'] = { 'NvimTreeToggle', 'tree-toggle' },
     ['~'] = { 'NvimTreeFindFile', 'tree-find-file' },
     l = { ':Telescope builtin', 'telescope' },
-    -- q = { 
-    --     name = "+quit",
-    --     q = { 'qall', 'quit' },
-    -- },
+    q = { 
+        name = "+quickfix",
+        q = { 'copen', 'open' },
+        c = { 'cclose', 'close' },
+        p = { 'colder', 'older-list' },
+        n = { 'cnewer', 'newer-list' },
+        h = { 'chistory', 'list-history' },
+    },
     [vim.api.nvim_replace_termcodes('<space>', true, true, true)] = { 'Files', 'find-file' },
     ['.'] = 'quick-switch',
 }
