@@ -28,6 +28,9 @@ local which_key_map = {
         name = "+git",
         g = { 'Git', 'git-status' },
     },
+    c = {
+        name = '+code',
+    },
     s = {
         name = "+search",
         p = { 'RG', 'ripgrep' },
