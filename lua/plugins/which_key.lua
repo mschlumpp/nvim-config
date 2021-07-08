@@ -1,7 +1,7 @@
 local which_key_map = {
     f = {
         name = "+files",
-        f = { 'LustyFilesystemExplorerFromHere', 'file-explorer' },
+        f = { 'RnvimrToggle', 'file-explorer' },
         r = { 'History', 'history' },
         s = { 'write', 'write-file' },
         S = { 'writeall', 'write-all-file' },

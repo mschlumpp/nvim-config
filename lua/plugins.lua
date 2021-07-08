@@ -123,14 +123,6 @@ return require('packer').startup(function ()
         cmd = 'StartupTime',
     }
     use {
-        'sjbach/lusty',
-        cmd = {'LustyFilesystemExplorerFromHere'},
-        opt = true,
-        config = [[
-            vim.g.LustyExplorerDefaultMappings = 0
-        ]],
-    }
-    use {
         'tpope/vim-fugitive',
         cmd = 'Git',
     }
@@ -210,7 +202,7 @@ return require('packer').startup(function ()
         'editorconfig/editorconfig-vim'
     }
     use {
-        'mcchrish/nnn.vim'
+        'kevinhwang91/rnvimr'
     }
     use {
         'junegunn/fzf.vim',
