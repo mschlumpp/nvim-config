@@ -202,7 +202,11 @@ return require('packer').startup(function ()
         'editorconfig/editorconfig-vim'
     }
     use {
-        'kevinhwang91/rnvimr'
+        'kevinhwang91/rnvimr',
+        config = [[
+            vim.api.nvim_set_keymap('n', '<M-o>', '<cmd>RnvimrToggle<cr>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap('t', '<M-o>', '<cmd>RnvimrToggle<cr>', { noremap = true, silent = true })
+        ]]
     }
     use {
         'junegunn/fzf.vim',
