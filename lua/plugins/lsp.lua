@@ -42,20 +42,10 @@ local servers = {
                 assist = {
                     importMergeBehaviour = "last",
                 },
-                files = {
-                    watcher = "server",
-                },
                 checkOnSave = {
                     command = "clippy",
                 },
-                inlayHints = {
-                    --refreshOnInsertMode = true,
-                },
-                diagnostics = {
-                    enableExperimental = true,
-                },
                 completion = {
-                    enableExperimental = true,
                     addCallArgumentSnippets = true,
                     addCallParenthesis = true,
                     ["postfix.enable"] = true,
