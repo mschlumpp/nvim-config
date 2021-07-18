@@ -70,7 +70,7 @@ local function buffer_switch(initial, wrap)
     end
 
     while true do
-        vim.api.nvim_command('redraw')
+        vim.api.nvim_command('mode')
         pretty_print_state(state)
         local char = vim.fn.nr2char(vim.fn.getchar())
         if char == '.' then
@@ -82,7 +82,7 @@ local function buffer_switch(initial, wrap)
             break
         end
     end
-    vim.api.nvim_command('redraw | echo ""')
+    vim.api.nvim_command('mode | echo ""')
 end
 
 return {
