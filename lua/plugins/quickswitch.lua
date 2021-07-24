@@ -1,3 +1,5 @@
+local uniquify = require 'plugins.uniquify'
+
 local function filter_buffer(b)
     return vim.fn.buflisted(b) == 1 and vim.api.nvim_buf_is_loaded(b)
 end
@@ -29,14 +31,20 @@ local function init_state()
 end
 
 local function pretty_print_state(state)
-    local line = {}
+    local paths = {}
     for i, v in ipairs(state.buffers) do
+        table.insert(paths, vim.fn.split(vim.fn.fnamemodify(v.name, ':p:~'), '/'))
+    end
+    paths = uniquify(paths)
+
+    local line = {}
+    for i, path in ipairs(paths) do
         local hl = nil
         if i == state.idx then
             hl = 'TermCursor'
         end
-        table.insert(line, {vim.fn.pathshorten(vim.fn.fnamemodify(v.name, ':~:.')), hl})
-        table.insert(line, {" "})
+        table.insert(line, {table.concat(path, '/'), hl})
+        table.insert(line, {' '})
     end
 
     vim.api.nvim_echo(line, false, {})
