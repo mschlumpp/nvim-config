@@ -38,13 +38,6 @@ return require('packer').startup(function ()
         end
     }
     -- use 'dstein64/nvim-scrollview'
-    use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-        config = function ()
-            require 'todo-comments'.setup {}
-        end,
-  }
     use 'tpope/vim-sleuth'
     use 'kevinhwang91/nvim-bqf'
     use {
