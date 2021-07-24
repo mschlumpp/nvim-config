@@ -35,7 +35,7 @@ local function pretty_print_state(state)
         if i == state.idx then
             hl = 'TermCursor'
         end
-        table.insert(line, {vim.fn.fnamemodify(v.name, ':~:.'), hl})
+        table.insert(line, {vim.fn.pathshorten(vim.fn.fnamemodify(v.name, ':~:.')), hl})
         table.insert(line, {" "})
     end
 
