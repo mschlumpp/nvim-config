@@ -64,7 +64,7 @@ return require('packer').startup(function ()
     }
     use {
         'neovim/nvim-lspconfig',
-        requires = {'onsails/lspkind-nvim', 'gfanto/fzf-lsp.nvim', 'glepnir/lspsaga.nvim', 'nvim-lua/lsp-status.nvim'},
+        requires = {'onsails/lspkind-nvim', 'gfanto/fzf-lsp.nvim', 'nvim-lua/lsp-status.nvim'},
         config = [[require('plugins.lsp')]]
     }
     use {

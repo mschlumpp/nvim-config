@@ -1,5 +1,4 @@
 local lspconfig = require 'lspconfig'
-local saga = require 'lspsaga'
 local lspkind = require 'lspkind'
 local lsp_status = require 'lsp-status'
 
@@ -76,14 +75,13 @@ local function make_on_attach(config)
         buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
         buf_set_keymap('n', '<leader>co', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>', opts)
         buf_set_keymap('n', '<leader>ci', '<cmd>lua vim.lsp.buf.incoming_calls()<CR>', opts)
-        buf_set_keymap('n', 'gh', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>', opts)
         buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
         buf_set_keymap('i', '<c-q>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
         buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
         buf_set_keymap('n', '<M-CR>', '<cmd>lua require("fzf_lsp").code_action_call()<CR>', opts)
         buf_set_keymap('v', '<M-CR>', '<cmd>lua require("fzf_lsp").range_code_action_call()<CR>', opts)
-        buf_set_keymap('n', ']g', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<cr>', opts)
-        buf_set_keymap('n', '[g', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<cr>', opts)
+        buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
+        buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
 
         buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
         buf_set_keymap('n', '<leader>E', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
@@ -136,12 +134,6 @@ for server, config in pairs(servers) do
 
     lspconfig[server].setup(config)
 end
-
-saga.init_lsp_saga {
-    code_action_prompt = {
-        sign = false,
-    }
-}
 
 lspkind.init({})
 
