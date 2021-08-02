@@ -3,6 +3,9 @@ local npairs = require 'nvim-autopairs'
 require('compe').setup {
     enabled = true,
     autocomplete = true,
+    documentation = {
+        border = 'single'
+    },
     source = {
         path = true,
         buffer = {

@@ -13,6 +13,18 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     }
 )
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        border = 'single',
+    }
+)
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, {
+        border = 'single',
+    }
+)
+
 local servers = {
     clangd = {
         init_options = {
@@ -80,10 +92,10 @@ local function make_on_attach(config)
         buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
         buf_set_keymap('n', '<M-CR>', '<cmd>lua require("fzf_lsp").code_action_call()<CR>', opts)
         buf_set_keymap('v', '<M-CR>', '<cmd>lua require("fzf_lsp").range_code_action_call()<CR>', opts)
-        buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
-        buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
+        buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single"}})<cr>', opts)
+        buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single"}})<cr>', opts)
 
-        buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+        buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single"})<CR>', opts)
         buf_set_keymap('n', '<leader>E', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
 
         if client.resolved_capabilities.document_formatting then
