@@ -46,6 +46,9 @@ option('smarttab')
 option('expandtab', true, buffer)
 option('shiftwidth', 4, buffer)
 
+-- Disable matchparen as it causes stutters
+vim.cmd([[let loaded_matchparen = 1]])
+
 -- plugins
 vim.cmd([[command! PackerInstall lua require('plugins').install()]])
 vim.cmd([[command! PackerUpdate lua require('plugins').update()]])
