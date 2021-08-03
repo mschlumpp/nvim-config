@@ -11,8 +11,8 @@ return require('packer').startup(function ()
         opt = true,
     }
     use {
-        'glepnir/galaxyline.nvim',
-        config = [[require('plugins.galaxyline')]],
+        'hoob3rt/lualine.nvim',
+        config = [[require('plugins.lualine')]],
     }
     use 'chriskempson/base16-vim'
     use 'rainglow/vim'
