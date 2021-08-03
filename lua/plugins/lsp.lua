@@ -149,4 +149,7 @@ end
 
 lspkind.init({})
 
+lsp_status.config {
+    status_symbol = '',
+}
 lsp_status.register_progress()
