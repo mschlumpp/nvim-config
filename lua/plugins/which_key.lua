@@ -35,7 +35,7 @@ local which_key_map = {
         name = "+search",
         p = { 'RG', 'ripgrep' },
         b = { 'BLines', 'ripgrep' },
-        s = { 'Telescope lsp_workspace_symbols', 'lsp-workspace-symbols' },
+        s = { ':Telescope lsp_dynamic_workspace_symbols', 'lsp-workspace-symbols' },
     },
     ['`'] = { 'NvimTreeToggle', 'tree-toggle' },
     ['~'] = { 'NvimTreeFindFile', 'tree-find-file' },
