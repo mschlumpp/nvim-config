@@ -142,6 +142,7 @@ return require('packer').startup(function ()
     }
     use {
         'ggandor/lightspeed.nvim',
+        requires = {'tpope/vim-repeat'},
         config = [[
           require'lightspeed'.setup {}
         ]],
