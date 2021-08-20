@@ -4,7 +4,7 @@ local which_key_map = {
         f = { 'RnvimrToggle', 'file-explorer' },
         r = { 'History', 'history' },
         s = { 'write', 'write-file' },
-        S = { 'writeall', 'write-all-file' },
+        S = { 'wall', 'write-all-file' },
     },
     w = {
         name = "+windows",
