@@ -50,7 +50,7 @@ return require('packer').startup(function ()
         config = [[require('plugins.toggleterm')]],
     }
     use {
-        'liuchengxu/vim-which-key',
+        'folke/which-key.nvim',
         config = [[require('plugins.which_key')]],
     }
     use {

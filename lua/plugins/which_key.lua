@@ -1,10 +1,20 @@
-local which_key_map = {
+local wk = require 'which-key'
+
+wk.setup {
+    plugins = {
+        spelling = {
+            enabled = true,
+        },
+    },
+}
+
+wk.register({
     f = {
         name = "+files",
-        f = { 'RnvimrToggle', 'file-explorer' },
-        r = { 'History', 'history' },
-        s = { 'write', 'write-file' },
-        S = { 'wall', 'write-all-file' },
+        f = { '<cmd>RnvimrToggle<cr>', 'file-explorer' },
+        r = { '<cmd>History<cr>', 'history' },
+        s = { '<cmd>write<cr>', 'write-file' },
+        S = { '<cmd>wall<cr>', 'write-all-file' },
     },
     w = {
         name = "+windows",
@@ -21,42 +31,42 @@ local which_key_map = {
     },
     b = {
         name = "+buffers",
-        k = { ':Sayonara!', 'kill-buffer' },
-        b = { 'Buffers', 'switch-buffer' },
+        k = { '<cmd>Sayonara!<cr>', 'kill-buffer' },
+        b = { '<cmd>Buffers<cr>', 'switch-buffer' },
     },
     g = {
         name = "+git",
-        g = { 'Git', 'git-status' },
+        g = { '<cmd>Git<cr>', 'git-status' },
     },
     c = {
         name = '+code',
     },
     s = {
         name = "+search",
-        p = { 'RG', 'ripgrep' },
-        b = { 'BLines', 'ripgrep' },
-        s = { ':Telescope lsp_dynamic_workspace_symbols', 'lsp-workspace-symbols' },
+        p = { '<cmd>RG<cr>', 'ripgrep' },
+        b = { '<cmd>BLines<cr>', 'ripgrep' },
+        s = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', 'lsp-workspace-symbols' },
     },
-    ['`'] = { 'NvimTreeToggle', 'tree-toggle' },
-    ['~'] = { 'NvimTreeFindFile', 'tree-find-file' },
-    l = { ':Telescope builtin', 'telescope' },
+    ['`'] = { '<cmd>NvimTreeToggle<cr>', 'tree-toggle' },
+    ['~'] = { '<cmd>NvimTreeFindFile<cr>', 'tree-find-file' },
+    l = { '<cmd>Telescope builtin<cr>', 'telescope' },
     q = { 
         name = "+quickfix",
-        q = { 'copen', 'open' },
-        c = { 'cclose', 'close' },
-        p = { 'colder', 'older-list' },
-        n = { 'cnewer', 'newer-list' },
-        h = { 'chistory', 'list-history' },
+        q = { '<cmd>copen<cr>', 'open' },
+        c = { '<cmd>cclose<cr>', 'close' },
+        p = { '<cmd>colder<cr>', 'older-list' },
+        n = { '<cmd>cnewer<cr>', 'newer-list' },
+        h = { '<cmd>chistory<cr>', 'list-history' },
     },
-    [vim.api.nvim_replace_termcodes('<space>', true, true, true)] = { 'Files', 'find-file' },
-    ['.'] = 'quick-switch',
-}
+    ['<space>'] = { '<cmd>Files<cr>', 'find-file' },
+    ['.'] = { function() require'plugins.quickswitch'.start_switch() end, 'quick-switch' },
+}, { prefix = "<leader>" })
 
-vim.api.nvim_set_keymap('n', '<leader>.', [[<cmd>lua require'plugins.quickswitch'.start_switch()<cr>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>.', [[<cmd>lua require'plugins.quickswitch'.start_switch()<cr>]], { noremap = true, silent = true })
 
-vim.api.nvim_set_var('which_key_map', which_key_map)
-vim.fn['which_key#register']('<Space>', "g:which_key_map")
+-- vim.api.nvim_set_var('which_key_map', which_key_map)
+-- vim.fn['which_key#register']('<Space>', "g:which_key_map")
 
-vim.api.nvim_set_keymap('n', '<leader>', "<cmd>WhichKey '<Space>'<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>', "<cmd>WhichKeyVisual '<Space>'<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>', "<cmd>WhichKey '<Space>'<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('v', '<leader>', "<cmd>WhichKeyVisual '<Space>'<CR>", { noremap = true, silent = true })
 
