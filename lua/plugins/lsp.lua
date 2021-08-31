@@ -32,6 +32,10 @@ local servers = {
             completeUnimported = true,
             semanticHighlighting = true
         },
+        flags = {
+            allow_incremental_sync = true,
+            debounce_text_changes = 8000,
+        },
         handlers = lsp_status.extensions.clangd.setup(),
         cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" }
     },
@@ -46,7 +50,7 @@ local servers = {
         cmd = {"rust-analyzer"},
         flags = {
             allow_incremental_sync = true,
-            debounce_text_changes = 100,
+            debounce_text_changes = 4000,
         },
         settings = {
             ["rust-analyzer"] = {
