@@ -68,11 +68,11 @@ vim.api.nvim_exec([[
     augroup END
 ]], false)
 
--- Use spellchecking in text buffers
+-- Use spellchecking/wordbreaks in text buffers
 vim.api.nvim_exec([[
     augroup text_spellcheck
         au!
-        au FileType markdown setlocal spell
+        au FileType tex,markdown setlocal spell linebreak
     augroup END
 ]], false)
 
