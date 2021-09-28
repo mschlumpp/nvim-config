@@ -54,8 +54,10 @@ vim.cmd([[command! PackerInstall lua require('plugins').install()]])
 vim.cmd([[command! PackerUpdate lua require('plugins').update()]])
 vim.cmd([[command! PackerSync lua require('plugins').sync()]])
 vim.cmd([[command! PackerClean lua require('plugins').clean()]])
-vim.cmd([[command! PackerCompile lua require('plugins').compile()]])
+vim.cmd([[command! -nargs=* PackerCompile lua require('plugins').compile(<q-args>)]])
 vim.cmd([[command! PackerStatus lua require('plugins').status()]])
+vim.cmd([[command! PackerProfile           lua require('pluings').profile_output()]])
+vim.cmd([[command! -nargs=+ -complete=customlist,v:lua.require'plugins'.loader_complete PackerLoad lua require('packer').loader(<q-args>)]])
 
 -- GUI
 option('guifont', 'Iosevka Term:h14')
