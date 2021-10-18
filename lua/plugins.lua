@@ -120,7 +120,10 @@ return require('packer').startup(function ()
         cmd = 'Git',
     }
     use {
-        'tpope/vim-commentary',
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end,
     }
     use {
         'tpope/vim-surround',
