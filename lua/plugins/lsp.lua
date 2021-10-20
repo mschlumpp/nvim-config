@@ -96,11 +96,11 @@ local function make_on_attach(config)
         buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
         buf_set_keymap('n', '<M-CR>', '<cmd>lua require"telescope.builtin".lsp_code_actions(require"telescope.themes".get_cursor())<CR>', opts)
         buf_set_keymap('v', '<M-CR>', '<cmd>lua require"telescope.builtin".lsp_range_code_actions(require"telescope.themes".get_cursor())<CR>', opts)
-        buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single"}})<cr>', opts)
-        buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single"}})<cr>', opts)
+        buf_set_keymap('n', ']g', '<cmd>lua vim.diagnostic.goto_next({ float = true, popup_opts = { border = "single"}})<cr>', opts)
+        buf_set_keymap('n', '[g', '<cmd>lua vim.diagnostic.goto_prev({ float = true, popup_opts = { border = "single"}})<cr>', opts)
 
-        buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single"})<CR>', opts)
-        buf_set_keymap('n', '<leader>E', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
+        buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", { border = "single"}})<CR>', opts)
+        buf_set_keymap('n', '<leader>E', '<cmd>lua vim.diagnostic.setqflist()<cr>', opts)
 
         if client.resolved_capabilities.document_formatting then
             buf_set_keymap('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
