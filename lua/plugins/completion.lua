@@ -1,5 +1,6 @@
 local npairs = require 'nvim-autopairs'
 local cmp = require 'cmp'
+local lspkind = require 'lspkind'
 
 cmp.setup {
     snippet = {
@@ -16,9 +17,13 @@ cmp.setup {
     },
     sources = {
         { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
         { name = 'vsnip' },
-        { name = 'buffer' },
+        { name = 'buffer', keyword_length = 5 },
         { name = 'path' },
+    },
+    formatting = {
+        format = lspkind.cmp_format {},
     },
     experimental = {
         ghost_text = true,
