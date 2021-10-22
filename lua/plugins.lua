@@ -11,7 +11,7 @@ return require('packer').startup(function ()
         opt = true,
     }
     use {
-        'hoob3rt/lualine.nvim',
+        'nvim-lualine/lualine.nvim',
         config = [[require('plugins.lualine')]],
     }
     use 'chriskempson/base16-vim'
