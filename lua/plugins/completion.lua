@@ -25,3 +25,18 @@ cmp.setup {
     },
 }
 
+local vsnip_next = "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'"
+vim.api.nvim_set_keymap('i', '<Tab>', vsnip_next, { expr = true })
+vim.api.nvim_set_keymap('s', '<Tab>', vsnip_next, { expr = true })
+
+local vsnip_prev = "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'"
+vim.api.nvim_set_keymap('i', '<S-Tab>', vsnip_prev, { expr = true })
+vim.api.nvim_set_keymap('s', '<S-Tab>', vsnip_prev, { expr = true })
+
+local vsnip_expand = "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'"
+vim.api.nvim_set_keymap('i', '<C-j>', vsnip_expand, { expr = true })
+vim.api.nvim_set_keymap('s', '<C-j>', vsnip_expand, { expr = true })
+
+local vsnip_expand_jump = "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'"
+vim.api.nvim_set_keymap('i', '<C-l>', vsnip_expand_jump, { expr = true })
+vim.api.nvim_set_keymap('s', '<C-l>', vsnip_expand_jump, { expr = true })
