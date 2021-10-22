@@ -58,9 +58,15 @@ return require('packer').startup(function ()
         cmd = {'Sayonara'},
     }
     use {
-        'hrsh7th/nvim-compe',
+        'hrsh7th/nvim-cmp',
         config = [[require('plugins.completion')]],
-        requires = {'hrsh7th/vim-vsnip', 'hrsh7th/vim-vsnip-integ'},
+        requires = {
+            'hrsh7th/vim-vsnip', 
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-nvim-lsp',
+        },
     }
     use {
         'neovim/nvim-lspconfig',
