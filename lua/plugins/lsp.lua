@@ -1,6 +1,5 @@
 local lspconfig = require 'lspconfig'
 local lspkind = require 'lspkind'
-local lsp_status = require 'lsp-status'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -151,9 +150,6 @@ for server, config in pairs(servers) do
     lspconfig[server].setup(config)
 end
 
-lspkind.init({})
+require "fidget".setup{}
 
-lsp_status.config {
-    status_symbol = '',
-}
-lsp_status.register_progress()
+lspkind.init({})
