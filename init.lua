@@ -83,10 +83,10 @@ vim.api.nvim_exec([[
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cn<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '[q', '<cmd>cp<cr>', { silent = true, noremap = true })
 
-vim.api.nvim_set_keymap('', '<c-s-up>', '<c-w>k', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('', '<c-s-down>', '<c-w>j', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('', '<c-s-left>', '<c-w>h', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('', '<c-s-right>', '<c-w>l', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('', '<m-c-up>', '<c-w>k', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('', '<m-c-down>', '<c-w>j', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('', '<m-c-left>', '<c-w>h', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('', '<m-c-right>', '<c-w>l', { silent = true, noremap = true })
 
 vim.api.nvim_set_keymap('t', '<esc>', '(&filetype == "fzf" ? "<esc>" : "<c-\\><c-n>")', { noremap = true, expr = true })
 
