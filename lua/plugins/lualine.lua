@@ -1,4 +1,5 @@
 require'plenary.reload'.reload_module('lualine', true)
+local gps = require 'nvim-gps'
 require'lualine'.setup {
     extensions = {'quickfix', 'nvim-tree'},
     options = {
@@ -9,7 +10,10 @@ require'lualine'.setup {
         lualine_b = { 'branch', 'diff' } ,
         lualine_c = { 
             'filename', 
-            'b:lsp_current_function', 
+            {
+                gps.get_location,
+                cond = gps.is_available
+            },
             { 
                 'diagnostics', 
                 sources = {'nvim_lsp'}

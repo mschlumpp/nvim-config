@@ -84,6 +84,10 @@ return require('packer').startup(function ()
         after = {'nvim-treesitter'},
     }
     use {
+        'SmiteshP/nvim-gps',
+        config = [[require"nvim-gps".setup()]]
+    }
+    use {
         'cespare/vim-toml',
         ft = 'toml',
     }
