@@ -37,8 +37,7 @@ local servers = {
             allow_incremental_sync = true,
             debounce_text_changes = 8000,
         },
-        handlers = lsp_status.extensions.clangd.setup(),
-        cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" }
+        cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" },
     },
     gopls = { },
     pyright = { },
