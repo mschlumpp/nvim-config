@@ -24,6 +24,8 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
     }
 )
 
+local pid = vim.fn.getpid()
+
 local servers = {
     clangd = {
         init_options = {
@@ -40,11 +42,17 @@ local servers = {
     },
     gopls = { },
     pyright = { },
-    jsonls = {
-        cmd = {"json-languageserver"}
+    omnisharp = {
+        cmd = {"omnisharp", "--languageserver", "--hostPid", tostring(pid)}
     },
-    tsserver = {  },
+    jsonls = { 
+        cmd = {"vscode-json-languageserver"}
+    },
+    tsserver = { },
     zls = { },
+    html = {
+        cmd = {"vscode-html-languageserver"}
+    },
     rust_analyzer = {
         cmd = {"rust-analyzer"},
         flags = {
