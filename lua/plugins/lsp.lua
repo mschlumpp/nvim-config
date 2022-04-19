@@ -134,7 +134,7 @@ local function make_on_attach(config)
 
         buf_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
-        if config.after then config.after(client) end
+        if config.after then config.after(client, bufnr) end
     end
 end
 
