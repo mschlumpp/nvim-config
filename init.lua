@@ -39,6 +39,7 @@ option('wildmode', 'longest:full,full')
 option('wildmenu')
 option('inccommand', 'split')
 option('wildoptions', 'pum')
+option('list', true, window)
 
 vim.g.mapleader = ' '
 
