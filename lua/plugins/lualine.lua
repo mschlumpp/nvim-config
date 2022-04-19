@@ -20,7 +20,6 @@ require'lualine'.setup {
             },
         },
         lualine_x = { 
-            require'lsp-status'.status_progress, 
             'encoding', 
             'fileformat', 
             function () 
