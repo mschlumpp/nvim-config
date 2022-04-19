@@ -132,7 +132,6 @@ local function make_on_attach(config)
             ]], false)
         end
 
-        lsp_status.on_attach(client)
 
         if config.after then config.after(client) end
     end
