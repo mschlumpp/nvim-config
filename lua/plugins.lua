@@ -180,18 +180,24 @@ return require('packer').startup(function ()
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
-            'nvim-lua/plenary.nvim', 
+            'nvim-lua/plenary.nvim',
             'nvim-lua/popup.nvim',
+            'nvim-telescope/telescope-ui-select.nvim',
         },
-        module = 'telescope',
-        cmd = 'Telescope',
         config = function()
             local telescope = require('telescope')
             telescope.setup {
                 defaults = {
                     winblend = 5
-                }
+                },
+                extensions = {
+                    ['ui-select'] = {
+                        require("telescope.themes").get_cursor {
+                        }
+                    },
+                },
             }
+            telescope.load_extension('ui-select')
         end,
     }
     use {

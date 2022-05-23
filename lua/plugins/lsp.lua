@@ -100,7 +100,7 @@ local function make_on_attach(config)
         buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
         buf_set_keymap('i', '<c-q>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
         buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-        buf_set_keymap('n', '<M-CR>', '<cmd>lua require"telescope.builtin".lsp_code_actions(require"telescope.themes".get_cursor())<CR>', opts)
+        buf_set_keymap('n', '<M-CR>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         --[[
         -- range_code_action s are still super weird as of 2022-01-13... 
         -- * the corresponding telescope action does something entirely
