@@ -124,12 +124,12 @@ local function make_on_attach(config)
         buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", { border = "single"}})<CR>', opts)
         buf_set_keymap('n', '<leader>E', '<cmd>lua vim.diagnostic.setqflist()<cr>', opts)
 
-        if client.resolved_capabilities.document_formatting then
+        if client.server_capabilities.documentFormattingProvider then
             buf_set_keymap('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
             buf_set_keymap('v', '<leader>=', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', opts)
         end
 
-        if client.resolved_capabilities.document_highlight then
+        if client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_exec([[
                 augroup p_lsp_aucmds
                 au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
