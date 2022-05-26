@@ -1,7 +1,12 @@
 require'plenary.reload'.reload_module('lualine', true)
 local gps = require 'nvim-gps'
 require'lualine'.setup {
-    extensions = {'quickfix', 'nvim-tree'},
+    extensions = {
+        'quickfix',
+        'nvim-tree',
+        'toggleterm',
+        'fugitive',
+    },
     options = {
         theme = 'material',
         icons_enabled = false,
