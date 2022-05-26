@@ -50,6 +50,7 @@ wk.register({
     ['`'] = { '<cmd>NvimTreeToggle<cr>', 'tree-toggle' },
     ['~'] = { '<cmd>NvimTreeFindFile<cr>', 'tree-find-file' },
     l = { '<cmd>Telescope builtin<cr>', 'telescope' },
+    r = { '<cmd>Telescope resume<cr>', 'resume-telescope'},
     q = { 
         name = "+quickfix",
         q = { '<cmd>copen<cr>', 'open' },
