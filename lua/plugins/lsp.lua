@@ -61,7 +61,7 @@ local servers = {
         settings = {
             ["rust-analyzer"] = {
                 assist = {
-                    importMergeBehaviour = "last",
+                    importMergeBehaviour = "module",
                 },
                 checkOnSave = {
                     command = "clippy",
