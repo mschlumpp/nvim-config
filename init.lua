@@ -35,10 +35,8 @@ option('shortmess', vim.o.shortmess .. 'c')
 option('mouse', 'a')
 option('undofile', true, buffer)
 option('cursorline', true, window)
-option('wildmode', 'longest:full,full')
-option('wildmenu')
+option('wildmenu', false)
 option('inccommand', 'split')
-option('wildoptions', 'pum')
 option('list', true, window)
 
 vim.g.mapleader = ' '

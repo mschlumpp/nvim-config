@@ -30,6 +30,23 @@ cmp.setup {
     },
 }
 
+
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
 local vsnip_next = "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'"
 vim.api.nvim_set_keymap('i', '<Tab>', vsnip_next, { expr = true })
 vim.api.nvim_set_keymap('s', '<Tab>', vsnip_next, { expr = true })
