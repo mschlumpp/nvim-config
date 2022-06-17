@@ -32,19 +32,25 @@ cmp.setup {
 
 
 cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
+    mapping = cmp.mapping.preset.cmdline(),
+    view = {
+        entries = {name = 'custom', selection_order = 'near_cursor' },
+    },
+    sources = {
+        { name = 'buffer' }
+    },
 })
 
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
+    mapping = cmp.mapping.preset.cmdline(),
+    view = {
+        entries = {name = 'custom', selection_order = 'near_cursor' },
+    },
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    }),
 })
 
 local vsnip_next = "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'"
