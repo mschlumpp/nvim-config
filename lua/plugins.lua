@@ -111,6 +111,22 @@ return require('packer').startup(function ()
         ft = 'rust',
     }
     use {
+        'Saecki/crates.nvim',
+        event = { 'BufRead Cargo.toml' },
+        requires = {
+            'jose-elias-alvarez/null-ls.nvim',
+            'nvim-lua/plenary.nvim',
+        },
+        config = function()
+            require'crates'.setup {
+                null_ls = {
+                    enabled = true,
+                    name = "crates.nvim",
+                }
+            }
+        end,
+    }
+    use {
         'LnL7/vim-nix',
         ft = 'nix',
     }
