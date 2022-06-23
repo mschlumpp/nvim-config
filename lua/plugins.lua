@@ -78,7 +78,13 @@ return require('packer').startup(function ()
     }
     use {
         'neovim/nvim-lspconfig',
-        requires = {'onsails/lspkind-nvim', 'gfanto/fzf-lsp.nvim', 'j-hui/fidget.nvim'},
+        requires = {
+            'onsails/lspkind-nvim',
+            'gfanto/fzf-lsp.nvim',
+            'j-hui/fidget.nvim',
+            'jose-elias-alvarez/null-ls.nvim',
+            'nvim-lua/plenary.nvim',
+        },
         config = [[require('plugins.lsp')]]
     }
     use {
