@@ -37,6 +37,7 @@ wk.register({
     t = {
         name = "+options",
         u = { '<cmd>UndotreeToggle<cr>', 'undo-tree'},
+        z = { require'zen-mode'.toggle, 'zen-mode' },
     },
     g = {
         name = "+git",
