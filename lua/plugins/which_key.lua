@@ -12,7 +12,7 @@ wk.register({
     f = {
         name = "+files",
         f = { '<cmd>RnvimrToggle<cr>', 'file-explorer' },
-        r = { '<cmd>History<cr>', 'history' },
+        r = { '<cmd>Telescope oldfiles<cr>', 'history' },
         s = { '<cmd>write<cr>', 'write-file' },
         S = { '<cmd>wall<cr>', 'write-all-file' },
     },
@@ -32,7 +32,7 @@ wk.register({
     b = {
         name = "+buffers",
         k = { '<cmd>Sayonara!<cr>', 'kill-buffer' },
-        b = { '<cmd>Buffers<cr>', 'switch-buffer' },
+        b = { '<cmd>Telescope buffers<cr>', 'switch-buffer' },
     },
     t = {
         name = "+options",
@@ -47,8 +47,8 @@ wk.register({
     },
     s = {
         name = "+search",
-        p = { '<cmd>RG<cr>', 'ripgrep' },
-        b = { '<cmd>BLines<cr>', 'ripgrep' },
+        p = { '<cmd>Telescope live_grep<cr>', 'ripgrep' },
+        b = { '<cmd>Telescope current_buffer_fuzzy_find<cr>', 'buffer-lines' },
         s = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', 'lsp-workspace-symbols' },
     },
     ['`'] = { '<cmd>NvimTreeToggle<cr>', 'tree-toggle' },
@@ -61,9 +61,9 @@ wk.register({
         c = { '<cmd>cclose<cr>', 'close' },
         p = { '<cmd>colder<cr>', 'older-list' },
         n = { '<cmd>cnewer<cr>', 'newer-list' },
-        h = { '<cmd>chistory<cr>', 'list-history' },
+        h = { '<cmd>Telescope quickfixhistory<cr>', 'list-history' },
     },
-    ['<space>'] = { '<cmd>Files<cr>', 'find-file' },
+    ['<space>'] = { '<cmd>Telescope find_files<cr>', 'find-file' },
     ['.'] = { function() require'plugins.quickswitch'.start_switch() end, 'quick-switch' },
 }, { prefix = "<leader>" })
 
