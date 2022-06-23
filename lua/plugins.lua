@@ -193,6 +193,22 @@ return require('packer').startup(function ()
         ]],
     }
     use {
+        "folke/zen-mode.nvim",
+        requires = {'folke/twilight.nvim'},
+        config = function()
+            require("zen-mode").setup {
+                window = {
+                    options = {
+                        number = false,
+                    },
+                },
+                plugins = {
+                    gitsigns = { enabled = true },
+                },
+            }
+        end,
+    }
+    use {
         'junegunn/vim-easy-align',
         keys = {{'x', 'ga'}, {'n', 'ga'}},
         config = [[
