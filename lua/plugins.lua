@@ -230,6 +230,7 @@ return require('packer').startup(function ()
             'nvim-lua/plenary.nvim',
             'nvim-lua/popup.nvim',
             'nvim-telescope/telescope-ui-select.nvim',
+            'nvim-telescope/telescope-fzy-native.nvim',
         },
         config = function()
             local telescope = require('telescope')
@@ -245,6 +246,7 @@ return require('packer').startup(function ()
                 },
             }
             telescope.load_extension('ui-select')
+            telescope.load_extension('fzy_native')
         end,
     }
     use {
