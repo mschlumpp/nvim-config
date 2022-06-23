@@ -41,6 +41,12 @@ return require('packer').startup(function ()
     use 'tpope/vim-sleuth'
     use 'kevinhwang91/nvim-bqf'
     use {
+        'mbbill/undotree',
+        config = function()
+            vim.g.undotree_SetFocusWhenToggle = 1
+        end,
+    }
+    use {
         'lewis6991/gitsigns.nvim',
         config = [[require('plugins.gitsigns')]],
     }

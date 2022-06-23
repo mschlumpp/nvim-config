@@ -34,6 +34,10 @@ wk.register({
         k = { '<cmd>Sayonara!<cr>', 'kill-buffer' },
         b = { '<cmd>Buffers<cr>', 'switch-buffer' },
     },
+    t = {
+        name = "+options",
+        u = { '<cmd>UndotreeToggle<cr>', 'undo-tree'},
+    },
     g = {
         name = "+git",
         g = { '<cmd>Git<cr>', 'git-status' },
