@@ -61,7 +61,6 @@ return require('packer').startup(function ()
     }
     use {
         'mhinz/vim-sayonara',
-        cmd = {'Sayonara'},
     }
     use {
         'hrsh7th/nvim-cmp',
