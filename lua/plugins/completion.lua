@@ -1,4 +1,3 @@
-local npairs = require 'nvim-autopairs'
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 
@@ -15,13 +14,16 @@ cmp.setup {
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
-    sources = {
+    sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
+        { name = 'nvim_lsp_signature_help' },
         { name = 'vsnip' },
-        { name = 'buffer', keyword_length = 5 },
         { name = 'path' },
-    },
+        { name = 'nvim_lua' },
+        { name = 'crates' },
+    }, {
+        { name = 'buffer', keyword_length = 5 },
+    }),
     formatting = {
         format = lspkind.cmp_format {},
     },
@@ -30,6 +32,14 @@ cmp.setup {
     },
 }
 
+cmp.setup.filetype({ 'tex' }, {
+    sources = {
+        { name = 'omni' },
+        { name = 'vsnip' },
+        { name = 'buffer', keyword_length = 5 },
+        { name = 'path' },
+    },
+})
 
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
