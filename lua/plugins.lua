@@ -185,10 +185,10 @@ return require('packer').startup(function ()
         ]],
     }
     use {
-        'ggandor/lightspeed.nvim',
+        'ggandor/leap.nvim',
         requires = {'tpope/vim-repeat'},
         config = [[
-          require'lightspeed'.setup {}
+            require'leap'.set_default_keymaps()
         ]],
     }
     use {
