@@ -9,7 +9,7 @@ require'lualine'.setup {
     },
     options = {
         theme = 'material',
-        icons_enabled = false,
+        icons_enabled = true,
     },
     sections = { 
         lualine_b = { 'branch', 'diff' } ,
