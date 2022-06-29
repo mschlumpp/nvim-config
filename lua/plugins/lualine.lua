@@ -8,7 +8,7 @@ require'lualine'.setup {
         'fugitive',
     },
     options = {
-        theme = 'material',
+        theme = 'auto',
         icons_enabled = true,
     },
     sections = { 
