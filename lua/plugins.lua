@@ -20,6 +20,15 @@ return require('packer').startup(function ()
         'sonph/onehalf',
         rtp = 'vim',
     }
+    use 'rmehri01/onenord.nvim'
+    use 'olimorris/onedarkpro.nvim'
+    use 'ray-x/aurora'
+    use {
+        'projekt0n/github-nvim-theme',
+        config = function()
+            vim.cmd('colorscheme github_light_default')
+        end
+    }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
@@ -34,7 +43,6 @@ return require('packer').startup(function ()
                 GitGutterDelete = {guifg = 'ff5c57', guibg = '333333'},
                 GitGutterChangeDelete = {guifg = 'ff6ac1', guibg = '333333'},
             }
-            vim.cmd('colorscheme jellybeans')
         end
     }
     -- use 'dstein64/nvim-scrollview'
