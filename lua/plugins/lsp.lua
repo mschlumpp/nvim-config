@@ -131,15 +131,20 @@ local function make_on_attach(config)
             buf_set_keymap('v', '<leader>=', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', opts)
         end
 
+        vim.api.nvim_exec([[
+            augroup p_lsp_aucmds
+            au! * <buffer>
+        ]], false)
         if client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_exec([[
-                augroup p_lsp_aucmds
                 au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 au CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
                 au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                augroup END
             ]], false)
         end
+        vim.api.nvim_exec([[
+            augroup END
+        ]], false)
 
         buf_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
