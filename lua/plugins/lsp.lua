@@ -49,6 +49,23 @@ local servers = {
         cmd = {"vscode-json-languageserver"}
     },
     tsserver = { },
+    ltex = {
+        settings = {
+            ltex = {
+                language = "en-US",
+                checkFrequency = "save",
+            },
+        },
+        flags = {
+            debounce_text_changes = 9000,
+        },
+        after = function (client, bufnr)
+            require("ltex_extra").setup {
+                load_langs = { "en-US", "de-DE" },
+                init_check = true,
+            }
+        end,
+    },
     zls = { },
     html = {
         cmd = {"vscode-html-languageserver"}

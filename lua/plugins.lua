@@ -142,6 +142,10 @@ return require('packer').startup(function ()
         ft = 'bzl',
     }
     use {
+        'barreiroleo/ltex_extra.nvim',
+        module = 'ltex_extra',
+    }
+    use {
         'lervag/vimtex',
         ft = 'tex',
         config = [[
