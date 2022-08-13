@@ -157,7 +157,11 @@ for server, config in pairs(servers) do
     lspconfig[server].setup(config)
 end
 
-require "fidget".setup{}
+require "fidget".setup {
+    text = {
+        spinner = "dots",
+    }
+}
 
 lspkind.init({})
 
