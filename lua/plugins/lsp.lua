@@ -1,6 +1,7 @@
 local lspconfig = require 'lspconfig'
 local lspkind = require 'lspkind'
 local null_ls = require 'null-ls'
+local navic = require 'nvim-navic'
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -148,6 +149,10 @@ local function make_on_attach(config)
 
         buf_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
         buf_set_option('tagfunc', 'v:lua.vim.lsp.tagfunc')
+
+        if client.server_capabilities.documentSymbolProvider then
+            navic.attach(client, bufnr)
+        end
 
         if config.after then config.after(client, bufnr) end
     end
