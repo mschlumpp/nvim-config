@@ -240,6 +240,19 @@ return require('packer').startup(function ()
         ]]
     }
     use {
+        'gbprod/yanky.nvim',
+        config = function()
+            require('yanky').setup { }
+            vim.keymap.set({'n', 'x'}, 'p', '<Plug>(YankyPutAfter)')
+            vim.keymap.set({'n', 'x'}, 'P', '<Plug>(YankyPutBefore)')
+            vim.keymap.set({'n', 'x'}, 'gp', '<Plug>(YankyGPutAfter)')
+            vim.keymap.set({'n', 'x'}, 'gP', '<Plug>(YankyGPutBefore)')
+            vim.keymap.set('n', '<c-n>', '<Plug>(YankyCycleForward)')
+            vim.keymap.set('n', '<c-p>', '<Plug>(YankyCycleBackward)')
+            vim.keymap.set('n', '<m-p>', '<cmd>YankyRingHistory<cr>')
+        end,
+    }
+    use {
         'nvim-telescope/telescope.nvim',
         requires = {
             'nvim-lua/plenary.nvim',
