@@ -135,6 +135,9 @@ return require('packer').startup(function ()
         ft = 'nix',
     }
     use {
+        'NoahTheDuke/vim-just',
+    }
+    use {
         'bazelbuild/vim-ft-bzl',
         ft = 'bzl',
     }
@@ -160,6 +163,10 @@ return require('packer').startup(function ()
     use {
         'bakpakin/fennel.vim',
         ft = 'fnl',
+    }
+    use {
+        'ahf/cocci-syntax',
+        ft = 'cocci',
     }
     use {
         'dstein64/vim-startuptime',
