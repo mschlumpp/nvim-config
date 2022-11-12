@@ -1,5 +1,5 @@
 require'plenary.reload'.reload_module('lualine', true)
-local gps = require 'nvim-gps'
+local navic = require 'nvim-navic'
 require'lualine'.setup {
     extensions = {
         'quickfix',
@@ -16,8 +16,8 @@ require'lualine'.setup {
         lualine_c = { 
             'filename', 
             {
-                gps.get_location,
-                cond = gps.is_available
+                navic.get_location,
+                cond = navic.is_available
             },
             { 
                 'diagnostics', 

@@ -93,6 +93,7 @@ return require('packer').startup(function ()
             'j-hui/fidget.nvim',
             'jose-elias-alvarez/null-ls.nvim',
             'nvim-lua/plenary.nvim',
+            'SmiteshP/nvim-navic'
         },
         config = [[require('plugins.lsp')]]
     }
@@ -104,10 +105,6 @@ return require('packer').startup(function ()
     use {
         'nvim-treesitter/nvim-treesitter-refactor',
         after = {'nvim-treesitter'},
-    }
-    use {
-        'SmiteshP/nvim-gps',
-        config = [[require"nvim-gps".setup()]]
     }
     use {
         'cespare/vim-toml',
