@@ -264,7 +264,16 @@ return require('packer').startup(function ()
             local telescope = require('telescope')
             telescope.setup {
                 defaults = {
-                    winblend = 5
+                    winblend = 5,
+                    dynamic_preview_title = true,
+                    mappings = {
+                        i = {
+                            ['<c-n>'] = require'telescope.actions'.cycle_history_next,
+                            ['<c-p>'] = require'telescope.actions'.cycle_history_prev,
+                            ['<c-j>'] = require'telescope.actions'.move_selection_next,
+                            ['<c-k>'] = require'telescope.actions'.move_selection_previous,
+                        }
+                    },
                 },
                 extensions = {
                     ['ui-select'] = {
