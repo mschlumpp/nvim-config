@@ -6,6 +6,7 @@ treesitter_config.setup {
         enable = true,
         -- when nvim lsp/clangd highlighting works 
         -- disable = { "cpp", "c" },
+        disable = { 'help' },
     },
     refactor = {
         highlight_definitions = {
