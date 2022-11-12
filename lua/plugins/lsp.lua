@@ -128,8 +128,8 @@ local function make_on_attach(config)
         buf_set_keymap('n', '<leader>E', '<cmd>lua vim.diagnostic.setqflist()<cr>', opts)
 
         if client.server_capabilities.documentFormattingProvider then
-            buf_set_keymap('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
-            buf_set_keymap('v', '<leader>=', '<cmd>lua vim.lsp.buf.range_formatting()<cr>', opts)
+            buf_set_keymap('n', '<leader>=', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+            buf_set_keymap('v', '<leader>=', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
         end
 
         vim.api.nvim_exec([[
