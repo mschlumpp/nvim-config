@@ -202,6 +202,15 @@ return require('packer').startup(function ()
         end,
     }
     use {
+        'cbochs/portal.nvim',
+        config = function() 
+            require 'portal'.setup {
+            }
+            vim.keymap.set('n', '<leader>o', require('portal').jump_backward, {})
+            vim.keymap.set('n', '<leader>i', require('portal').jump_forward, {})
+        end,
+    }
+    use {
         'ggandor/leap.nvim',
         requires = {'tpope/vim-repeat'},
         config = [[
