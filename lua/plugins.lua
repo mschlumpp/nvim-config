@@ -83,6 +83,8 @@ return require('packer').startup(function ()
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lua',
+            -- For clangd score sorter
+            'p00f/clangd_extensions.nvim',
         },
     }
     use {
@@ -93,7 +95,8 @@ return require('packer').startup(function ()
             'j-hui/fidget.nvim',
             'jose-elias-alvarez/null-ls.nvim',
             'nvim-lua/plenary.nvim',
-            'SmiteshP/nvim-navic'
+            'SmiteshP/nvim-navic',
+            'p00f/clangd_extensions.nvim',
         },
         config = [[require('plugins.lsp')]]
     }

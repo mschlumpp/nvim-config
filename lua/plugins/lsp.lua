@@ -29,17 +29,24 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 local pid = vim.fn.getpid()
 
 local servers = {
-    clangd = {
-        init_options = {
-            usePlaceholders = true,
-            completeUnimported = true,
-            semanticHighlighting = true
+    clangd = require 'clangd_extensions'.prepare {
+        server = {
+            init_options = {
+                usePlaceholders = true,
+                completeUnimported = true,
+                semanticHighlighting = true
+            },
+            flags = {
+                allow_incremental_sync = true,
+                debounce_text_changes = 1000,
+            },
+            cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" },
         },
-        flags = {
-            allow_incremental_sync = true,
-            debounce_text_changes = 8000,
+        extensions = {
+            symbol_info = {
+                border = 'single',
+            },
         },
-        cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" },
     },
     gopls = { },
     pyright = { },
@@ -155,6 +162,7 @@ local function make_on_attach(config)
         end
 
         if config.after then config.after(client, bufnr) end
+        if config.chain then config.chain(client, bufnr) end
     end
 end
 
@@ -176,6 +184,9 @@ local snippet_capabilities = {
 }
 
 for server, config in pairs(servers) do
+    -- remap any existing on_attach to chain hook
+    config.chain = config.on_attach
+
     config.on_attach = make_on_attach(config)
     config.capabilities = vim.tbl_deep_extend('force', 
         vim.lsp.protocol.make_client_capabilities(), 

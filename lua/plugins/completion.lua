@@ -1,4 +1,5 @@
 local cmp = require 'cmp'
+local compare = require 'cmp.config.compare'
 local lspkind = require 'lspkind'
 
 cmp.setup {
@@ -24,6 +25,20 @@ cmp.setup {
     }, {
         { name = 'buffer', keyword_length = 5 },
     }),
+    sorting = {
+        comparators = {
+            compare.offset,
+            compare.exact,
+            compare.score,
+            compare.recently_used,
+            require('clangd_extensions.cmp_scores'),
+            compare.locality,
+            compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+        }
+    },
     formatting = {
         format = lspkind.cmp_format {},
     },
