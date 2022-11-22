@@ -183,28 +183,29 @@ return require('packer').startup(function ()
         end,
     }
     use {
-        'tpope/vim-surround',
-        setup = [[
-            vim.g.surround_no_mappings = true
-        ]],
-        config = [[
-            vim.api.nvim_set_keymap('n', 'dm',  '<Plug>Dsurround', {})
-            vim.api.nvim_set_keymap('n', 'cm',  '<Plug>Csurround', {})
-            vim.api.nvim_set_keymap('n', 'cM',  '<Plug>CSurround', {})
-            vim.api.nvim_set_keymap('n', 'ym',  '<Plug>Ysurround', {})
-            vim.api.nvim_set_keymap('n', 'yM',  '<Plug>YSurround', {})
-            vim.api.nvim_set_keymap('n', 'ymm', '<Plug>Yssurround', {})
-            vim.api.nvim_set_keymap('n', 'yMm', '<Plug>YSsurround', {})
-            vim.api.nvim_set_keymap('n', 'yMM', '<Plug>YSsurround', {})
-            vim.api.nvim_set_keymap('x', 'M',   '<Plug>VSurround', {})
-            vim.api.nvim_set_keymap('x', 'gM',  '<Plug>VgSurround', {})
-        ]],
+        'kylechui/nvim-surround',
+        config = function()
+            require'nvim-surround'.setup {
+                keymaps = {
+                    insert          = '<C-g>z',
+                    insert_line     = '<C-g>Z',
+                    normal          = 'gz',
+                    normal_cur      = 'gZ',
+                    normal_line     = 'gzgz',
+                    normal_cur_line = 'gZgZ',
+                    visual          = 'gz',
+                    visual_line     = 'gZ',
+                    delete          = 'gzd',
+                    change          = 'gzc',
+                },
+            }
+        end,
     }
     use {
         'ggandor/leap.nvim',
         requires = {'tpope/vim-repeat'},
         config = [[
-            require'leap'.set_default_keymaps()
+            require'leap'.add_default_mappings()
         ]],
     }
     use {
