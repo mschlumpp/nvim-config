@@ -59,7 +59,7 @@ return require('packer').startup(function ()
         config = [[require('plugins.gitsigns')]],
     }
     use { 
-        'akinsho/nvim-toggleterm.lua',
+        'akinsho/toggleterm.nvim',
         keys = {[[<c-\>]]},
         config = [[require('plugins.toggleterm')]],
     }
