@@ -6,6 +6,8 @@ require'lualine'.setup {
         'nvim-tree',
         'toggleterm',
         'fugitive',
+        'man',
+        'fzf',
     },
     options = {
         theme = 'auto',
