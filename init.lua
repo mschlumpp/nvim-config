@@ -51,28 +51,23 @@ option('shiftwidth', 4, buffer)
 -- Disable matchparen as it causes stutters
 -- vim.cmd([[let loaded_matchparen = 1]])
 
--- plugins
-vim.api.nvim_create_user_command("PackerInstall", function(opts) require'plugins'.install(unpack(opts.fargs)) end, {
-    complete = "customlist,v:lua.require'packer'.plugin_complete",
-    nargs = "*",
-})
-vim.api.nvim_create_user_command("PackerUpdate", function(opts) require'plugins'.update(unpack(opts.fargs)) end, {
-    complete = "customlist,v:lua.require'packer'.plugin_complete",
-    nargs = "*",
-})
-vim.api.nvim_create_user_command("PackerSync", function(opts) require'plugins'.sync(unpack(opts.fargs)) end, {
-    complete = "customlist,v:lua.require'packer'.plugin_complete",
-    nargs = "*",
-})
-vim.api.nvim_create_user_command("PackerClean", function(opts) require'plugins'.clean() end, {})
-vim.api.nvim_create_user_command("PackerStatus", function(opts) require'plugins'.status() end, {})
-vim.api.nvim_create_user_command("PackerProfile", function(opts) require'plugins'.profile_output() end, {})
-vim.api.nvim_create_user_command("PackerLoad", function(opts) require'packer'.loader(unpack(opts.fargs), opts.bang) end, {
-    complete = "customlist,v:lua.require'packer'.loader_complete",
-    nargs = "+",
-})
-vim.api.nvim_create_user_command("PackerCompile", function(opts) require('plugins').compile(opts.fargs) end, {
-    nargs = "*",
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins", {
+    defaults = {
+        lazy = true,
+    },
 })
 
 -- GUI
