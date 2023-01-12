@@ -38,6 +38,8 @@ option('cursorline', true, window)
 option('wildmenu', false)
 option('inccommand', 'split')
 option('list', true, window)
+vim.opt.formatoptions:remove { 't' }
+vim.opt.formatoptions:append { '/' }
 
 vim.g.mapleader = ' '
 
