@@ -52,14 +52,28 @@ option('shiftwidth', 4, buffer)
 -- vim.cmd([[let loaded_matchparen = 1]])
 
 -- plugins
-vim.cmd([[command! PackerInstall lua require('plugins').install()]])
-vim.cmd([[command! PackerUpdate lua require('plugins').update()]])
-vim.cmd([[command! PackerSync lua require('plugins').sync()]])
-vim.cmd([[command! PackerClean lua require('plugins').clean()]])
-vim.cmd([[command! -nargs=* PackerCompile lua require('plugins').compile(<q-args>)]])
-vim.cmd([[command! PackerStatus lua require('plugins').status()]])
-vim.cmd([[command! PackerProfile           lua require('pluings').profile_output()]])
-vim.cmd([[command! -nargs=+ -complete=customlist,v:lua.require'plugins'.loader_complete PackerLoad lua require('packer').loader(<q-args>)]])
+vim.api.nvim_create_user_command("PackerInstall", function(opts) require'plugins'.install(unpack(opts.fargs)) end, {
+    complete = "customlist,v:lua.require'packer'.plugin_complete",
+    nargs = "*",
+})
+vim.api.nvim_create_user_command("PackerUpdate", function(opts) require'plugins'.update(unpack(opts.fargs)) end, {
+    complete = "customlist,v:lua.require'packer'.plugin_complete",
+    nargs = "*",
+})
+vim.api.nvim_create_user_command("PackerSync", function(opts) require'plugins'.sync(unpack(opts.fargs)) end, {
+    complete = "customlist,v:lua.require'packer'.plugin_complete",
+    nargs = "*",
+})
+vim.api.nvim_create_user_command("PackerClean", function(opts) require'plugins'.clean() end, {})
+vim.api.nvim_create_user_command("PackerStatus", function(opts) require'plugins'.status() end, {})
+vim.api.nvim_create_user_command("PackerProfile", function(opts) require'plugins'.profile_output() end, {})
+vim.api.nvim_create_user_command("PackerLoad", function(opts) require'packer'.loader(unpack(opts.fargs), opts.bang) end, {
+    complete = "customlist,v:lua.require'packer'.loader_complete",
+    nargs = "+",
+})
+vim.api.nvim_create_user_command("PackerCompile", function(opts) require('plugins').compile(opts.fargs) end, {
+    nargs = "*",
+})
 
 -- GUI
 option('guifont', 'Iosevka Term:h14')
