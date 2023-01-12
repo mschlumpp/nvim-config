@@ -32,7 +32,7 @@ wk.register({
     b = {
         name = "+buffers",
         k = { '<cmd>Sayonara!<cr>', 'kill-buffer' },
-        b = { '<cmd>Telescope buffers<cr>', 'switch-buffer' },
+        b = { '<cmd>Telescope buffers sort_mru=true<cr>', 'switch-buffer' },
     },
     t = {
         name = "+options",
