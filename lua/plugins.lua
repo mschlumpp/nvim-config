@@ -57,6 +57,13 @@ return {
         cmd = {'Sayonara'},
     },
     {
+        'nyngwang/NeoZoom.lua',
+        keys = {
+            { '<leader>z', function() require'neo-zoom'.neo_zoom() end, { silent = true }, desc = 'zoom-window' },
+        },
+        opts = { },
+    },
+    {
         'cespare/vim-toml',
         ft = 'toml',
     },
