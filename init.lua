@@ -98,6 +98,11 @@ vim.api.nvim_set_keymap('', '<m-c-down>', '<c-w>j', { silent = true, noremap = t
 vim.api.nvim_set_keymap('', '<m-c-left>', '<c-w>h', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<m-c-right>', '<c-w>l', { silent = true, noremap = true })
 
+vim.keymap.set('n', '<m-k>', '<c-w>k', { silent = true, noremap = true })
+vim.keymap.set('n', '<m-j>', '<c-w>j', { silent = true, noremap = true })
+vim.keymap.set('n', '<m-h>', '<c-w>h', { silent = true, noremap = true })
+vim.keymap.set('n', '<m-l>', '<c-w>l', { silent = true, noremap = true })
+
 vim.api.nvim_set_keymap('t', '<esc>', '(&filetype == "fzf" ? "<esc>" : "<c-\\><c-n>")', { noremap = true, expr = true })
 
 -- git in nvim terminal
