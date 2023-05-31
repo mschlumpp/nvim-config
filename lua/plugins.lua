@@ -253,7 +253,7 @@ return {
             { 'gP', '<Plug>(YankyGPutBefore)', mode = {'n', 'x'}},
             { '<c-n>', '<Plug>(YankyCycleForward)'},
             { '<c-p>', '<Plug>(YankyCycleBackward)'},
-            { '<m-p>', '<Plug>(YankyRingHistory)'},
+            { '<m-p>', '<cmd>YankyRingHistory<cr>'},
         },
         opts = {},
     },
