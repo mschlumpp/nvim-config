@@ -272,6 +272,17 @@ return {
         },
     },
     {
+        'monaqa/dial.nvim',
+        keys = {
+            { '<c-a>', '<Plug>(dial-increment)', { noremap = true }, desc = 'dial increment' },
+            { '<c-x>', '<Plug>(dial-decrement)', { noremap = true }, desc = 'dial decrement' },
+            { '<c-a>', '<Plug>(dial-increment)', { noremap = true }, mode = {'v'}, desc = 'dial increment' },
+            { '<c-x>', '<Plug>(dial-decrement)', { noremap = true }, mode = {'v'}, desc = 'dial decrement' },
+            { 'g<c-a>', 'g<Plug>(dial-increment)', { noremap = true }, mode = {'v'}, desc = 'dial increment' },
+            { 'g<c-x>', 'g<Plug>(dial-decrement)', { noremap = true }, mode = {'v'}, desc = 'dial decrement' },
+        },
+    },
+    {
         'skywind3000/asyncrun.vim',
         dependencies = {
             { 'skywind3000/asynctasks.vim' }
