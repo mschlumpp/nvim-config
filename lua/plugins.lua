@@ -59,7 +59,7 @@ return {
     {
         'nyngwang/NeoZoom.lua',
         keys = {
-            { '<leader>z', function() require'neo-zoom'.neo_zoom() end, { silent = true }, desc = 'zoom-window' },
+            { '<leader>z', function() require'neo-zoom'.neo_zoom({}) end, { silent = true }, desc = 'zoom-window' },
         },
         opts = { },
     },
