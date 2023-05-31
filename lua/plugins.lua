@@ -179,7 +179,7 @@ return {
     },
     {
         "folke/zen-mode.nvim",
-        requires = {'folke/twilight.nvim'},
+        dependencies = {'folke/twilight.nvim'},
         opts = {
             window = {
                 options = {
