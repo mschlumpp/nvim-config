@@ -111,20 +111,3 @@ vim.api.nvim_exec([[
   autocmd FileType gitcommit,gitrebase set bufhidden=delete
 ]], false)
 
--- LSP colorscheme hack
-vim.api.nvim_exec([[
-    function! SetLspColorsLight()
-        hi LspReferenceText cterm=bold,undercurl ctermbg=239 gui=bold,undercurl guibg=#F5F5F5 guisp=#FD9720
-        hi LspReferenceRead cterm=bold,undercurl ctermbg=34 gui=bold,undercurl guibg=#F0FAF0 guisp=#FD9720
-        hi LspReferenceWrite cterm=bold,underline ctermbg=34 gui=bold,underline guibg=#FAF0F0 guisp=#FD9720
-    endfunction
-    command! SetLspColorsLight call SetLspColorsLight()
-
-    function! SetLspColors()
-        hi LspReferenceText cterm=bold,undercurl ctermbg=239 gui=bold,undercurl guibg=#4f4764 guisp=#FD9720
-        hi LspReferenceRead cterm=bold,undercurl ctermbg=34 gui=bold,undercurl guibg=#1aad16 guisp=#FD9720
-        hi LspReferenceWrite cterm=bold,underline ctermbg=34 gui=bold,underline guibg=#1aad16 guisp=#FD9720
-    endfunction
-    command! SetLspColors call SetLspColors()
-    SetLspColors
-]], false)
