@@ -9,6 +9,11 @@ return {{
         'nvim-lua/plenary.nvim',
         'SmiteshP/nvim-navic',
         'p00f/clangd_extensions.nvim',
+        {
+            'lvimuser/lsp-inlayhints.nvim',
+            branch = "anticonceal",
+            opts = { },
+        },
     },
     opts = {
         clangd = function()
@@ -29,6 +34,7 @@ return {{
                     end,
                 },
                 extensions = {
+                    autoSetHints = false,
                     symbol_info = {
                         border = 'single',
                     },
@@ -177,6 +183,9 @@ return {{
                 if client.server_capabilities.documentSymbolProvider then
                     navic.attach(client, bufnr)
                 end
+
+                require'lsp-inlayhints'.on_attach(client, bufnr)
+                buf_set_keymap('n', '<leader>th', '<cmd>lua require"lsp-inlayhints".toggle()<cr>', { desc = 'inlay-hints' })
 
                 if config.after then config.after(client, bufnr) end
                 if config.chain then config.chain(client, bufnr) end
