@@ -25,7 +25,7 @@ return {{
                     },
                     cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" },
                     after = function ()
-                        vim.keymap.set('n', '<leader>o', '<cmd>ClangdSwitchSourceHeader<cr>', {silent = true, buffer = true})
+                        vim.keymap.set('n', '<leader>mo', '<cmd>ClangdSwitchSourceHeader<cr>', {silent = true, buffer = true})
                     end,
                 },
                 extensions = {
