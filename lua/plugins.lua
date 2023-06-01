@@ -64,6 +64,11 @@ return {
         opts = { },
     },
     {
+        'folke/twilight.nvim',
+        cmd = {'Twilight', 'TwilightEnable', 'TwilightEnable'},
+        opts = {},
+    },
+    {
         'cespare/vim-toml',
         ft = 'toml',
     },
