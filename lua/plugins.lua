@@ -1,5 +1,6 @@
 return {
     'chriskempson/base16-vim',
+    'EdenEast/nightfox.nvim',
     {
         'rainglow/vim',
         name = 'rainglow',
@@ -22,6 +23,9 @@ return {
             require("github-theme").setup(opts)
             vim.cmd.colorscheme('github_dark_default')
         end,
+    },
+    {
+        'nyoom-engineering/oxocarbon.nvim'
     },
     {
         'kyazdani42/nvim-tree.lua',
