@@ -89,6 +89,25 @@ vim.api.nvim_exec([[
     augroup END
 ]], false)
 
+vim.filetype.add({
+    filename = {
+        ['Config.uk'] = 'kconfig',
+        ['Makefile.uk'] = 'make',
+        ['Makefile.rules'] = 'make',
+    },
+})
+
+local unikraft_group = vim.api.nvim_create_augroup('unikraft', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {'make', 'kconfig'},
+    callback = function()
+        vim.opt_local.shiftwidth = 8
+        vim.opt_local.tabstop = 8
+        vim.opt_local.expandtab = false
+    end,
+    group = unikraft_group,
+})
+
 -- some additional keybinds
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cn<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '[q', '<cmd>cp<cr>', { silent = true, noremap = true })
