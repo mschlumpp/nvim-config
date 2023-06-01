@@ -305,6 +305,10 @@ return {
     },
     {
         'kevinhwang91/rnvimr',
+        cmd = {'RnvimrToggle'},
+        config = function(plugin)
+            vim.g.rnvimr_enable_picker = 1
+        end,
         keys = {
             { '<M-o>', '<cmd>RnvimrToggle<cr>', mode = {'n', 't'}, desc = 'open file', noremap = true, silent = true }
         },
