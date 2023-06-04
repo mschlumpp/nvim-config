@@ -314,6 +314,74 @@ return {
         },
     },
     {
+        't-troebst/perfanno.nvim',
+        cmd = {
+            'PerfAnnotate',
+            'PerfAnnotateSelection',
+            'PerfCacheLoad',
+            'PerfCycleFormat',
+            'PerfHottestCallersSelection',
+            'PerfHottestSymbols',
+            'PerfLoadFlameGraph',
+            'PerfLuaProfileStart',
+            'PerfPickEvent',
+            'PerfAnnotateFunction',
+            'PerfCacheDelete',
+            'PerfCacheSave',
+            'PerfHottestCallersFunction',
+            'PerfHottestLines',
+            'PerfLoadCallGraph',
+            'PerfLoadFlat',
+            'PerfLuaProfileStop',
+            'PerfToggleAnnotations'
+        },
+        keys = {
+            { '<leader>cplp', '<cmd>PerfLoadFlat<cr>', desc = "perf-data", noremap = true, silent = true },
+            { '<leader>cplg', '<cmd>PerfLoadFlat<cr>', desc = "perf-data-call-graph", noremap = true, silent = true },
+            { '<leader>cplf', '<cmd>PerfLoadFlat<cr>', desc = "flamegraph", noremap = true, silent = true },
+
+            { '<leader>cpe', '<cmd>PerfPickEvent<cr>', desc = "pick-event", noremap = true, silent = true },
+
+            { '<leader>cpa', '<cmd>PerfAnnotate<cr>', desc = "annotate", noremap = true, silent = true },
+            { '<leader>cpf', '<cmd>PerfAnnotateFunction<cr>', desc = "annotate-function", noremap = true, silent = true },
+            { '<leader>cp', '<cmd>PerfAnnotateSelection<cr>', mode = {'v'}, desc = "annotate", noremap = true, silent = true },
+
+            { '<leader>cpt', '<cmd>PerfToggleAnnotations<cr>', desc = "toggle", noremap = true, silent = true },
+
+            { '<leader>cph', '<cmd>PerfHottestLines<cr>', desc = "hottest-lines", noremap = true, silent = true },
+            { '<leader>cps', '<cmd>PerfHottestSymbols<cr>', desc = "hottest-symbols", noremap = true, silent = true },
+            { '<leader>cpc', '<cmd>PerfHottestCallersFunction<cr>', desc = "hottest-callers-fn", noremap = true, silent = true },
+            { '<leader>cpc', '<cmd>PerfHottestCallersSelection<cr>', mode = {'v'}, desc = "hottest-callers-sel", noremap = true, silent = true },
+
+        },
+        opts = {
+            
+        },
+        config = function(plugin, opts)
+            local perfanno = require 'perfanno'
+            local util = require 'perfanno.util'
+            local config = require 'perfanno.config'
+
+            local function generate_color_config(opts)
+                local bgcolor = vim.fn.synIDattr(vim.fn.hlID('Normal'), 'bg', 'gui')
+                local color_config = {
+                    line_highlights = util.make_bg_highlights(bgcolor, '#CC3300', 10),
+                    vt_highlight = util.make_fg_highlight('#CC3300'),
+                }
+                return vim.tbl_deep_extend('force', vim.deepcopy(opts), color_config)
+            end
+
+            perfanno.setup(generate_color_config(opts))
+            -- Automatically update colors on colorscheme change
+            local color_autocmd = vim.api.nvim_create_augroup("PerfannoColorUpdate", { clear = true })
+            vim.api.nvim_create_autocmd({'ColorScheme'}, {
+                callback = function(ev)
+                    config.load(generate_color_config(opts))
+                end,
+            })
+        end,
+    },
+    {
         'junegunn/fzf.vim',
         dependencies = {'junegunn/fzf'},
         cmd = {
