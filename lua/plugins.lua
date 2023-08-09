@@ -28,6 +28,21 @@ return {
         'nyoom-engineering/oxocarbon.nvim'
     },
     {
+        'marcuscaisey/olddirs.nvim',
+        opts = {
+        },
+        keys = {
+            { '<leader>fo', function() require'telescope'.extensions.olddirs.picker() end, desc = 'olddirs' },
+        },
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+        },
+        config = function(plugin, opts)
+            require'olddirs'.setup(opts)
+            require'telescope'.load_extension('olddirs')
+        end,
+    },
+    {
         'kyazdani42/nvim-tree.lua',
         dependencies = {'kyazdani42/nvim-web-devicons'},
         cmd = {
