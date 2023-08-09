@@ -42,6 +42,10 @@ return {{
             }, {
                 { name = 'buffer', keyword_length = 5 },
             }),
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
             sorting = {
                 comparators = {
                     compare.offset,
