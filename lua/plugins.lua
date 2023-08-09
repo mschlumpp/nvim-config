@@ -21,7 +21,7 @@ return {
         opts = { },
         config = function(plugin, opts)
             require("github-theme").setup(opts)
-            vim.cmd.colorscheme('github_dark_default')
+            vim.cmd.colorscheme('github_dark_high_contrast')
         end,
     },
     {
