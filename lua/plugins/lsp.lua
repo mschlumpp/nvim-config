@@ -11,7 +11,14 @@ return {{
         'jose-elias-alvarez/null-ls.nvim',
         'nvim-lua/plenary.nvim',
         'SmiteshP/nvim-navic',
-        'p00f/clangd_extensions.nvim',
+        {
+            'p00f/clangd_extensions.nvim',
+            opts = {
+                symbol_info = {
+                    border = 'single',
+                },
+            },
+        },
         {
             'lvimuser/lsp-inlayhints.nvim',
             branch = "anticonceal",
@@ -19,31 +26,21 @@ return {{
         },
     },
     opts = {
-        clangd = function()
-            return require 'clangd_extensions'.prepare {
-                server = {
-                    init_options = {
-                        usePlaceholders = true,
-                        completeUnimported = true,
-                        semanticHighlighting = true
-                    },
-                    flags = {
-                        allow_incremental_sync = true,
-                        debounce_text_changes = 1000,
-                    },
-                    cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" },
-                    after = function ()
-                        vim.keymap.set('n', '<leader>mo', '<cmd>ClangdSwitchSourceHeader<cr>', {silent = true, buffer = true})
-                    end,
-                },
-                extensions = {
-                    autoSetHints = false,
-                    symbol_info = {
-                        border = 'single',
-                    },
-                },
-            }
-        end,
+        clangd = {
+            init_options = {
+                usePlaceholders = true,
+                completeUnimported = true,
+                semanticHighlighting = true
+            },
+            flags = {
+                allow_incremental_sync = true,
+                debounce_text_changes = 1000,
+            },
+            cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" },
+            after = function ()
+                vim.keymap.set('n', '<leader>mo', '<cmd>ClangdSwitchSourceHeader<cr>', {silent = true, buffer = true})
+            end,
+        },
         gopls = { },
         pyright = { },
         omnisharp = {
