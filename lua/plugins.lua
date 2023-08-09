@@ -353,14 +353,14 @@ return {
         },
         keys = {
             { '<leader>cplp', '<cmd>PerfLoadFlat<cr>', desc = "perf-data", noremap = true, silent = true },
-            { '<leader>cplg', '<cmd>PerfLoadFlat<cr>', desc = "perf-data-call-graph", noremap = true, silent = true },
-            { '<leader>cplf', '<cmd>PerfLoadFlat<cr>', desc = "flamegraph", noremap = true, silent = true },
+            { '<leader>cplg', '<cmd>PerfLoadCallGraph<cr>', desc = "perf-data-call-graph", noremap = true, silent = true },
+            { '<leader>cplf', '<cmd>PerfLoadFlameGraph<cr>', desc = "flamegraph", noremap = true, silent = true },
 
             { '<leader>cpe', '<cmd>PerfPickEvent<cr>', desc = "pick-event", noremap = true, silent = true },
 
             { '<leader>cpa', '<cmd>PerfAnnotate<cr>', desc = "annotate", noremap = true, silent = true },
             { '<leader>cpf', '<cmd>PerfAnnotateFunction<cr>', desc = "annotate-function", noremap = true, silent = true },
-            { '<leader>cp', '<cmd>PerfAnnotateSelection<cr>', mode = {'v'}, desc = "annotate", noremap = true, silent = true },
+            { '<leader>cpf', '<cmd>PerfAnnotateSelection<cr>', mode = {'v'}, desc = "annotate", noremap = true, silent = true },
 
             { '<leader>cpt', '<cmd>PerfToggleAnnotations<cr>', desc = "toggle", noremap = true, silent = true },
 
