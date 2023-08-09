@@ -30,7 +30,21 @@ return {
     {
         'kyazdani42/nvim-tree.lua',
         dependencies = {'kyazdani42/nvim-web-devicons'},
-        cmd = {'NvimTreeToggle', 'NvimTreeFindFile'},
+        cmd = {
+            'NvimTreeToggle', 
+            'NvimTreeFocus', 
+            'NvimTreeFindFile',
+            'NvimTreeFindFileToggle', 
+        },
+        keys = {
+            { '<F8>', function() require'nvim-tree.api'.tree.toggle { find_file = true, focus = true } end, { silent = true }, desc = 'nvim-tree-toggle' },
+        },
+        opts = {
+            on_attach = function(bufnr)
+                local api = require 'nvim-tree.api'
+                api.config.mappings.default_on_attach(bufnr)
+            end,
+        },
     },
     {
         'nanotech/jellybeans.vim',
