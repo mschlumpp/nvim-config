@@ -4,7 +4,10 @@ return {{
     dependencies = {
         'onsails/lspkind-nvim',
         'gfanto/fzf-lsp.nvim',
-        'j-hui/fidget.nvim',
+        {
+            'j-hui/fidget.nvim',
+            tag = 'legacy',
+        },
         'jose-elias-alvarez/null-ls.nvim',
         'nvim-lua/plenary.nvim',
         'SmiteshP/nvim-navic',
