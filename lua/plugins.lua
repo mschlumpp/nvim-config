@@ -187,8 +187,10 @@ return {
     {
         'cbochs/portal.nvim',
         keys = {
-            { '<leader>o', function() require'portal'.jump_backward() end, desc = 'portal backward'},
-            { '<leader>i', function() require'portal'.jump_forward() end, desc = 'portal forward'},
+            { '<leader>jo', function() require'portal.builtin'.jumplist.tunnel_backward() end, desc = 'portal backward'},
+            { '<leader>ji', function() require'portal.builtin'.jumplist.tunnel_forward() end, desc = 'portal forward'},
+            { '<leader>j;', function() require'portal.builtin'.changelist.tunnel_backward() end, desc = 'portal backward'},
+            { '<leader>j,', function() require'portal.builtin'.changelist.tunnel_forward() end, desc = 'portal forward'},
         },
         config = function(plugin, opts)
             require 'portal'.setup(opts)
