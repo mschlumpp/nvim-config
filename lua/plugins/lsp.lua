@@ -36,7 +36,7 @@ return {{
                 allow_incremental_sync = true,
                 debounce_text_changes = 1000,
             },
-            cmd = { "clangd", "--background-index", "--suggest-missing-includes", "--cross-file-rename", "--clang-tidy" },
+            cmd = { "clangd", "--log=error", "--background-index", "--clang-tidy" },
             after = function ()
                 vim.keymap.set('n', '<leader>mo', '<cmd>ClangdSwitchSourceHeader<cr>', {silent = true, buffer = true})
             end,
