@@ -68,10 +68,7 @@ return {
                 h = { '<cmd>Telescope quickfixhistory<cr>', 'list-history' },
             },
             ['<space>'] = { '<cmd>Telescope find_files<cr>', 'find-file' },
-            ['.'] = { function() require'plugins.quickswitch'.start_switch() end, 'quick-switch' },
         }, { prefix = "<leader>" })
-
-        -- vim.api.nvim_set_keymap('n', '<leader>.', [[<cmd>lua require'plugins.quickswitch'.start_switch()<cr>]], { noremap = true, silent = true })
 
         -- vim.api.nvim_set_var('which_key_map', which_key_map)
         -- vim.fn['which_key#register']('<Space>', "g:which_key_map")

@@ -68,6 +68,9 @@ require("lazy").setup("plugins", {
     defaults = {
         lazy = true,
     },
+    dev = {
+        path = vim.fn.stdpath('config') .. '/local_plugins',
+    },
 })
 
 -- GUI

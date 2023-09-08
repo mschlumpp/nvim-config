@@ -279,6 +279,14 @@ return {
         end,
     },
     {
+        'mschlumpp/quick-switch',
+        dev = true,
+        keys = {
+            { '<leader>.', function() require 'quick-switch'.start_switch() end, 'quick-switch' },
+        },
+        opts = {},
+    },
+    {
         'windwp/nvim-autopairs',
         event = { 'InsertEnter' },
         opts = {
