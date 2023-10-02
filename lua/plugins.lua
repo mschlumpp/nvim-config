@@ -173,8 +173,24 @@ return {
         'tpope/vim-fugitive',
         cmd = 'Git',
         keys = {
-            { '<leader>gg', '<cmd>Git<cr>', { silent = true }, desc = 'fugitive' },
+            { '<leader>gG', '<cmd>Git<cr>', { silent = true }, desc = 'fugitive' },
         }
+    },
+    {
+        'kdheepak/lazygit.nvim',
+        cmd = {
+            'LazyGit',
+            'LazyGitConfig',
+            'LazyGitFilter',
+            'LazyGitCurrentFile',
+            'LazyGitFilterCurrentFile',
+        },
+        keys = {
+            { '<leader>gg', '<cmd>LazyGit<cr>', { silent = true }, desc = 'lazy-git' },
+        },
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
     },
     {
         'numToStr/Comment.nvim',
