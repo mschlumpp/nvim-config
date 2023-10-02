@@ -115,10 +115,18 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cn<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '[q', '<cmd>cp<cr>', { silent = true, noremap = true })
 
+-- More convenient window navigation
 vim.api.nvim_set_keymap('', '<m-c-up>', '<c-w>k', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<m-c-down>', '<c-w>j', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<m-c-left>', '<c-w>h', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<m-c-right>', '<c-w>l', { silent = true, noremap = true })
+-- Same for the terminal
+for i, mode in ipairs{'t', 'i'} do
+    vim.api.nvim_set_keymap(mode, '<m-c-up>', '<C-\\><C-N><c-w>k', { silent = true, noremap = true })
+    vim.api.nvim_set_keymap(mode, '<m-c-down>', '<C-\\><C-N><c-w>j', { silent = true, noremap = true })
+    vim.api.nvim_set_keymap(mode, '<m-c-left>', '<C-\\><C-N><c-w>h', { silent = true, noremap = true })
+    vim.api.nvim_set_keymap(mode, '<m-c-right>', '<C-\\><C-N><c-w>l', { silent = true, noremap = true })
+end
 
 vim.keymap.set('n', '<m-k>', '<c-w>k', { silent = true, noremap = true })
 vim.keymap.set('n', '<m-j>', '<c-w>j', { silent = true, noremap = true })
