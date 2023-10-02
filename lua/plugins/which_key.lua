@@ -44,7 +44,6 @@ return {
             },
             g = {
                 name = "+git",
-                g = { '<cmd>Git<cr>', 'git-status' },
             },
             c = {
                 name = '+code',
