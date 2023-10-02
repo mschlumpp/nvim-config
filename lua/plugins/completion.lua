@@ -20,6 +20,7 @@ return {{
         local lspkind = require 'lspkind'
 
         return {
+            preselect = cmp.PreselectMode.None,
             snippet = {
                 expand = function(args)
                     vim.fn["vsnip#anonymous"](args.body)
@@ -30,7 +31,9 @@ return {{
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.close(),
-                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+                ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
