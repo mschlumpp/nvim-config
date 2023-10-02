@@ -104,6 +104,20 @@ return {
         opts = {},
     },
     {
+        'anuvyklack/windows.nvim',
+        dependencies = { 
+            'anuvyklack/middleclass',
+        },
+        keys = {
+            { '<leader>ta', '<cmd>WindowsToggleAutowidth<cr>', { silent = true }, desc = 'autowidth' },
+        },
+        opts = {
+            autowidth = {
+                enable = false,
+            }
+        },
+    },
+    {
         'cespare/vim-toml',
         ft = 'toml',
     },
