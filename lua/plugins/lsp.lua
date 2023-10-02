@@ -8,7 +8,6 @@ return {{
             'j-hui/fidget.nvim',
             tag = 'legacy',
         },
-        'jose-elias-alvarez/null-ls.nvim',
         'nvim-lua/plenary.nvim',
         'SmiteshP/nvim-navic',
         {
@@ -103,7 +102,6 @@ return {{
     config = function(plugin, opts)
         local lspconfig = require 'lspconfig'
         local lspkind = require 'lspkind'
-        local null_ls = require 'null-ls'
         local navic = require 'nvim-navic'
 
         vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
@@ -234,10 +232,6 @@ return {{
 
         lspkind.init({})
 
-        null_ls.setup({
-            on_attach = make_on_attach({}),
-            sources = { },
-        })
     end,
 }}
 

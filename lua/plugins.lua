@@ -115,7 +115,6 @@ return {
         'Saecki/crates.nvim',
         event = { 'BufRead Cargo.toml' },
         dependencies = {
-            'jose-elias-alvarez/null-ls.nvim',
             'nvim-lua/plenary.nvim',
         },
         opts = {
