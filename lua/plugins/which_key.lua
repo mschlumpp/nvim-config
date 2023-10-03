@@ -27,7 +27,7 @@ return {
                 h = { '<c-w>h', 'window-left' },
                 l = { '<c-w>l', 'window-right' },
 
-                m = { '<c-w>o', 'maximize' },
+                o = { '<c-w>o', 'only-this-window' },
                 c = { '<c-w>c', 'close' },
                 v = { '<c-w>v', 'split-vertical' },
                 s = { '<c-w>s', 'split-horizontal' },

@@ -105,11 +105,12 @@ return {
     },
     {
         'anuvyklack/windows.nvim',
-        dependencies = { 
+        dependencies = {
             'anuvyklack/middleclass',
         },
         keys = {
             { '<leader>ta', '<cmd>WindowsToggleAutowidth<cr>', { silent = true }, desc = 'autowidth' },
+            { '<leader>wm', '<cmd>WindowsMaximize<cr>', { silent = true }, desc = 'maximize' },
         },
         opts = {
             autowidth = {
