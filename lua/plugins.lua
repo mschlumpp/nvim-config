@@ -46,10 +46,10 @@ return {
         'kyazdani42/nvim-tree.lua',
         dependencies = {'kyazdani42/nvim-web-devicons'},
         cmd = {
-            'NvimTreeToggle', 
-            'NvimTreeFocus', 
+            'NvimTreeToggle',
+            'NvimTreeFocus',
             'NvimTreeFindFile',
-            'NvimTreeFindFileToggle', 
+            'NvimTreeFindFileToggle',
         },
         keys = {
             { '<F8>', function() require'nvim-tree.api'.tree.toggle { find_file = true, focus = true } end, { silent = true }, desc = 'nvim-tree-toggle' },
@@ -427,7 +427,7 @@ return {
 
         },
         opts = {
-            
+
         },
         config = function(plugin, opts)
             local perfanno = require 'perfanno'

@@ -58,7 +58,7 @@ return {
             ['~'] = { '<cmd>NvimTreeFindFile<cr>', 'tree-find-file' },
             l = { '<cmd>Telescope builtin<cr>', 'telescope' },
             r = { '<cmd>Telescope resume<cr>', 'resume-telescope'},
-            q = { 
+            q = {
                 name = "+quickfix",
                 q = { '<cmd>copen<cr>', 'open' },
                 c = { '<cmd>cclose<cr>', 'close' },
