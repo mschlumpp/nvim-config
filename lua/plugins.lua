@@ -133,10 +133,6 @@ return {
             'nvim-lua/plenary.nvim',
         },
         opts = {
-            null_ls = {
-                enabled = true,
-                name = "crates.nvim",
-            }
         },
         config = function(plugin, opts)
             require'crates'.setup(opts)
