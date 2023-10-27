@@ -314,6 +314,9 @@ return {
     },
     {
         'mschlumpp/quick-switch',
+        -- The plugin needs to keep track of buffers even if the keybind wasn't
+        -- used yet.
+        event = 'VeryLazy',
         dev = true,
         keys = {
             { '<leader>.', function() require 'quick-switch'.start_switch() end, 'quick-switch' },
