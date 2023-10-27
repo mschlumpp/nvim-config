@@ -31,7 +31,6 @@ return {
                 c = { '<c-w>c', 'close' },
                 v = { '<c-w>v', 'split-vertical' },
                 s = { '<c-w>s', 'split-horizontal' },
-                ['='] = { '<c-w>=', 'balance-windows' },
             },
             b = {
                 name = "+buffers",

@@ -111,6 +111,7 @@ return {
         keys = {
             { '<leader>ta', '<cmd>WindowsToggleAutowidth<cr>', { silent = true }, desc = 'autowidth' },
             { '<leader>wm', '<cmd>WindowsMaximize<cr>', { silent = true }, desc = 'maximize' },
+            { '<leader>w=', '<cmd>WindowsEqualize<cr>', { silent = true }, desc = 'balance-windows' },
         },
         opts = {
             autowidth = {
