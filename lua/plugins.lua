@@ -156,6 +156,10 @@ return {
         ft = 'nix',
     },
     {
+        'isobit/vim-caddyfile',
+        ft = 'caddyfile',
+    },
+    {
         'NoahTheDuke/vim-just',
         ft = {'just', 'Justfile'},
     },
