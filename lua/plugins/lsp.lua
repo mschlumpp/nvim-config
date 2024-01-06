@@ -95,6 +95,9 @@ return {{
                     },
                     cargo = {
                         loadOutDirsFromCheck = true,
+                        buildScripts = {
+                            enable = true,
+                        },
                     },
                 }
             }
