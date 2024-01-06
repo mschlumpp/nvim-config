@@ -28,21 +28,6 @@ return {
         'nyoom-engineering/oxocarbon.nvim'
     },
     {
-        'marcuscaisey/olddirs.nvim',
-        opts = {
-        },
-        keys = {
-            { '<leader>fo', function() require'telescope'.extensions.olddirs.picker() end, desc = 'olddirs' },
-        },
-        dependencies = {
-            'nvim-telescope/telescope.nvim',
-        },
-        config = function(plugin, opts)
-            require'olddirs'.setup(opts)
-            require'telescope'.load_extension('olddirs')
-        end,
-    },
-    {
         'kyazdani42/nvim-tree.lua',
         dependencies = {'kyazdani42/nvim-web-devicons'},
         cmd = {
@@ -286,45 +271,6 @@ return {
         end,
     },
     {
-        'nvim-telescope/telescope.nvim',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-lua/popup.nvim',
-            'nvim-telescope/telescope-ui-select.nvim',
-            'nvim-telescope/telescope-fzy-native.nvim',
-        },
-        cmd = 'Telescope',
-        opts = function()
-            return {
-                defaults = {
-                    winblend = 5,
-                    dynamic_preview_title = true,
-                    mappings = {
-                        i = {
-                            ['<c-n>'] = require'telescope.actions'.cycle_history_next,
-                            ['<c-p>'] = require'telescope.actions'.cycle_history_prev,
-                            ['<c-j>'] = require'telescope.actions'.move_selection_next,
-                            ['<c-k>'] = require'telescope.actions'.move_selection_previous,
-                        }
-                    },
-                },
-                extensions = {
-                    ['ui-select'] = {
-                        require("telescope.themes").get_cursor {
-                        }
-                    },
-                },
-            }
-        end,
-        config = function(plugin, opts)
-            local telescope = require 'telescope'
-            telescope.setup(opts)
-            -- FIXME: Fix lazy ui-select
-            telescope.load_extension('ui-select')
-            telescope.load_extension('fzy_native')
-        end,
-    },
-    {
         'mschlumpp/quick-switch',
         -- The plugin needs to keep track of buffers even if the keybind wasn't
         -- used yet.
@@ -468,6 +414,14 @@ return {
                 end,
             })
         end,
+    },
+    {
+        'ibhagwan/fzf-lua',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        opts = {
+        },
     },
     {
         'junegunn/fzf.vim',

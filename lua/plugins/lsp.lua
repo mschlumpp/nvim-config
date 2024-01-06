@@ -2,6 +2,7 @@ return {{
     'neovim/nvim-lspconfig',
     event = 'BufReadPre',
     dependencies = {
+        'ibhagwan/fzf-lua',
         'onsails/lspkind-nvim',
         'gfanto/fzf-lsp.nvim',
         {
@@ -147,7 +148,7 @@ return {{
                 buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
                 buf_set_keymap('i', '<c-q>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
                 buf_set_keymap('n', '<leader>cn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-                buf_set_keymap('n', '<M-CR>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+                buf_set_keymap('n', '<M-CR>', '<cmd>FzfLua lsp_code_actions<CR>', opts)
                 buf_set_keymap('v', '<M-CR>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
                 buf_set_keymap('n', ']g', '<cmd>lua vim.diagnostic.goto_next({ float = true, popup_opts = { border = "single"}})<cr>', opts)
                 buf_set_keymap('n', '[g', '<cmd>lua vim.diagnostic.goto_prev({ float = true, popup_opts = { border = "single"}})<cr>', opts)

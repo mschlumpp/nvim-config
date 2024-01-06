@@ -16,7 +16,7 @@ return {
             f = {
                 name = "+files",
                 f = { '<cmd>RnvimrToggle<cr>', 'file-explorer' },
-                r = { '<cmd>Telescope oldfiles<cr>', 'history' },
+                r = { '<cmd>FzfLua oldfiles<cr>', 'history' },
                 s = { '<cmd>write<cr>', 'write-file' },
                 S = { '<cmd>wall<cr>', 'write-all-file' },
             },
@@ -35,7 +35,7 @@ return {
             b = {
                 name = "+buffers",
                 k = { '<cmd>Sayonara!<cr>', 'kill-buffer' },
-                b = { '<cmd>Telescope buffers sort_mru=true<cr>', 'switch-buffer' },
+                b = { '<cmd>FzfLua buffers<cr>', 'switch-buffer' },
             },
             t = {
                 name = "+options",
@@ -49,23 +49,23 @@ return {
             },
             s = {
                 name = "+search",
-                p = { '<cmd>Telescope live_grep<cr>', 'ripgrep' },
-                b = { '<cmd>Telescope current_buffer_fuzzy_find<cr>', 'buffer-lines' },
-                s = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', 'lsp-workspace-symbols' },
+                p = { '<cmd>FzfLua live_grep<cr>', 'ripgrep' },
+                b = { '<cmd>FzfLua lines<cr>', 'buffer-lines' },
+                s = { '<cmd>FzfLua lsp_live_workspace_symbols<cr>', 'lsp-workspace-symbols' },
             },
             ['`'] = { '<cmd>NvimTreeToggle<cr>', 'tree-toggle' },
             ['~'] = { '<cmd>NvimTreeFindFile<cr>', 'tree-find-file' },
-            l = { '<cmd>Telescope builtin<cr>', 'telescope' },
-            r = { '<cmd>Telescope resume<cr>', 'resume-telescope'},
+            l = { '<cmd>FzfLua<cr>', 'fzf' },
+            r = { '<cmd>FzfLua resume<cr>', 'resume-fzf'},
             q = {
                 name = "+quickfix",
                 q = { '<cmd>copen<cr>', 'open' },
                 c = { '<cmd>cclose<cr>', 'close' },
                 p = { '<cmd>colder<cr>', 'older-list' },
                 n = { '<cmd>cnewer<cr>', 'newer-list' },
-                h = { '<cmd>Telescope quickfixhistory<cr>', 'list-history' },
+                h = { '<cmd>FzfLua quickfix_stack<cr>', 'list-history' },
             },
-            ['<space>'] = { '<cmd>Telescope find_files<cr>', 'find-file' },
+            ['<space>'] = { '<cmd>FzfLua files<cr>', 'find-file' },
         }, { prefix = "<leader>" })
 
         -- vim.api.nvim_set_var('which_key_map', which_key_map)
