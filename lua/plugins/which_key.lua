@@ -52,6 +52,7 @@ return {
                 p = { '<cmd>FzfLua live_grep<cr>', 'ripgrep' },
                 b = { '<cmd>FzfLua lines<cr>', 'buffer-lines' },
                 s = { '<cmd>FzfLua lsp_live_workspace_symbols<cr>', 'lsp-workspace-symbols' },
+                d = { '<cmd>FzfLua lsp_document_symbols<cr>', 'lsp-document-symbols' },
             },
             ['`'] = { '<cmd>NvimTreeToggle<cr>', 'tree-toggle' },
             ['~'] = { '<cmd>NvimTreeFindFile<cr>', 'tree-find-file' },
