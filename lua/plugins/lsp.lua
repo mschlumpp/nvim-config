@@ -66,6 +66,7 @@ return {{
                 }
             end,
         },
+        lua_ls = { },
         zls = { },
         html = {
             cmd = {"vscode-html-languageserver"}
