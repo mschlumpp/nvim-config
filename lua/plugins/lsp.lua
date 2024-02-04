@@ -46,9 +46,8 @@ return {{
         omnisharp = {
             cmd = {"omnisharp", "--languageserver", "--hostPid", tostring(pid)}
         },
-        jsonls = {
-            cmd = {"vscode-json-languageserver"}
-        },
+        jsonls = { },
+        yamlls = { },
         tsserver = { },
         ltex = {
             settings = {
