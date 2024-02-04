@@ -183,6 +183,12 @@ return {
         cmd = 'StartupTime',
     },
     {
+        'Bekaboo/deadcolumn.nvim',
+        event = 'VeryLazy',
+        opts = {
+        },
+    },
+    {
         'tpope/vim-fugitive',
         cmd = 'Git',
         keys = {
