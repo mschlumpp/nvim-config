@@ -249,12 +249,17 @@ return {
         end,
     },
     {
-        'ggandor/leap.nvim',
-        event = "VeryLazy",
-        dependencies = {'tpope/vim-repeat'},
-        config = function()
-            require'leap'.add_default_mappings()
-        end,
+        'folke/flash.nvim',
+        event = 'VeryLazy',
+        ---@type Flash.Config
+        opts = {},
+        keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "flash-treesitter" },
+            { "r", mode = "o", function() require("flash").remote() end, desc = "flash-remote" },
+            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "flash-treesitter" },
+            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "flash-search-toggle" },
+        }
     },
     {
         "folke/zen-mode.nvim",
