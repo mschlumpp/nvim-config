@@ -326,6 +326,15 @@ return {
         opts = {},
     },
     {
+        'rcarriga/nvim-notify',
+        event = 'VeryLazy',
+        opts = {},
+        setup = function(plugins, opts)
+            require 'notify'.setup(opts)
+            vim.notify = require 'notify'
+        end,
+    },
+    {
         'lambdalisue/suda.vim',
         cmd = {'SudaRead', 'SudaWrite'},
     },
