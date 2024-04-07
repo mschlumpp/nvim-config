@@ -101,15 +101,15 @@ vim.filetype.add({
     },
 })
 
-local unikraft_group = vim.api.nvim_create_augroup('unikraft', { clear = true })
+local uk_group = vim.api.nvim_create_augroup('unikraft', { })
 vim.api.nvim_create_autocmd('FileType', {
+    group = uk_group,
     pattern = {'make', 'kconfig'},
     callback = function()
         vim.opt_local.shiftwidth = 8
         vim.opt_local.tabstop = 8
         vim.opt_local.expandtab = false
     end,
-    group = unikraft_group,
 })
 
 -- some additional keybinds
