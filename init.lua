@@ -38,6 +38,7 @@ option('cursorline', true, window)
 option('wildmenu', false)
 option('inccommand', 'split')
 option('list', true, window)
+option('mousemodel', 'extend')
 vim.opt.formatoptions:remove { 't' }
 vim.opt.formatoptions:append { '/' }
 
