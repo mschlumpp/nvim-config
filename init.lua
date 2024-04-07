@@ -112,6 +112,13 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+vim.filetype.add({
+    filename = {
+        ['Kraftfile'] = 'yaml',
+        ['.swcrc'] = 'json',
+    },
+})
+
 -- some additional keybinds
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cn<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '[q', '<cmd>cp<cr>', { silent = true, noremap = true })
