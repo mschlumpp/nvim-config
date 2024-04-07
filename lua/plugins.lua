@@ -268,6 +268,12 @@ return {
         }
     },
     {
+        'folke/todo-comments.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        event = 'VeryLazy',
+        opts = { },
+    },
+    {
         "folke/zen-mode.nvim",
         dependencies = {'folke/twilight.nvim'},
         opts = {
