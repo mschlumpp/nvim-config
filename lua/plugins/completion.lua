@@ -84,11 +84,8 @@ return {{
             },
         })
 
-        cmp.setup.cmdline('/', {
+        cmp.setup.cmdline({ '/', '?' }, {
             mapping = cmp.mapping.preset.cmdline(),
-            view = {
-                entries = {name = 'custom', selection_order = 'near_cursor' },
-            },
             sources = {
                 { name = 'buffer' }
             },
@@ -96,9 +93,6 @@ return {{
 
         cmp.setup.cmdline(':', {
             mapping = cmp.mapping.preset.cmdline(),
-            view = {
-                entries = {name = 'custom', selection_order = 'near_cursor' },
-            },
             sources = cmp.config.sources({
                 { name = 'path' }
             }, {
