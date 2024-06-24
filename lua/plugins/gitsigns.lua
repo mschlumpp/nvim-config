@@ -41,11 +41,5 @@ return {{
             -- Text object
             map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
         end,
-        signs = {
-            add = {hl = 'GitGutterAdd'},
-            change = {hl = 'GitGutterModify'},
-            delete = {hl = 'GitGutterDelete'},
-            changedelete = {hl = 'GitGutterChangeDelete'},
-        }
     }
 }}
