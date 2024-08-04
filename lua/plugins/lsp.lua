@@ -71,6 +71,7 @@ return {{
         html = {
             cmd = {"vscode-html-languageserver"}
         },
+        nixd = { },
         rust_analyzer = {
             cmd = {"rust-analyzer"},
             flags = {
