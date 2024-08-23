@@ -274,6 +274,9 @@ return {
         opts = { },
     },
     {
+        'wsdjeg/vim-fetch'
+    },
+    {
         "folke/zen-mode.nvim",
         dependencies = {'folke/twilight.nvim'},
         opts = {
