@@ -437,6 +437,7 @@ return {
             -- Automatically update colors on colorscheme change
             local color_autocmd = vim.api.nvim_create_augroup("PerfannoColorUpdate", { clear = true })
             vim.api.nvim_create_autocmd({'ColorScheme'}, {
+                group = color_autocmd,
                 callback = function(ev)
                     config.load(generate_color_config(opts))
                 end,
