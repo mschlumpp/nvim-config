@@ -281,9 +281,6 @@ return {
                     number = false,
                 },
             },
-            plugins = {
-                gitsigns = { enabled = true },
-            },
         },
         keys = {
             {'<leader>tz', function() require'zen-mode'.toggle() end, desc = 'zen-mode'},
