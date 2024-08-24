@@ -149,10 +149,6 @@ return {
         ft = {'just', 'Justfile'},
     },
     {
-        'bazelbuild/vim-ft-bzl',
-        ft = 'bzl',
-    },
-    {
         'barreiroleo/ltex_extra.nvim',
     },
     {
