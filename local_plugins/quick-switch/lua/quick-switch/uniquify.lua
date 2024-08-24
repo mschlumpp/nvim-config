@@ -22,7 +22,7 @@ local function uniquify2(pathlist)
                 if #path[2] == 0 then
                     -- Use full name for last path element
                     s = last
-                else 
+                else
                     -- Or shorten path to one 'significant' character
                     s = last:sub(1, 1)
                     if s == '.' then
@@ -35,7 +35,7 @@ local function uniquify2(pathlist)
                 if #path[1] ~= 0 then
                     -- only continue process if there are more components to consider
                     table.insert(forward_arr, path)
-                else 
+                else
                     -- mark path as absolute by inserting empty string
                     table.insert(path[2], '')
                 end
@@ -84,7 +84,7 @@ local function uniquify(pathlist)
 end
 
 local function test_uniquify()
-    input = {
+    local input = {
         {'home', 'marco', 'tmp', 'Cargo.toml'},
         {'home', 'marco', 'tmp', 'src', 'main.rs'},
         {'home', 'marco', 'Projekte', 'dmt', 'src', 'lib.rs'},
