@@ -247,6 +247,7 @@ return {
     {
         'folke/flash.nvim',
         event = 'VeryLazy',
+        ---@module 'flash'
         ---@type Flash.Config
         opts = {
             modes = {
@@ -268,6 +269,11 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         event = 'VeryLazy',
         opts = { },
+    },
+    {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {},
     },
     {
         'wsdjeg/vim-fetch'
