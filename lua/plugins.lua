@@ -62,6 +62,18 @@ return {
         event = 'BufReadPre',
     },
     {
+        'stevearc/quicker.nvim',
+        event = 'FileType qf',
+        ---@module 'quicker'
+        ---@type quicker.SetupOptions
+        opts = {
+            keys = {
+                { '>', function() require'quicker'.expand({ before = 2, after = 2, add_to_existing = true }) end, desc = 'expand qf content' },
+                { '<', function() require'quicker'.collapse() end, desc = 'expand qf content' },
+            }
+        },
+    },
+    {
         'kevinhwang91/nvim-bqf',
         event = "VeryLazy",
     },
