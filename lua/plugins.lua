@@ -288,7 +288,8 @@ return {
         opts = {},
     },
     {
-        'wsdjeg/vim-fetch'
+        'wsdjeg/vim-fetch',
+        lazy = false,
     },
     {
         "folke/zen-mode.nvim",
