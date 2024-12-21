@@ -7,9 +7,11 @@ return {
             ensure_installed = "all",
             highlight = {
                 enable = true,
-                -- when nvim lsp/clangd highlighting works 
+                -- when nvim lsp/clangd highlighting works
                 -- disable = { "cpp", "c" },
-                disable = { 'help' },
+                disable = {
+                    'help',
+                },
             },
             refactor = {
                 highlight_definitions = {
@@ -32,4 +34,3 @@ return {
     },
     'nvim-treesitter/nvim-treesitter-refactor',
 }
-
