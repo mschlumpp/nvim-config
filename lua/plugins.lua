@@ -309,11 +309,10 @@ return {
         end,
     },
     {
-        'mschlumpp/quick-switch',
+        'mschlumpp/quick-switch.nvim',
         -- The plugin needs to keep track of buffers even if the keybind wasn't
         -- used yet.
         event = 'VeryLazy',
-        dev = true,
         keys = {
             { '<leader>.', function() require 'quick-switch'.start_switch() end, 'quick-switch' },
         },
