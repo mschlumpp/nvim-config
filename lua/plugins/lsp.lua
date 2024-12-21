@@ -19,11 +19,6 @@ return {{
                 },
             },
         },
-        {
-            'lvimuser/lsp-inlayhints.nvim',
-            branch = "anticonceal",
-            opts = { },
-        },
     },
     opts = {
         clangd = {
@@ -134,7 +129,7 @@ return {{
 
         local pid = vim.fn.getpid()
 
-        local function make_on_attach(config) 
+        local function make_on_attach(config)
             return function(client, bufnr)
                 local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
                 local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -187,8 +182,12 @@ return {{
                     navic.attach(client, bufnr)
                 end
 
-                require'lsp-inlayhints'.on_attach(client, bufnr)
-                buf_set_keymap('n', '<leader>th', '<cmd>lua require"lsp-inlayhints".toggle()<cr>', { desc = 'inlay-hints' })
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+                    vim.keymap.set('n', '<leader>th', function ()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { lbufnr = bufnr })
+                    end, { buffer = bufnr, silent = true, desc = 'inlay-hints'})
+                end
 
                 if config.after then config.after(client, bufnr) end
                 if config.chain then config.chain(client, bufnr) end
@@ -221,7 +220,7 @@ return {{
 
             config.on_attach = make_on_attach(config)
             config.capabilities = vim.tbl_deep_extend('force',
-                vim.lsp.protocol.make_client_capabilities(), 
+                vim.lsp.protocol.make_client_capabilities(),
                 require'cmp_nvim_lsp'.default_capabilities(),
                 snippet_capabilities
             )
@@ -236,7 +235,6 @@ return {{
         }
 
         lspkind.init({})
-
     end,
 }}
 
