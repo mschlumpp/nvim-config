@@ -43,7 +43,7 @@ return {{
         },
         jsonls = { },
         yamlls = { },
-        tsserver = { },
+        ts_ls = { },
         ltex = {
             settings = {
                 ltex = {
