@@ -38,9 +38,6 @@ return {{
         },
         gopls = { },
         pyright = { },
-        omnisharp = {
-            cmd = {"omnisharp", "--languageserver", "--hostPid", tostring(pid)}
-        },
         jsonls = { },
         yamlls = { },
         ts_ls = { },
