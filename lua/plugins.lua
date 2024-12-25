@@ -339,7 +339,6 @@ return {
             { '<c-p>', '<Plug>(YankyCycleBackward)'},
             { '<m-p>', '<cmd>YankyRingHistory<cr>'},
         },
-        opts = {},
     },
     {
         'rcarriga/nvim-notify',
