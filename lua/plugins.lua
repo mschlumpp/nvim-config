@@ -294,6 +294,8 @@ return {
     {
         "folke/zen-mode.nvim",
         dependencies = {'folke/twilight.nvim'},
+        ---@module 'zen-mode'
+        ---@type ZenOptions
         opts = {
             window = {
                 options = {
