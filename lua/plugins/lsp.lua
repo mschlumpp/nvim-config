@@ -180,7 +180,7 @@ return {{
                 if client.server_capabilities.inlayHintProvider then
                     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                     vim.keymap.set('n', '<leader>th', function ()
-                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { lbufnr = bufnr })
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
                     end, { buffer = bufnr, silent = true, desc = 'inlay-hints'})
                 end
 
