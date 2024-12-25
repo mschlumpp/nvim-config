@@ -124,8 +124,6 @@ return {{
             }
         )
 
-        local pid = vim.fn.getpid()
-
         local function make_on_attach(config)
             return function(client, bufnr)
                 local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
