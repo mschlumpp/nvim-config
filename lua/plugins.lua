@@ -137,15 +137,29 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
         },
-        opts = {
-            src = {
-                cmp = {
-                    enabled = true
-                },
-            },
+        keys = {
+            { '<leader>mi', function() require 'crates'.show_popup() end,              desc = "info-popup" },
+            { '<leader>mv', function() require 'crates'.show_versions_popup() end,     desc = "version-popup" },
+            { '<leader>md', function() require 'crates'.show_dependencies_popup() end, desc = "dependency-popup" },
+            { '<leader>mf', function() require 'crates'.show_features_popup() end,     desc = "feature-popup" },
         },
-        config = function(plugin, opts)
-            require'crates'.setup(opts)
+        opts = function(plugin)
+            ---@module 'crates'
+            ---@type crates.UserConfig
+            return {
+                completion = {
+                    crates = {
+                        enabled = true,
+                    },
+                },
+                lsp = {
+                    enabled = true,
+                    actions = true,
+                    hover = true,
+                    completion = true,
+                    on_attach = require 'lsp-utils'.make_on_attach({})
+                },
+            }
         end,
     },
     {
