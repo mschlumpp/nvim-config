@@ -189,23 +189,6 @@ return {{
             end
         end
 
-        local snippet_capabilities = {
-            textDocument = {
-                completion = {
-                    completionItem = {
-                        snippetSupport = true,
-                        resolveSupport = {
-                            properties = {
-                                'documentation',
-                                'detail',
-                                'additionalTextEdits',
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         for server, config in pairs(opts) do
             if type(config) == 'function' then
                 config = config()
