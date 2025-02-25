@@ -30,6 +30,16 @@ return {
         },
         config = function(plugin, opts)
             require 'nvim-treesitter.configs'.setup(opts)
+
+            local parser_config = require 'nvim-treesitter.parsers'.get_parser_configs()
+            parser_config['jjdescription'] = {
+                install_info = {
+                    url = "https://github.com/kareigu/tree-sitter-jjdescription.git",
+                    files = { "src/parser.c" },
+                    branch = "dev",
+                },
+                filetype = "jj",
+            }
         end,
     },
     'nvim-treesitter/nvim-treesitter-refactor',
