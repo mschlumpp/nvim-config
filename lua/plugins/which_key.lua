@@ -26,6 +26,8 @@ return {
             { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "history" },
             { "<leader>fs", "<cmd>write<cr>", desc = "write-file" },
             { "<leader>g", group = "git" },
+            { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "git-status" },
+            { "<leader>gh", "<cmd>FzfLua git_bcommits<cr>", desc = "git-bcommits" },
             { "<leader>l", "<cmd>FzfLua<cr>", desc = "fzf" },
             { "<leader>q", group = "quickfix" },
             { "<leader>qc", "<cmd>cclose<cr>", desc = "close" },
