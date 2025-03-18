@@ -86,10 +86,6 @@ return {
         end,
     },
     {
-        'mhinz/vim-sayonara',
-        cmd = {'Sayonara'},
-    },
-    {
         'nyngwang/NeoZoom.lua',
         keys = {
             { '<leader>z', function() require 'neo-zoom'.neo_zoom({}) end, { silent = true }, desc = 'zoom-window' },
@@ -218,22 +214,22 @@ return {
             { '<leader>gG', '<cmd>Git<cr>', { silent = true }, desc = 'fugitive' },
         }
     },
-    {
-        'kdheepak/lazygit.nvim',
-        cmd = {
-            'LazyGit',
-            'LazyGitConfig',
-            'LazyGitFilter',
-            'LazyGitCurrentFile',
-            'LazyGitFilterCurrentFile',
-        },
-        keys = {
-            { '<leader>gg', '<cmd>LazyGit<cr>', { silent = true }, desc = 'lazy-git' },
-        },
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-        },
-    },
+    -- {
+    --     'kdheepak/lazygit.nvim',
+    --     cmd = {
+    --         'LazyGit',
+    --         'LazyGitConfig',
+    --         'LazyGitFilter',
+    --         'LazyGitCurrentFile',
+    --         'LazyGitFilterCurrentFile',
+    --     },
+    --     keys = {
+    --         { '<leader>gg', '<cmd>LazyGit<cr>', { silent = true }, desc = 'lazy-git' },
+    --     },
+    --     dependencies = {
+    --         'nvim-lua/plenary.nvim',
+    --     },
+    -- },
     {
         'numToStr/Comment.nvim',
         event = "BufRead",
@@ -295,6 +291,9 @@ return {
         'folke/todo-comments.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         event = 'VeryLazy',
+        keys = {
+            { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "todo-comments" },
+        },
         opts = {},
     },
     {
@@ -323,6 +322,137 @@ return {
         },
         config = function(plugin, opts)
             require("zen-mode").setup(opts)
+        end,
+    },
+    {
+        'folke/snacks.nvim',
+        keys = {
+            { "<leader>bk",      function() Snacks.bufdelete() end,                         desc = "kill-buffer" },
+            { "<leader>fe",      function() Snacks.explorer() end,                          desc = "explorer" },
+            { "<leader>gg",      function() Snacks.lazygit() end,                           desc = "lazygit" },
+            { "<leader>;",       function() Snacks.scratch() end,                           desc = "toggle-scratch" },
+            { "<leader>:",       function() Snacks.scratch.select() end,                    desc = "select-scratch" },
+            { '<leader>M',       function() Snacks.picker.notifications() end,              desc = 'message-history' },
+            { "<leader><space>", function() Snacks.picker.smart() end,                      desc = "find-file" },
+            { "<leader>bb",      function() Snacks.picker.buffers() end,                    desc = "switch-buffer" },
+            { "<leader>sp",      function() Snacks.picker.grep({ limit = 10000 }) end,      desc = "live-grep" },
+            { "<leader>sP",      function() Snacks.picker.grep_word({ limit = 10000 }) end, desc = "live-grep-word" },
+            { "<leader>sb",      function() Snacks.picker.lines() end,                      desc = "buffer-lines" },
+            { "<leader>fr",      function() Snacks.picker.recent({ limit = 10000 }) end,    desc = "recent-files" },
+            { "<leader>r",       function() Snacks.picker.resume() end,                     desc = "resume" },
+            { "<leader>l",       function() Snacks.picker.pickers() end,                    desc = "pickers" },
+            { "<c-\\>",          function() Snacks.terminal.toggle() end,                   desc = "terminal" },
+            -- FIXME: Set these keys only for lsp buffers
+            { "<leader>sd",      function() Snacks.picker.lsp_symbols() end,                desc = "lsp-document-symbols" },
+            { "<leader>ss",      function() Snacks.picker.lsp_workspace_symbols() end,      desc = "lsp-workspace-symbols" },
+            { "gd",              function() Snacks.picker.lsp_definitions() end,            desc = "lsp-definitions" },
+            { "gD",              function() Snacks.picker.lsp_declarations() end,           desc = "lsp-declarations" },
+            { "gr",              function() Snacks.picker.lsp_references() end,             desc = "lsp-references" },
+            { "gi",              function() Snacks.picker.lsp_implementations() end,        desc = "lsp-implementations" },
+            { "gy",              function() Snacks.picker.lsp_type_definitions() end,       desc = "lsp-type-definitions" },
+        },
+        priority = 1000,
+        lazy = false,
+        ---@module 'snacks'
+        ---@type snacks.Config
+        opts = {
+            explorer = {
+                enabled = true,
+            },
+            lazygit = {
+                enabled = true,
+            },
+            toggle = {
+                color = {
+                    enabled = 'green',
+                    disabled = 'red',
+                },
+                wk_desc = {
+                    enabled = ' enable ',
+                    disabled = ' disabled ',
+                }
+            },
+            notifier = {
+                enabled = true,
+            },
+            input = {
+                enabled = true,
+            },
+            quickfile = {
+                enabled = true,
+            },
+            statuscolumn = {
+                enabled = true,
+            },
+            picker = {
+                enabled = true,
+            },
+            scratch = {
+                enabled = true
+            },
+            styles = {
+                terminal = {
+                    keys = {
+                        toggle = {
+                            '<c-\\>',
+                            'toggle',
+                            mode = 't',
+                        },
+                        -- Modification of upstream default: Only send <esc> after the timeout.
+                        -- The benefit is that there won't be any unnecessary <esc> visible to
+                        -- the program, the downside is that <esc><other key> sequences invert.
+                        -- (<esc><esc> doesn't work for some reason)
+                        term_normal = {
+                            "<esc>",
+                            function(self)
+                                self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+                                if self.esc_timer:is_active() then
+                                    self.esc_timer:stop()
+                                    vim.cmd("stopinsert")
+                                else
+                                    self.esc_timer:start(200, 0, function()
+                                        vim.schedule(function()
+                                            vim.api.nvim_chan_send(vim.b.terminal_job_id, "")
+                                        end)
+                                    end)
+                                    return "<Ignore>"
+                                end
+                            end,
+                            mode = "t",
+                            expr = true,
+                            desc = "Double escape to normal mode",
+                        },
+                    },
+                },
+            },
+            terminal = {
+                enabled = true,
+            },
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("User", {
+                pattern = 'VeryLazy',
+                callback = function()
+                    -- Debug helpers
+                    _G.dd = function(...)
+                        Snacks.debug.inspect(...)
+                    end
+                    _G.bt = function(...)
+                        Snacks.debug.backtrace()
+                    end
+                    vim.print = _G.dd
+
+                    -- Toggle bindings
+                    Snacks.toggle.option('spell', { name = 'spelling' }):map('<leader>ts')
+                    Snacks.toggle.option('wrap', { name = 'wrapping' }):map('<leader>tw')
+                    Snacks.toggle.diagnostics({ name = 'diagnostics' }):map('<leader>td')
+                    Snacks.toggle.treesitter({ name = 'treesitter' }):map('<leader>tT')
+                    Snacks.toggle.inlay_hints({ name = 'inlay-hints' }):map('<leader>th')
+                    Snacks.toggle.indent():map('<leader>ti')
+                    Snacks.toggle.dim():map('<leader>tD')
+                    -- Snacks.toggle.zen():map('<leader>tz')
+                end,
+            })
         end,
     },
     {
@@ -355,15 +485,14 @@ return {
             { '<m-p>', '<cmd>YankyRingHistory<cr>' },
         },
     },
-    {
-        'rcarriga/nvim-notify',
-        event = 'VeryLazy',
-        opts = {},
-        setup = function(plugins, opts)
-            require 'notify'.setup(opts)
-            vim.notify = require 'notify'
-        end,
-    },
+    -- {
+    --     'rcarriga/nvim-notify',
+    --     event = 'VeryLazy',
+    --     opts = {},
+    --     init = function(plugins, opts)
+    --         vim.notify = require 'notify'
+    --     end,
+    -- },
     {
         'lambdalisue/suda.vim',
         cmd = { 'SudaRead', 'SudaWrite' },
