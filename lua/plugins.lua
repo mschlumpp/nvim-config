@@ -364,10 +364,10 @@ return {
         'folke/snacks.nvim',
         keys = {
             { "<leader>bk",      function() Snacks.bufdelete() end,                         desc = "kill-buffer" },
-            { "<leader>fe",      function() Snacks.explorer() end,                          desc = "explorer" },
             { "<leader>gg",      function() Snacks.lazygit() end,                           desc = "lazygit" },
             { "<leader>;",       function() Snacks.scratch() end,                           desc = "toggle-scratch" },
             { "<leader>:",       function() Snacks.scratch.select() end,                    desc = "select-scratch" },
+            { "<leader>fp",      function() Snacks.picker.projects() end,                   desc = "projects" },
             { '<leader>M',       function() Snacks.picker.notifications() end,              desc = 'message-history' },
             { "<leader><space>", function() Snacks.picker.smart() end,                      desc = "find-file" },
             { "<leader>bb",      function() Snacks.picker.buffers() end,                    desc = "switch-buffer" },
@@ -381,6 +381,25 @@ return {
 
             { "<leader>sd",      function() Snacks.picker.lsp_symbols() end,                desc = "lsp-document-symbols" },
             { "<leader>ss",      function() Snacks.picker.lsp_workspace_symbols() end,      desc = "lsp-workspace-symbols" },
+
+            -- Nicer explorer binding: https://github.com/folke/snacks.nvim/discussions/1273
+            {
+                "<leader>`",
+                function()
+                    local pickers = Snacks.picker.get({ source = 'explorer' })
+                    for _, v in pairs(pickers) do
+                        if v:is_focused() then
+                            v:close()
+                        else
+                            v:focus()
+                        end
+                    end
+                    if #pickers == 0 then
+                        Snacks.picker.explorer()
+                    end
+                end,
+                desc = "explorer"
+            },
         },
         priority = 1000,
         lazy = false,
