@@ -406,6 +406,24 @@ return {
         ---@module 'snacks'
         ---@type snacks.Config
         opts = {
+            dashboard = {
+                sections = {
+                    { section = 'header',       padding = 1 },
+                    { section = 'keys',         indent = 2,             padding = 2 },
+                    { section = 'recent_files', title = 'Recent Files', indent = 2, padding = 2 },
+                    { section = 'projects',     title = 'Projects',     indent = 2, padding = 2 },
+                    {
+                        section = 'terminal',
+                        title = 'Git status',
+                        enabled = function () return Snacks.git.get_root() ~= nil end,
+                        cmd = 'git diff --stat -B -M -C',
+                        padding = 2,
+                        height = 8,
+                        indent = 1,
+                    },
+                    { section = 'startup' },
+                },
+            },
             explorer = {
                 enabled = true,
             },
