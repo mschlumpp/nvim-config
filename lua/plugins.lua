@@ -505,7 +505,7 @@ return {
                     _G.dd = function(...)
                         Snacks.debug.inspect(...)
                     end
-                    _G.bt = function(...)
+                    _G.bt = function()
                         Snacks.debug.backtrace()
                     end
                     vim.print = _G.dd
@@ -518,7 +518,6 @@ return {
                     Snacks.toggle.inlay_hints({ name = 'inlay-hints' }):map('<leader>th')
                     Snacks.toggle.indent():map('<leader>ti')
                     Snacks.toggle.dim():map('<leader>tD')
-                    -- Snacks.toggle.zen():map('<leader>tz')
                 end,
             })
         end,
