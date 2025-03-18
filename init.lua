@@ -129,19 +129,17 @@ vim.api.nvim_set_keymap('', '<m-c-down>', '<c-w>j', { silent = true, noremap = t
 vim.api.nvim_set_keymap('', '<m-c-left>', '<c-w>h', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<m-c-right>', '<c-w>l', { silent = true, noremap = true })
 -- Same for the terminal
-for i, mode in ipairs{'t', 'i'} do
-    vim.api.nvim_set_keymap(mode, '<m-c-up>', '<C-\\><C-N><c-w>k', { silent = true, noremap = true })
-    vim.api.nvim_set_keymap(mode, '<m-c-down>', '<C-\\><C-N><c-w>j', { silent = true, noremap = true })
-    vim.api.nvim_set_keymap(mode, '<m-c-left>', '<C-\\><C-N><c-w>h', { silent = true, noremap = true })
-    vim.api.nvim_set_keymap(mode, '<m-c-right>', '<C-\\><C-N><c-w>l', { silent = true, noremap = true })
-end
+vim.keymap.set({'t', 'i'}, '<m-c-up>', '<C-\\><C-N><c-w>k', { silent = true, noremap = true })
+vim.keymap.set({'t', 'i'}, '<m-c-down>', '<C-\\><C-N><c-w>j', { silent = true, noremap = true })
+vim.keymap.set({'t', 'i'}, '<m-c-left>', '<C-\\><C-N><c-w>h', { silent = true, noremap = true })
+vim.keymap.set({'t', 'i'}, '<m-c-right>', '<C-\\><C-N><c-w>l', { silent = true, noremap = true })
 
 vim.keymap.set('n', '<m-k>', '<c-w>k', { silent = true, noremap = true })
 vim.keymap.set('n', '<m-j>', '<c-w>j', { silent = true, noremap = true })
 vim.keymap.set('n', '<m-h>', '<c-w>h', { silent = true, noremap = true })
 vim.keymap.set('n', '<m-l>', '<c-w>l', { silent = true, noremap = true })
 
-vim.keymap.set('t', '<esc>', function () 
+vim.keymap.set('t', '<esc>', function ()
     local ft = vim.bo.filetype
     if ft == 'fzf' or ft == 'lazygit' then
         return '<esc>'
