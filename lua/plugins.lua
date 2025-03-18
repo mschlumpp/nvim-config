@@ -397,14 +397,9 @@ return {
             { "<leader>r",       function() Snacks.picker.resume() end,                     desc = "resume" },
             { "<leader>l",       function() Snacks.picker.pickers() end,                    desc = "pickers" },
             { "<c-\\>",          function() Snacks.terminal.toggle() end,                   desc = "terminal" },
-            -- FIXME: Set these keys only for lsp buffers
+
             { "<leader>sd",      function() Snacks.picker.lsp_symbols() end,                desc = "lsp-document-symbols" },
             { "<leader>ss",      function() Snacks.picker.lsp_workspace_symbols() end,      desc = "lsp-workspace-symbols" },
-            { "gd",              function() Snacks.picker.lsp_definitions() end,            desc = "lsp-definitions" },
-            { "gD",              function() Snacks.picker.lsp_declarations() end,           desc = "lsp-declarations" },
-            { "gr",              function() Snacks.picker.lsp_references() end,             desc = "lsp-references" },
-            { "gi",              function() Snacks.picker.lsp_implementations() end,        desc = "lsp-implementations" },
-            { "gy",              function() Snacks.picker.lsp_type_definitions() end,       desc = "lsp-type-definitions" },
         },
         priority = 1000,
         lazy = false,
