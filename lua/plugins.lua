@@ -18,7 +18,7 @@ return {
         'projekt0n/github-nvim-theme',
         lazy = false,
         priority = 1000,
-        opts = { },
+        opts = {},
         config = function(plugin, opts)
             require("github-theme").setup(opts)
             vim.cmd.colorscheme('github_dark_high_contrast')
@@ -29,7 +29,7 @@ return {
     },
     {
         'kyazdani42/nvim-tree.lua',
-        dependencies = {'kyazdani42/nvim-web-devicons'},
+        dependencies = { 'kyazdani42/nvim-web-devicons' },
         cmd = {
             'NvimTreeToggle',
             'NvimTreeFocus',
@@ -37,7 +37,7 @@ return {
             'NvimTreeFindFileToggle',
         },
         keys = {
-            { '<F8>', function() require'nvim-tree.api'.tree.toggle { find_file = true, focus = true } end, { silent = true }, desc = 'nvim-tree-toggle' },
+            { '<F8>', function() require 'nvim-tree.api'.tree.toggle { find_file = true, focus = true } end, { silent = true }, desc = 'nvim-tree-toggle' },
         },
         opts = {
             on_attach = function(bufnr)
@@ -50,10 +50,10 @@ return {
         'nanotech/jellybeans.vim',
         config = function(plugin)
             vim.g.jellybeans_overrides = {
-                GitGutterAdd = {guifg = '5af78e', guibg = '333333'},
-                GitGutterModify = {guifg = '57c7ff', guibg = '333333'},
-                GitGutterDelete = {guifg = 'ff5c57', guibg = '333333'},
-                GitGutterChangeDelete = {guifg = 'ff6ac1', guibg = '333333'},
+                GitGutterAdd = { guifg = '5af78e', guibg = '333333' },
+                GitGutterModify = { guifg = '57c7ff', guibg = '333333' },
+                GitGutterDelete = { guifg = 'ff5c57', guibg = '333333' },
+                GitGutterChangeDelete = { guifg = 'ff6ac1', guibg = '333333' },
             }
         end
     },
@@ -68,8 +68,8 @@ return {
         ---@type quicker.SetupOptions
         opts = {
             keys = {
-                { '>', function() require'quicker'.expand({ before = 2, after = 2, add_to_existing = true }) end, desc = 'expand qf content' },
-                { '<', function() require'quicker'.collapse() end, desc = 'expand qf content' },
+                { '>', function() require 'quicker'.expand({ before = 2, after = 2, add_to_existing = true }) end, desc = 'expand qf content' },
+                { '<', function() require 'quicker'.collapse() end,                                                desc = 'expand qf content' },
             }
         },
     },
@@ -80,7 +80,7 @@ return {
     },
     {
         'mbbill/undotree',
-        cmd = {'UndotreeToggle', 'UndotreeShow', 'UndotreeHide', 'UndotreeFocus'},
+        cmd = { 'UndotreeToggle', 'UndotreeShow', 'UndotreeHide', 'UndotreeFocus' },
         config = function(plugin)
             vim.g.undotree_SetFocusWhenToggle = 1
         end,
@@ -92,13 +92,13 @@ return {
     {
         'nyngwang/NeoZoom.lua',
         keys = {
-            { '<leader>z', function() require'neo-zoom'.neo_zoom({}) end, { silent = true }, desc = 'zoom-window' },
+            { '<leader>z', function() require 'neo-zoom'.neo_zoom({}) end, { silent = true }, desc = 'zoom-window' },
         },
-        opts = { },
+        opts = {},
     },
     {
         'folke/twilight.nvim',
-        cmd = {'Twilight', 'TwilightEnable', 'TwilightEnable'},
+        cmd = { 'Twilight', 'TwilightEnable', 'TwilightEnable' },
         opts = {},
     },
     {
@@ -109,8 +109,8 @@ return {
         },
         keys = {
             { '<leader>ta', '<cmd>WindowsToggleAutowidth<cr>', { silent = true }, desc = 'autowidth' },
-            { '<leader>wm', '<cmd>WindowsMaximize<cr>', { silent = true }, desc = 'maximize' },
-            { '<leader>w=', '<cmd>WindowsEqualize<cr>', { silent = true }, desc = 'balance-windows' },
+            { '<leader>wm', '<cmd>WindowsMaximize<cr>',        { silent = true }, desc = 'maximize' },
+            { '<leader>w=', '<cmd>WindowsEqualize<cr>',        { silent = true }, desc = 'balance-windows' },
         },
         opts = {
             autowidth = {
@@ -121,7 +121,7 @@ return {
             vim.o.winwidth = 10
             vim.o.winminwidth = 10
             vim.o.equalalways = false
-            require'windows'.setup(opts)
+            require 'windows'.setup(opts)
         end,
     },
     {
@@ -173,7 +173,7 @@ return {
     },
     {
         'NoahTheDuke/vim-just',
-        ft = {'just', 'Justfile'},
+        ft = { 'just', 'Justfile' },
     },
     {
         'barreiroleo/ltex_extra.nvim',
@@ -262,10 +262,10 @@ return {
     {
         'cbochs/portal.nvim',
         keys = {
-            { '<leader>jo', function() require'portal.builtin'.jumplist.tunnel_backward() end, desc = 'portal backward'},
-            { '<leader>ji', function() require'portal.builtin'.jumplist.tunnel_forward() end, desc = 'portal forward'},
-            { '<leader>j;', function() require'portal.builtin'.changelist.tunnel_backward() end, desc = 'portal backward'},
-            { '<leader>j,', function() require'portal.builtin'.changelist.tunnel_forward() end, desc = 'portal forward'},
+            { '<leader>jo', function() require 'portal.builtin'.jumplist.tunnel_backward() end,   desc = 'portal backward' },
+            { '<leader>ji', function() require 'portal.builtin'.jumplist.tunnel_forward() end,    desc = 'portal forward' },
+            { '<leader>j;', function() require 'portal.builtin'.changelist.tunnel_backward() end, desc = 'portal backward' },
+            { '<leader>j,', function() require 'portal.builtin'.changelist.tunnel_forward() end,  desc = 'portal forward' },
         },
         config = function(plugin, opts)
             require 'portal'.setup(opts)
@@ -284,18 +284,18 @@ return {
             },
         },
         keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "flash-treesitter" },
-            { "r", mode = "o", function() require("flash").remote() end, desc = "flash-remote" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "flash-treesitter" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "flash-search-toggle" },
+            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "flash" },
+            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "flash-treesitter" },
+            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "flash-remote" },
+            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "flash-treesitter" },
+            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "flash-search-toggle" },
         }
     },
     {
         'folke/todo-comments.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         event = 'VeryLazy',
-        opts = { },
+        opts = {},
     },
     {
         'folke/lazydev.nvim',
@@ -308,7 +308,7 @@ return {
     },
     {
         "folke/zen-mode.nvim",
-        dependencies = {'folke/twilight.nvim'},
+        dependencies = { 'folke/twilight.nvim' },
         ---@module 'zen-mode'
         ---@type ZenOptions
         opts = {
@@ -319,7 +319,7 @@ return {
             },
         },
         keys = {
-            {'<leader>tz', function() require'zen-mode'.toggle() end, desc = 'zen-mode'},
+            { '<leader>tz', function() require 'zen-mode'.toggle() end, desc = 'zen-mode' },
         },
         config = function(plugin, opts)
             require("zen-mode").setup(opts)
@@ -346,13 +346,13 @@ return {
         'gbprod/yanky.nvim',
         opts = {},
         keys = {
-            { 'p', '<Plug>(YankyPutAfter)', mode = {'n', 'x'}},
-            { 'P', '<Plug>(YankyPutBefore)', mode = {'n', 'x'}},
-            { 'gp', '<Plug>(YankyGPutAfter)', mode = {'n', 'x'}},
-            { 'gP', '<Plug>(YankyGPutBefore)', mode = {'n', 'x'}},
-            { '<c-n>', '<Plug>(YankyCycleForward)'},
-            { '<c-p>', '<Plug>(YankyCycleBackward)'},
-            { '<m-p>', '<cmd>YankyRingHistory<cr>'},
+            { 'p',     '<Plug>(YankyPutAfter)',     mode = { 'n', 'x' } },
+            { 'P',     '<Plug>(YankyPutBefore)',    mode = { 'n', 'x' } },
+            { 'gp',    '<Plug>(YankyGPutAfter)',    mode = { 'n', 'x' } },
+            { 'gP',    '<Plug>(YankyGPutBefore)',   mode = { 'n', 'x' } },
+            { '<c-n>', '<Plug>(YankyCycleForward)' },
+            { '<c-p>', '<Plug>(YankyCycleBackward)' },
+            { '<m-p>', '<cmd>YankyRingHistory<cr>' },
         },
     },
     {
@@ -366,7 +366,7 @@ return {
     },
     {
         'lambdalisue/suda.vim',
-        cmd = {'SudaRead', 'SudaWrite'},
+        cmd = { 'SudaRead', 'SudaWrite' },
     },
     {
         'editorconfig/editorconfig-vim',
@@ -375,18 +375,18 @@ return {
     {
         'junegunn/vim-easy-align',
         keys = {
-            {'ga', '<Plug>(EasyAlign)', mode = {'n', 'x'}}
+            { 'ga', '<Plug>(EasyAlign)', mode = { 'n', 'x' } }
         },
     },
     {
         'monaqa/dial.nvim',
         keys = {
-            { '<c-a>', '<Plug>(dial-increment)', { noremap = true }, desc = 'dial increment' },
-            { '<c-x>', '<Plug>(dial-decrement)', { noremap = true }, desc = 'dial decrement' },
-            { '<c-a>', '<Plug>(dial-increment)', { noremap = true }, mode = {'v'}, desc = 'dial increment' },
-            { '<c-x>', '<Plug>(dial-decrement)', { noremap = true }, mode = {'v'}, desc = 'dial decrement' },
-            { 'g<c-a>', 'g<Plug>(dial-increment)', { noremap = true }, mode = {'v'}, desc = 'dial increment' },
-            { 'g<c-x>', 'g<Plug>(dial-decrement)', { noremap = true }, mode = {'v'}, desc = 'dial decrement' },
+            { '<c-a>',  '<Plug>(dial-increment)',  { noremap = true }, desc = 'dial increment' },
+            { '<c-x>',  '<Plug>(dial-decrement)',  { noremap = true }, desc = 'dial decrement' },
+            { '<c-a>',  '<Plug>(dial-increment)',  { noremap = true }, mode = { 'v' },         desc = 'dial increment' },
+            { '<c-x>',  '<Plug>(dial-decrement)',  { noremap = true }, mode = { 'v' },         desc = 'dial decrement' },
+            { 'g<c-a>', 'g<Plug>(dial-increment)', { noremap = true }, mode = { 'v' },         desc = 'dial increment' },
+            { 'g<c-x>', 'g<Plug>(dial-decrement)', { noremap = true }, mode = { 'v' },         desc = 'dial decrement' },
         },
     },
     {
@@ -394,19 +394,19 @@ return {
         dependencies = {
             { 'skywind3000/asynctasks.vim' }
         },
-        cmd = {'AsyncRun'},
+        cmd = { 'AsyncRun' },
         config = function(plugin)
             vim.g.asyncrun_open = 8
         end,
     },
     {
         'kevinhwang91/rnvimr',
-        cmd = {'RnvimrToggle'},
+        cmd = { 'RnvimrToggle' },
         config = function(plugin)
             vim.g.rnvimr_enable_picker = 1
         end,
         keys = {
-            { '<M-o>', '<cmd>RnvimrToggle<cr>', mode = {'n', 't'}, desc = 'open file', noremap = true, silent = true }
+            { '<M-o>', '<cmd>RnvimrToggle<cr>', mode = { 'n', 't' }, desc = 'open file', noremap = true, silent = true }
         },
     },
     {
@@ -432,22 +432,22 @@ return {
             'PerfToggleAnnotations'
         },
         keys = {
-            { '<leader>cplp', '<cmd>PerfLoadFlat<cr>', desc = "perf-data", noremap = true, silent = true },
-            { '<leader>cplg', '<cmd>PerfLoadCallGraph<cr>', desc = "perf-data-call-graph", noremap = true, silent = true },
-            { '<leader>cplf', '<cmd>PerfLoadFlameGraph<cr>', desc = "flamegraph", noremap = true, silent = true },
+            { '<leader>cplp', '<cmd>PerfLoadFlat<cr>',                desc = "perf-data",            noremap = true,               silent = true },
+            { '<leader>cplg', '<cmd>PerfLoadCallGraph<cr>',           desc = "perf-data-call-graph", noremap = true,               silent = true },
+            { '<leader>cplf', '<cmd>PerfLoadFlameGraph<cr>',          desc = "flamegraph",           noremap = true,               silent = true },
 
-            { '<leader>cpe', '<cmd>PerfPickEvent<cr>', desc = "pick-event", noremap = true, silent = true },
+            { '<leader>cpe',  '<cmd>PerfPickEvent<cr>',               desc = "pick-event",           noremap = true,               silent = true },
 
-            { '<leader>cpa', '<cmd>PerfAnnotate<cr>', desc = "annotate", noremap = true, silent = true },
-            { '<leader>cpf', '<cmd>PerfAnnotateFunction<cr>', desc = "annotate-function", noremap = true, silent = true },
-            { '<leader>cpf', '<cmd>PerfAnnotateSelection<cr>', mode = {'v'}, desc = "annotate", noremap = true, silent = true },
+            { '<leader>cpa',  '<cmd>PerfAnnotate<cr>',                desc = "annotate",             noremap = true,               silent = true },
+            { '<leader>cpf',  '<cmd>PerfAnnotateFunction<cr>',        desc = "annotate-function",    noremap = true,               silent = true },
+            { '<leader>cpf',  '<cmd>PerfAnnotateSelection<cr>',       mode = { 'v' },                desc = "annotate",            noremap = true, silent = true },
 
-            { '<leader>cpt', '<cmd>PerfToggleAnnotations<cr>', desc = "toggle", noremap = true, silent = true },
+            { '<leader>cpt',  '<cmd>PerfToggleAnnotations<cr>',       desc = "toggle",               noremap = true,               silent = true },
 
-            { '<leader>cph', '<cmd>PerfHottestLines<cr>', desc = "hottest-lines", noremap = true, silent = true },
-            { '<leader>cps', '<cmd>PerfHottestSymbols<cr>', desc = "hottest-symbols", noremap = true, silent = true },
-            { '<leader>cpc', '<cmd>PerfHottestCallersFunction<cr>', desc = "hottest-callers-fn", noremap = true, silent = true },
-            { '<leader>cpc', '<cmd>PerfHottestCallersSelection<cr>', mode = {'v'}, desc = "hottest-callers-sel", noremap = true, silent = true },
+            { '<leader>cph',  '<cmd>PerfHottestLines<cr>',            desc = "hottest-lines",        noremap = true,               silent = true },
+            { '<leader>cps',  '<cmd>PerfHottestSymbols<cr>',          desc = "hottest-symbols",      noremap = true,               silent = true },
+            { '<leader>cpc',  '<cmd>PerfHottestCallersFunction<cr>',  desc = "hottest-callers-fn",   noremap = true,               silent = true },
+            { '<leader>cpc',  '<cmd>PerfHottestCallersSelection<cr>', mode = { 'v' },                desc = "hottest-callers-sel", noremap = true, silent = true },
 
         },
         opts = {
@@ -470,7 +470,7 @@ return {
             perfanno.setup(generate_color_config(opts))
             -- Automatically update colors on colorscheme change
             local color_autocmd = vim.api.nvim_create_augroup("PerfannoColorUpdate", { clear = true })
-            vim.api.nvim_create_autocmd({'ColorScheme'}, {
+            vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
                 group = color_autocmd,
                 callback = function(ev)
                     config.load(generate_color_config(opts))
@@ -489,7 +489,7 @@ return {
     },
     {
         'junegunn/fzf.vim',
-        dependencies = {'junegunn/fzf'},
+        dependencies = { 'junegunn/fzf' },
         cmd = {
             'RG',
             'Files',
@@ -528,4 +528,3 @@ return {
         end,
     }
 }
-
