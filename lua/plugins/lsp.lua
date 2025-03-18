@@ -5,10 +5,6 @@ return {{
         'ibhagwan/fzf-lua',
         'onsails/lspkind-nvim',
         'gfanto/fzf-lsp.nvim',
-        {
-            'j-hui/fidget.nvim',
-            tag = 'legacy',
-        },
         'nvim-lua/plenary.nvim',
         'SmiteshP/nvim-navic',
         {
@@ -140,11 +136,11 @@ return {{
             lspconfig[server].setup(config)
         end
 
-        require "fidget".setup {
-            text = {
-                spinner = "dots",
-            }
-        }
+        local lsp_group = vim.api.nvim_create_augroup('UserLspProgress', {})
+        vim.api.nvim_create_autocmd('LspProgress', {
+            group = lsp_group,
+            callback = lsp_utils.lsp_progress_callback,
+        })
 
         lspkind.init({})
     end,
