@@ -208,6 +208,61 @@ return {
         },
     },
     {
+        'lewis6991/gitsigns.nvim',
+        event = 'BufReadPre',
+        opts = {
+            on_attach = function(bufnr)
+                local gs = require 'gitsigns'
+
+                local function map(mode, l, r, opts)
+                    opts = opts or {}
+                    opts.buffer = bufnr
+                    vim.keymap.set(mode, l, r, opts)
+                end
+
+                map('n', ']c', function()
+                    if vim.wo.diff then
+                        vim.cmd.normal({ ']c', bang = true })
+                    else
+                        gs.nav_hunk('next')
+                    end
+                end)
+
+                map('n', '[c', function()
+                    if vim.wo.diff then
+                        vim.cmd.normal({ '[c', bang = true })
+                    else
+                        gs.nav_hunk('prev')
+                    end
+                end)
+
+                -- Actions
+                map('n', '<leader>ghs', gs.stage_hunk, { desc = 'stage hunk' })
+                map('n', '<leader>ghr', gs.reset_hunk, { desc = 'reset hunk' })
+
+                map('v', '<leader>ghs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+                    { desc = 'stage hunk' })
+                map('v', '<leader>ghr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+                    { desc = 'reset hunk' })
+
+                map('n', '<leader>ghS', gs.stage_buffer, { desc = 'stage buffer' })
+                map('n', '<leader>ghR', gs.reset_buffer, { desc = 'reset buffer' })
+                map('n', '<leader>ghd', gs.diffthis, { desc = 'diff this' })
+
+                map('n', '<leader>ghp', gs.preview_hunk, { desc = 'preview hunk' })
+                map('n', '<leader>ghi', gs.preview_hunk_inline, { desc = 'preview hunk (inline)' })
+
+                map('n', '<leader>ghb', function() gs.blame_line { full = true } end, { desc = 'blame line' })
+
+                map('n', '<leader>tgb', gs.toggle_current_line_blame, { desc = 'toggle line-blame' })
+                map('n', '<leader>tgw', gs.toggle_word_diff, { desc = 'toggle word-diff' })
+
+                -- Text object
+                map({ 'o', 'x' }, 'ih', gs.select_hunk)
+            end,
+        }
+    },
+    {
         'tpope/vim-fugitive',
         cmd = 'Git',
         keys = {
