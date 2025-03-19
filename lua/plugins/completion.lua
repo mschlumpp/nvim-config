@@ -20,6 +20,7 @@ return { {
     event = "VeryLazy",
     version = version,
     build = build_cmd,
+    dependencies = { 'rafamadriz/friendly-snippets' },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
