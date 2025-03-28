@@ -123,6 +123,9 @@ vim.filetype.add({
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cn<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '[q', '<cmd>cp<cr>', { silent = true, noremap = true })
 
+-- Select last yanked/changed text
+vim.keymap.set('n', 'g<c-v>', "'`[' . getregtype()[0] . '`]'", { expr = true })
+
 -- More convenient window navigation
 vim.api.nvim_set_keymap('', '<m-c-up>', '<c-w>k', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<m-c-down>', '<c-w>j', { silent = true, noremap = true })
