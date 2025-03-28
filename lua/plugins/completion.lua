@@ -31,6 +31,12 @@ return { {
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
+        signature = {
+            enabled = true,
+            window = {
+                show_documentation = false,
+            },
+        },
     },
     opts_extend = { 'sources.default' },
 } }
