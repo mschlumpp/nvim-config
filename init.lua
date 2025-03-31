@@ -43,6 +43,7 @@ vim.opt.formatoptions:remove { 't' }
 vim.opt.formatoptions:append { '/' }
 
 vim.g.mapleader = ' '
+vim.g.localleader = '\\'
 
 -- tab settings
 option('smarttab')

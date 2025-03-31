@@ -65,6 +65,18 @@ return {
         dependencies = { 'junegunn/fzf' },
     },
     {
+        'MagicDuck/grug-far.nvim',
+        cmd = { 'GrugFar' },
+        keys = {
+            { '<leader>sR', function() require 'grug-far'.open {} end, { silent = true }, desc = 'grug-far' },
+        },
+        opts = {
+        },
+        config = function (_, opts)
+            require 'grug-far.nvim'.setup(opts)
+        end,
+    },
+    {
         'mbbill/undotree',
         cmd = { 'UndotreeToggle', 'UndotreeShow', 'UndotreeHide', 'UndotreeFocus' },
         config = function(plugin)
