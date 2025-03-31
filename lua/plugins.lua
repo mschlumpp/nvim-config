@@ -540,6 +540,37 @@ return {
         end,
     },
     {
+        'olimorris/persisted.nvim',
+        event = 'BufReadPre',
+        cmd = {
+            'SessionToggle',
+            'SessionStart',
+            'SessionStop',
+            'SessionSave',
+            'SessionSelect',
+            'SessionLoad',
+            'SessionLoadLast',
+            'SessionLoadFromFile',
+            'SessionDelete',
+        },
+        keys = {
+            { "<leader>xs", function() require('persisted').load() end,                desc = 'restore-session' },
+            { "<leader>xS", function() require('persisted').select() end,              desc = 'select-session' },
+            { "<leader>xl", function() require('persisted').load({ last = true }) end, desc = 'restore-last-session' },
+            { "<leader>xd", function() require('persisted').stop() end,                desc = 'disable-session-save' },
+        },
+        opts = {
+        },
+    },
+    {
+        'ahmedkhalf/project.nvim',
+        main = 'project_nvim',
+        opts = {
+        },
+        -- This plugin does an automatic cd on VimEnter. So let's load it just in time.
+        event = 'VimEnter',
+    },
+    {
         'mschlumpp/quick-switch.nvim',
         -- The plugin needs to keep track of buffers even if the keybind wasn't
         -- used yet.
