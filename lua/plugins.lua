@@ -15,13 +15,18 @@ return {
     'olimorris/onedarkpro.nvim',
     'ray-x/aurora',
     {
-        'projekt0n/github-nvim-theme',
+        'folke/tokyonight.nvim',
         lazy = false,
         priority = 1000,
+        config = function(_, _)
+            vim.cmd.colorscheme('tokyonight-night')
+        end,
+    },
+    {
+        'projekt0n/github-nvim-theme',
         opts = {},
         config = function(plugin, opts)
             require("github-theme").setup(opts)
-            vim.cmd.colorscheme('github_dark_high_contrast')
         end,
     },
     {
