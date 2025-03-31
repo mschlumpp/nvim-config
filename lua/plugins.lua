@@ -680,6 +680,11 @@ return {
         end,
     },
     {
+        'stevearc/stickybuf.nvim',
+        event = 'VeryLazy',
+        opts = {},
+    },
+    {
         'ibhagwan/fzf-lua',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
