@@ -7,6 +7,7 @@ return {{
         'gfanto/fzf-lsp.nvim',
         'nvim-lua/plenary.nvim',
         'SmiteshP/nvim-navic',
+        'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
         {
             'p00f/clangd_extensions.nvim',
             opts = {
@@ -47,7 +48,7 @@ return {{
             flags = {
                 debounce_text_changes = 9000,
             },
-            after = function (client, bufnr)
+            after = function (_, _)
                 require("ltex_extra").setup {
                     load_langs = { "en-US", "de-DE" },
                     init_check = true,
@@ -92,15 +93,12 @@ return {{
             }
         }
     },
-    config = function(plugin, opts)
+    config = function(_, opts)
         local lspconfig = require 'lspconfig'
         local lspkind = require 'lspkind'
 
         vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
             vim.lsp.diagnostic.on_publish_diagnostics, {
-                virtual_text = {
-                    spacing = 4,
-                },
                 signs = true,
                 update_in_insert = true,
                 underline = true
@@ -143,6 +141,9 @@ return {{
         })
 
         lspkind.init({})
+
+        vim.diagnostic.config({ virtual_text = false })
+        require('lsp_lines').setup()
     end,
 }}
 
