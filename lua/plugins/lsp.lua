@@ -7,7 +7,6 @@ return {{
         'gfanto/fzf-lsp.nvim',
         'nvim-lua/plenary.nvim',
         'SmiteshP/nvim-navic',
-        'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
         {
             'p00f/clangd_extensions.nvim',
             opts = {
@@ -97,14 +96,6 @@ return {{
         local lspconfig = require 'lspconfig'
         local lspkind = require 'lspkind'
 
-        vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-            vim.lsp.diagnostic.on_publish_diagnostics, {
-                signs = true,
-                update_in_insert = true,
-                underline = true
-            }
-        )
-
         vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
             vim.lsp.handlers.hover, {
                 border = 'single',
@@ -141,9 +132,6 @@ return {{
         })
 
         lspkind.init({})
-
-        vim.diagnostic.config({ virtual_text = false })
-        require('lsp_lines').setup()
     end,
 }}
 

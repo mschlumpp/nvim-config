@@ -152,6 +152,14 @@ vim.keymap.set('t', '<esc>', function ()
     end
 end, { expr = true })
 
+-- IDE features tweaks
+vim.diagnostic.config({
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+    virtual_lines = { current_line = true },
+})
+
 -- git in nvim terminal
 vim.api.nvim_exec([[
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
