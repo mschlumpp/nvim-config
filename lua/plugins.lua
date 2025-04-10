@@ -566,6 +566,7 @@ return {
         'ahmedkhalf/project.nvim',
         main = 'project_nvim',
         opts = {
+            manual_mode = true,
         },
         -- This plugin does an automatic cd on VimEnter. So let's load it just in time.
         event = 'VimEnter',
