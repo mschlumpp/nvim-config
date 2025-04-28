@@ -160,6 +160,25 @@ vim.diagnostic.config({
     virtual_lines = { current_line = true },
 })
 
+local function paste()
+  return {
+    vim.fn.split(vim.fn.getreg(""), "\n"),
+    vim.fn.getregtype(""),
+  }
+end
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  paste = {
+    ["+"] = paste,
+    ["*"] = paste,
+  },
+}
+
 -- git in nvim terminal
 vim.api.nvim_exec([[
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
