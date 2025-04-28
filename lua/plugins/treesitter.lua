@@ -1,6 +1,9 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-context',
+        },
         build = ':TSUpdate',
         event = "BufReadPost",
         opts = {
@@ -43,4 +46,12 @@ return {
         end,
     },
     'nvim-treesitter/nvim-treesitter-refactor',
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        opts = {
+            enable = true,
+            max_lines = 6,
+            separator = "─",
+        },
+    }
 }
