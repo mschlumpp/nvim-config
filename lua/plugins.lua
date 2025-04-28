@@ -531,6 +531,17 @@ return {
         end,
     },
     {
+        'echasnovski/mini.files',
+        version = false,
+        keys = {
+            { '<M-o>', function() require 'mini.files'.open(vim.api.nvim_buf_get_name(0)) end, mode = { 'n', 't' }, desc = 'open file', noremap = true, silent = true }
+        },
+        opts = {
+            options = {
+                use_as_default_explorer = false,
+            },
+        },
+    },
         'olimorris/persisted.nvim',
         event = 'BufReadPre',
         cmd = {
@@ -634,16 +645,6 @@ return {
         config = function(plugin)
             vim.g.asyncrun_open = 8
         end,
-    },
-    {
-        'kevinhwang91/rnvimr',
-        cmd = { 'RnvimrToggle' },
-        config = function(plugin)
-            vim.g.rnvimr_enable_picker = 1
-        end,
-        keys = {
-            { '<M-o>', '<cmd>RnvimrToggle<cr>', mode = { 'n', 't' }, desc = 'open file', noremap = true, silent = true }
-        },
     },
     {
         't-troebst/perfanno.nvim',
