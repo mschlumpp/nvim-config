@@ -2,7 +2,6 @@ return {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
     opts = function(plugin)
-        local navic = require 'nvim-navic'
         return {
             extensions = {
                 'quickfix',
@@ -16,23 +15,19 @@ return {
                 theme = 'auto',
                 icons_enabled = true,
             },
-            sections = { 
+            sections = {
                 lualine_b = { 'branch', 'diff' } ,
-                lualine_c = { 
-                    'filename', 
+                lualine_c = {
+                    'filename',
                     {
-                        navic.get_location,
-                        cond = navic.is_available
-                    },
-                    { 
-                        'diagnostics', 
+                        'diagnostics',
                         sources = {'nvim_diagnostic'}
                     },
                 },
-                lualine_x = { 
-                    'encoding', 
-                    'fileformat', 
-                    function () 
+                lualine_x = {
+                    'encoding',
+                    'fileformat',
+                    function ()
                         -- Use bo.filetype directly because the lualine filetype
                         -- handles a unloaded web-devicons package very poorly (it
                         -- searches for the package using `require` *every* redraw,

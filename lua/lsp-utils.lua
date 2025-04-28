@@ -1,7 +1,5 @@
 local M = {}
 
-local navic = require 'nvim-navic'
-
 ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
 local progress = vim.defaulttable()
 
@@ -110,10 +108,6 @@ function M.make_on_attach(config)
 
         buf_set_option('formatexpr', 'v:lua.vim.lsp.formatexpr()')
         buf_set_option('tagfunc', 'v:lua.vim.lsp.tagfunc')
-
-        if client.server_capabilities.documentSymbolProvider then
-            navic.attach(client, bufnr)
-        end
 
         if client.server_capabilities.inlayHintProvider then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })

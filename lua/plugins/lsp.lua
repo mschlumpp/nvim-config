@@ -6,7 +6,6 @@ return {{
         'onsails/lspkind-nvim',
         'gfanto/fzf-lsp.nvim',
         'nvim-lua/plenary.nvim',
-        'SmiteshP/nvim-navic',
         {
             'p00f/clangd_extensions.nvim',
             opts = {
