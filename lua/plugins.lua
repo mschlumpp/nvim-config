@@ -33,15 +33,8 @@ return {
         'nyoom-engineering/oxocarbon.nvim'
     },
     {
-        'nanotech/jellybeans.vim',
-        config = function(plugin)
-            vim.g.jellybeans_overrides = {
-                GitGutterAdd = { guifg = '5af78e', guibg = '333333' },
-                GitGutterModify = { guifg = '57c7ff', guibg = '333333' },
-                GitGutterDelete = { guifg = 'ff5c57', guibg = '333333' },
-                GitGutterChangeDelete = { guifg = 'ff6ac1', guibg = '333333' },
-            }
-        end
+        dependencies = { 'rktjmp/lush.nvim'},
+        'metalelf0/jellybeans-nvim',
     },
     {
         'tpope/vim-sleuth',
