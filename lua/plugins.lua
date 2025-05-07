@@ -446,6 +446,7 @@ return {
             },
             explorer = {
                 enabled = true,
+                replace_netrw = false,
             },
             lazygit = {
                 enabled = true,
@@ -541,6 +542,17 @@ return {
                 end,
             })
         end,
+    },
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {
+        },
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        lazy = false,
     },
     {
         'echasnovski/mini.files',
